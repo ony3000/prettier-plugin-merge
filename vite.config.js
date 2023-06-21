@@ -8,5 +8,13 @@ export default defineConfig({
       name: 'PrettierPluginMerge',
       fileName: 'prettier-plugin-merge',
     },
+    rollupOptions: {
+      external: [/^prettier/],
+      output: {
+        globals: {
+          prettier: 'prettier',
+        },
+      },
+    },
   },
 });
