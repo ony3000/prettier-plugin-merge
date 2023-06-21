@@ -1,5 +1,9 @@
 import type { Plugin } from 'prettier';
 
-const mergePlugin: Plugin = {};
+import { parsers } from './parsers';
+
+const mergePlugin: Plugin = {
+  parsers,
+};
 
 export default mergePlugin;
