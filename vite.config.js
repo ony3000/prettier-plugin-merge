@@ -5,8 +5,8 @@ export default defineConfig({
   build: {
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
-      name: 'DemoLib',
-      fileName: 'demo-lib',
+      name: 'PrettierPluginMerge',
+      fileName: 'prettier-plugin-merge',
     },
   },
 });
