@@ -1,14 +1,25 @@
 import { format } from 'prettier';
+import mergePlugin from '@/index';
 import { baseOptions } from '../settings';
 import { jsxCounterComponentCode } from '../../fixtures';
 import { jsxCounterComponentCodeResult } from './expected-results';
 
-const options = {
-  ...baseOptions,
-};
+describe('[babel] plugin-less', () => {
+  test('No plugin', () => {
+    const options = {
+      ...baseOptions,
+      plugins: [],
+    };
 
-describe('[babel] no plugin', () => {
-  test('Default formatting of prettier', () => {
+    expect(format(jsxCounterComponentCode, options)).toBe(jsxCounterComponentCodeResult);
+  });
+
+  test('Merge plugin alone has no effect', () => {
+    const options = {
+      ...baseOptions,
+      plugins: [mergePlugin],
+    };
+
     expect(format(jsxCounterComponentCode, options)).toBe(jsxCounterComponentCodeResult);
   });
 });

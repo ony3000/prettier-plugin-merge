@@ -1,14 +1,25 @@
 import { format } from 'prettier';
+import mergePlugin from '@/index';
 import { baseOptions } from '../settings';
 import { tsxCounterComponentCode } from '../../fixtures';
 import { tsxCounterComponentCodeResult } from './expected-results';
 
-const options = {
-  ...baseOptions,
-};
+describe('[typescript] plugin-less', () => {
+  test('No plugin', () => {
+    const options = {
+      ...baseOptions,
+      plugins: [],
+    };
 
-describe('[typescript] no plugin', () => {
-  test('Default formatting of prettier', () => {
+    expect(format(tsxCounterComponentCode, options)).toBe(tsxCounterComponentCodeResult);
+  });
+
+  test('Merge plugin alone has no effect', () => {
+    const options = {
+      ...baseOptions,
+      plugins: [mergePlugin],
+    };
+
     expect(format(tsxCounterComponentCode, options)).toBe(tsxCounterComponentCodeResult);
   });
 });
