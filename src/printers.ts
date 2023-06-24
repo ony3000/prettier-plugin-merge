@@ -1,6 +1,9 @@
-import type { AstPath, ParserOptions, Doc, Printer } from 'prettier';
+import type { AstPath, ParserOptions, Doc, Printer, Plugin } from 'prettier';
+import { doc, format } from 'prettier';
 
 import { extractPrinter, makeCommentContext } from './utils';
+
+const { softline } = doc.builders;
 
 const printerErrorMessage =
   'There is no default printer or the function to look for does not exist.';
@@ -10,6 +13,7 @@ let defaultPrinter: Printer | undefined;
 function printWithMergedPlugin(
   path: AstPath,
   options: ParserOptions,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   print: (path: AstPath) => Doc,
 ): Doc {
   const node = path.getValue();
@@ -27,9 +31,18 @@ function printWithMergedPlugin(
     throw new Error('Default printer does not exist.');
   }
 
-  const defaultDoc = defaultPrinter.print(path, options, print);
+  const { originalText } = options;
+  const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
+  const sequentiallyFormattedText = plugins.slice(0, -1).reduce(
+    (previousText, plugin) =>
+      format(previousText, {
+        ...options,
+        plugins: [plugin],
+      }).trimEnd(),
+    originalText,
+  );
 
-  return defaultDoc;
+  return [sequentiallyFormattedText, softline];
 }
 
 function canAttachComment(node: any): boolean {
