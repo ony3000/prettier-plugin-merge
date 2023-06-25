@@ -1,9 +1,9 @@
 import type { Options } from 'prettier';
-import { format } from 'prettier';
 
 import mergePlugin from '@/index';
 
 import { tsxCounterComponentCode } from '../../fixtures';
+import { format } from '../../settings';
 import { tsxCounterComponentCodeResult } from './expected-results';
 
 const baseOptions: Options = {
