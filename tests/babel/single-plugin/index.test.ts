@@ -2,8 +2,8 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { jsxCounterComponentCode } from '../../fixtures';
 import { format, SortImportsPlugin, TailwindcssPlugin, BraceStylePlugin } from '../../settings';
+import { counterComponentCode } from '../fixtures';
 import {
   sortImportsPluginResult,
   tailwindcssPluginResult,
@@ -23,7 +23,7 @@ describe('[babel] single plugin', () => {
       importOrderSeparation: true,
     };
 
-    expect(format(jsxCounterComponentCode, options)).toBe(sortImportsPluginResult);
+    expect(format(counterComponentCode, options)).toBe(sortImportsPluginResult);
   });
 
   test('[sort-imports] A combination of a single plugin and a merge plugin also has no effect', () => {
@@ -34,7 +34,7 @@ describe('[babel] single plugin', () => {
       importOrderSeparation: true,
     };
 
-    expect(format(jsxCounterComponentCode, options)).toBe(sortImportsPluginResult);
+    expect(format(counterComponentCode, options)).toBe(sortImportsPluginResult);
   });
 
   test('prettier-plugin-tailwindcss', () => {
@@ -43,7 +43,7 @@ describe('[babel] single plugin', () => {
       plugins: [TailwindcssPlugin],
     };
 
-    expect(format(jsxCounterComponentCode, options)).toBe(tailwindcssPluginResult);
+    expect(format(counterComponentCode, options)).toBe(tailwindcssPluginResult);
   });
 
   test('[tailwindcss] A combination of a single plugin and a merge plugin also has no effect', () => {
@@ -52,7 +52,7 @@ describe('[babel] single plugin', () => {
       plugins: [TailwindcssPlugin, mergePlugin],
     };
 
-    expect(format(jsxCounterComponentCode, options)).toBe(tailwindcssPluginResult);
+    expect(format(counterComponentCode, options)).toBe(tailwindcssPluginResult);
   });
 
   test('prettier-plugin-brace-style', () => {
@@ -62,7 +62,7 @@ describe('[babel] single plugin', () => {
       braceStyle: 'allman',
     };
 
-    expect(format(jsxCounterComponentCode, options)).toBe(braceStylePluginResult);
+    expect(format(counterComponentCode, options)).toBe(braceStylePluginResult);
   });
 
   test('[brace-style] A combination of a single plugin and a merge plugin also has no effect', () => {
@@ -72,6 +72,6 @@ describe('[babel] single plugin', () => {
       braceStyle: 'allman',
     };
 
-    expect(format(jsxCounterComponentCode, options)).toBe(braceStylePluginResult);
+    expect(format(counterComponentCode, options)).toBe(braceStylePluginResult);
   });
 });

@@ -1,16 +1,9 @@
-export const counterComponentCodeResult = `import { CounterButton } from "./parts";
-import { CounterContainer } from "@/layouts";
-import { useState } from "react";
+export const counterComponentCode = `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
 
-type CounterProps = {
-  label?: string;
-  onChange?: (newCount: number) => void;
-};
-
-export default function Counter({
-  label = "Counter",
-  onChange = undefined,
-}: CounterProps) {
+export default function Counter({ label = 'Counter', onChange = undefined }) {
   const [count, setCount] = useState(0);
 
   const incrementHandler = () => {

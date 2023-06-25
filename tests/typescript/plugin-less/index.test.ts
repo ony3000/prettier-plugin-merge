@@ -2,9 +2,9 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { tsxCounterComponentCode } from '../../fixtures';
 import { format } from '../../settings';
-import { tsxCounterComponentCodeResult } from './expected-results';
+import { counterComponentCode } from '../fixtures';
+import { counterComponentCodeResult } from './expected-results';
 
 const baseOptions: Options = {
   parser: 'typescript',
@@ -17,7 +17,7 @@ describe('[typescript] plugin-less', () => {
       plugins: [],
     };
 
-    expect(format(tsxCounterComponentCode, options)).toBe(tsxCounterComponentCodeResult);
+    expect(format(counterComponentCode, options)).toBe(counterComponentCodeResult);
   });
 
   test('Merge plugin alone has no effect', () => {
@@ -26,6 +26,6 @@ describe('[typescript] plugin-less', () => {
       plugins: [mergePlugin],
     };
 
-    expect(format(tsxCounterComponentCode, options)).toBe(tsxCounterComponentCodeResult);
+    expect(format(counterComponentCode, options)).toBe(counterComponentCodeResult);
   });
 });

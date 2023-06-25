@@ -1,4 +1,4 @@
-export const jsxCounterComponentCodeResult = `import { CounterButton } from "./parts";
+export const counterComponentCodeResult = `import { CounterButton } from "./parts";
 import { CounterContainer } from "@/layouts";
 import { useState } from "react";
 

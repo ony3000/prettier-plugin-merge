@@ -2,8 +2,8 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { jsxCounterComponentCode } from '../../fixtures';
 import { format, SortImportsPlugin, TailwindcssPlugin, BraceStylePlugin } from '../../settings';
+import { counterComponentCode } from '../fixtures';
 import {
   sortImportsAndTailwindcssResult,
   sortImportsAndBraceStyleResult,
@@ -27,7 +27,7 @@ describe('[babel] multiple plugin', () => {
         importOrderSeparation: true,
       };
 
-      expect(format(jsxCounterComponentCode, options)).toBe(sortImportsAndTailwindcssResult);
+      expect(format(counterComponentCode, options)).toBe(sortImportsAndTailwindcssResult);
     });
 
     test('[tailwindcss -> sort-imports]', () => {
@@ -38,7 +38,7 @@ describe('[babel] multiple plugin', () => {
         importOrderSeparation: true,
       };
 
-      expect(format(jsxCounterComponentCode, options)).toBe(tailwindcssAndSortImportsResult);
+      expect(format(counterComponentCode, options)).toBe(tailwindcssAndSortImportsResult);
     });
   });
 
@@ -52,7 +52,7 @@ describe('[babel] multiple plugin', () => {
         braceStyle: 'allman',
       };
 
-      expect(format(jsxCounterComponentCode, options)).toBe(sortImportsAndBraceStyleResult);
+      expect(format(counterComponentCode, options)).toBe(sortImportsAndBraceStyleResult);
     });
 
     test('[brace-style -> sort-imports]: [brace-style] is ignored.', () => {
@@ -64,7 +64,7 @@ describe('[babel] multiple plugin', () => {
         importOrderSeparation: true,
       };
 
-      expect(format(jsxCounterComponentCode, options)).toBe(braceStyleAndSortImportsResult);
+      expect(format(counterComponentCode, options)).toBe(braceStyleAndSortImportsResult);
     });
 
     test('[tailwindcss -> brace-style]', () => {
@@ -74,7 +74,7 @@ describe('[babel] multiple plugin', () => {
         braceStyle: 'allman',
       };
 
-      expect(format(jsxCounterComponentCode, options)).toBe(tailwindcssAndBraceStyleResult);
+      expect(format(counterComponentCode, options)).toBe(tailwindcssAndBraceStyleResult);
     });
 
     test('[brace-style -> tailwindcss]: [brace-style] is ignored.', () => {
@@ -84,7 +84,7 @@ describe('[babel] multiple plugin', () => {
         braceStyle: 'allman',
       };
 
-      expect(format(jsxCounterComponentCode, options)).toBe(braceStyleAndTailwindcssResult);
+      expect(format(counterComponentCode, options)).toBe(braceStyleAndTailwindcssResult);
     });
   });
 });
