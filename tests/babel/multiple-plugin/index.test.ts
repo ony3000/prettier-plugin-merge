@@ -1,15 +1,16 @@
-import { format } from 'prettier';
 import SortImportsPlugin from '@trivago/prettier-plugin-sort-imports';
+import { format } from 'prettier';
+import BraceStylePlugin from 'prettier-plugin-brace-style';
 import {
   parsers as tailwindcssParsers,
   printers as tailwindcssPrinters,
-  options as tailwindcssOptions,
-  // @ts-ignore
+  options as tailwindcssOptions, // @ts-ignore
 } from 'prettier-plugin-tailwindcss';
-import BraceStylePlugin from 'prettier-plugin-brace-style';
+
 import mergePlugin from '@/index';
-import { baseOptions } from '../settings';
+
 import { jsxCounterComponentCode } from '../../fixtures';
+import { baseOptions } from '../settings';
 import {
   sortImportsAndTailwindcssResult,
   sortImportsAndBraceStyleResult,

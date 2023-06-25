@@ -1,7 +1,9 @@
 import { format } from 'prettier';
+
 import mergePlugin from '@/index';
-import { baseOptions } from '../settings';
+
 import { tsxCounterComponentCode } from '../../fixtures';
+import { baseOptions } from '../settings';
 import { tsxCounterComponentCodeResult } from './expected-results';
 
 describe('[typescript] plugin-less', () => {

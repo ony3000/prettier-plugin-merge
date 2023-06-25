@@ -1,7 +1,9 @@
 import { format } from 'prettier';
+
 import mergePlugin from '@/index';
-import { baseOptions } from '../settings';
+
 import { jsxCounterComponentCode } from '../../fixtures';
+import { baseOptions } from '../settings';
 import { jsxCounterComponentCodeResult } from './expected-results';
 
 describe('[babel] plugin-less', () => {
