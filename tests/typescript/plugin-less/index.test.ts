@@ -1,10 +1,14 @@
+import type { Options } from 'prettier';
 import { format } from 'prettier';
 
 import mergePlugin from '@/index';
 
 import { tsxCounterComponentCode } from '../../fixtures';
-import { baseOptions } from '../settings';
 import { tsxCounterComponentCodeResult } from './expected-results';
+
+const baseOptions: Options = {
+  parser: 'typescript',
+};
 
 describe('[typescript] plugin-less', () => {
   test('No plugin', () => {
