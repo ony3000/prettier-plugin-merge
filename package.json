@@ -24,9 +24,8 @@
     }
   },
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build && tsc -p tsconfig.build.json",
-    "preview": "vite preview",
+    "dev": "vite build --watch --minify=false",
+    "build": "vite build",
     "lint": "eslint src",
     "test": "jest --ci --passWithNoTests",
     "test:watch": "jest --watch"
