@@ -25,3 +25,24 @@ export default function Counter({ label = 'Counter', onChange = undefined }: Cou
   );
 }
 `;
+
+export const nextEnvDTSCode = `
+/// <reference types="next" />
+/// <reference types="next/image-types/global" />
+
+// NOTE: This file should not be edited
+// see https://nextjs.org/docs/basic-features/typescript for more information.
+`;
+
+export const nextAPIRouteCode = `
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+import type { NextApiRequest, NextApiResponse } from 'next';
+
+type Data = {
+  name: string;
+};
+
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
+  res.status(200).json({ name: 'John Doe' });
+}
+`;
