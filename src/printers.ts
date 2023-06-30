@@ -18,6 +18,7 @@ function printWithMergedPlugin(
       format(previousText, {
         ...options,
         plugins: [plugin],
+        rangeEnd: Infinity,
       }).trimEnd(),
     originalText,
   );
