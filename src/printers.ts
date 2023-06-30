@@ -42,6 +42,13 @@ function printWithMergedPlugin(
     originalText,
   );
 
+  if (node?.comments) {
+    node.comments.forEach((comment: any) => {
+      // eslint-disable-next-line no-param-reassign
+      comment.printed = true;
+    });
+  }
+
   return [sequentiallyFormattedText, softline];
 }
 
@@ -155,24 +162,8 @@ function remainingWrapper(
 export const printers: { [astFormat: string]: Printer } = {
   'merging-babel-ast': {
     print: printWithMergedPlugin,
-    canAttachComment,
-    isBlockComment: isBlockCommentWrapper,
-    printComment: printCommentWrapper,
-    handleComments: {
-      ownLine: ownLineWrapper,
-      endOfLine: endOfLineWrapper,
-      remaining: remainingWrapper,
-    },
   },
   'merging-typescript-ast': {
     print: printWithMergedPlugin,
-    canAttachComment,
-    isBlockComment: isBlockCommentWrapper,
-    printComment: printCommentWrapper,
-    handleComments: {
-      ownLine: ownLineWrapper,
-      endOfLine: endOfLineWrapper,
-      remaining: remainingWrapper,
-    },
   },
 };
