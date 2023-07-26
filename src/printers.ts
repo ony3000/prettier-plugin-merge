@@ -1,7 +1,5 @@
 import type { AstPath, ParserOptions, Doc, Printer, Plugin } from 'prettier';
-import { doc, format } from 'prettier';
-
-const { softline } = doc.builders;
+import { format } from 'prettier';
 
 function printWithMergedPlugin(
   path: AstPath,
@@ -19,7 +17,7 @@ function printWithMergedPlugin(
         ...options,
         plugins: [plugin],
         rangeEnd: Infinity,
-      }).trimEnd(),
+      }),
     originalText,
   );
 
@@ -30,7 +28,7 @@ function printWithMergedPlugin(
     });
   }
 
-  return [sequentiallyFormattedText, softline];
+  return sequentiallyFormattedText;
 }
 
 export const printers: { [astFormat: string]: Printer } = {
