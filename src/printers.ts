@@ -32,10 +32,7 @@ function printWithMergedPlugin(
 }
 
 export const printers: { [astFormat: string]: Printer } = {
-  'merging-babel-ast': {
-    print: printWithMergedPlugin,
-  },
-  'merging-typescript-ast': {
+  'merging-ast': {
     print: printWithMergedPlugin,
   },
 };

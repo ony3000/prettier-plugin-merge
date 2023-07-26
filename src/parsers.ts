@@ -5,10 +5,10 @@ import { parsers as typescriptParsers } from 'prettier/parser-typescript';
 export const parsers: { [parserName: string]: Parser } = {
   babel: {
     ...babelParsers.babel,
-    astFormat: 'merging-babel-ast',
+    astFormat: 'merging-ast',
   },
   typescript: {
     ...typescriptParsers.typescript,
-    astFormat: 'merging-typescript-ast',
+    astFormat: 'merging-ast',
   },
 };
