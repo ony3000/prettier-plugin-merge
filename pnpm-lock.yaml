@@ -14,7 +14,7 @@ specifiers:
   eslint-plugin-import: 2.27.5
   jest: 29.5.0
   prettier: ~2.8.4
-  prettier-plugin-brace-style: 0.1.0
+  prettier-plugin-brace-style: 0.2.1
   prettier-plugin-tailwindcss: 0.3.0
   ts-jest: 29.1.0
   typescript: 4.9.5
@@ -35,7 +35,7 @@ devDependencies:
   eslint-plugin-import: 2.27.5_tqrcrxlenpngfto46ddarus52y
   jest: 29.5.0
   prettier: 2.8.4
-  prettier-plugin-brace-style: 0.1.0_prettier@2.8.4
+  prettier-plugin-brace-style: 0.2.1_prettier@2.8.4
   prettier-plugin-tailwindcss: 0.3.0_zmkqdpv3ldc45e6wei6qtrbrca
   ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
   typescript: 4.9.5
@@ -3807,13 +3807,25 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-brace-style/0.1.0_prettier@2.8.4:
-    resolution: {integrity: sha512-QMbVzrQdg2R21pkosJwEoDTg3cZW4gAtQgkyRXRf0/r+MNk33oukOUhX4990Yo7zDg/AdHlu6rn3xiGv6AO7fw==}
+  /prettier-plugin-brace-style/0.2.1_prettier@2.8.4:
+    resolution: {integrity: sha512-YuubZAJJnTjeXWbVcDdmXRV7jyOxF0nS/zPsT36Y0BgCd3Ya2rrWSQBUtTfD9KNc8k139K+CKVIgIYyXosnhNA==}
+    peerDependencies:
+      prettier: ~2.8.4
+    dependencies:
+      prettier: 2.8.4
+    optionalDependencies:
+      prettier-plugin-merge: 0.1.1_prettier@2.8.4
+    dev: true
+
+  /prettier-plugin-merge/0.1.1_prettier@2.8.4:
+    resolution: {integrity: sha512-5h+RQWjn4si+K06opGL2B8pf73A9syTyxLtkX8RaO/C2XcWtZdZAmaJ3a8LL20Gg/synkxWGLZrnxD8PYQGziQ==}
+    requiresBuild: true
     peerDependencies:
       prettier: ~2.8.4
     dependencies:
       prettier: 2.8.4
     dev: true
+    optional: true
 
   /prettier-plugin-tailwindcss/0.3.0_zmkqdpv3ldc45e6wei6qtrbrca:
     resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
