@@ -8,10 +8,10 @@ import {
 import mergePlugin from '@/index';
 
 export { format } from 'prettier';
-export { default as SortImportsPlugin } from '@trivago/prettier-plugin-sort-imports';
-export { default as BraceStylePlugin } from 'prettier-plugin-brace-style';
+export { default as sortImportsPlugin } from '@trivago/prettier-plugin-sort-imports';
+export { default as braceStylePlugin } from 'prettier-plugin-brace-style';
 
-export const TailwindcssPlugin = {
+export const tailwindcssPlugin = {
   parsers: tailwindcssParsers,
   printers: tailwindcssPrinters,
   options: tailwindcssOptions,

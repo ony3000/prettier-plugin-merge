@@ -2,7 +2,7 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { format, TailwindcssPlugin } from '../../settings';
+import { format, tailwindcssPlugin } from '../../settings';
 import { counterComponentCode, nextEnvDTSCode, nextAPIRouteCode } from '../fixtures';
 import {
   tailwindcssPluginResult,
@@ -19,7 +19,7 @@ describe('[typescript] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(counterComponentCode, options)).toBe(tailwindcssPluginResult);
@@ -28,7 +28,7 @@ describe('[typescript] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(counterComponentCode, options)).toBe(tailwindcssPluginResult);
@@ -39,7 +39,7 @@ describe('[typescript] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(nextEnvDTSCode, options)).toBe(nextEnvDTSCodeResult);
@@ -48,7 +48,7 @@ describe('[typescript] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(nextEnvDTSCode, options)).toBe(nextEnvDTSCodeResult);
@@ -59,7 +59,7 @@ describe('[typescript] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(nextAPIRouteCode, options)).toBe(nextAPIRouteCodeResultWithoutBraceStylePlugin);
@@ -68,7 +68,7 @@ describe('[typescript] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(nextAPIRouteCode, options)).toBe(nextAPIRouteCodeResultWithoutBraceStylePlugin);

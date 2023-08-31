@@ -2,7 +2,7 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { format, TailwindcssPlugin } from '../../settings';
+import { format, tailwindcssPlugin } from '../../settings';
 import { counterComponentCode, jestConfigCode, jestSetupCode, nextConfigCode } from '../fixtures';
 import {
   tailwindcssPluginResult,
@@ -20,7 +20,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(counterComponentCode, options)).toBe(tailwindcssPluginResult);
@@ -29,7 +29,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(counterComponentCode, options)).toBe(tailwindcssPluginResult);
@@ -40,7 +40,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(jestConfigCode, options)).toBe(jestConfigCodeResult);
@@ -49,7 +49,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(jestConfigCode, options)).toBe(jestConfigCodeResult);
@@ -60,7 +60,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(jestSetupCode, options)).toBe(jestSetupCodeResultWithoutSortImportsPlugin);
@@ -69,7 +69,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(jestSetupCode, options)).toBe(jestSetupCodeResultWithoutSortImportsPlugin);
@@ -80,7 +80,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin],
+        plugins: [tailwindcssPlugin],
       };
 
       expect(format(nextConfigCode, options)).toBe(nextConfigCodeResult);
@@ -89,7 +89,7 @@ describe('[babel] prettier-plugin-tailwindcss', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, mergePlugin],
       };
 
       expect(format(nextConfigCode, options)).toBe(nextConfigCodeResult);

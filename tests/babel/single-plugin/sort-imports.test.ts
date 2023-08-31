@@ -2,7 +2,7 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { format, SortImportsPlugin } from '../../settings';
+import { format, sortImportsPlugin } from '../../settings';
 import { counterComponentCode, jestConfigCode, jestSetupCode, nextConfigCode } from '../fixtures';
 import {
   sortImportsPluginResult,
@@ -20,7 +20,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin],
+        plugins: [sortImportsPlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -31,7 +31,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin, mergePlugin],
+        plugins: [sortImportsPlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -44,7 +44,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin],
+        plugins: [sortImportsPlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -55,7 +55,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin, mergePlugin],
+        plugins: [sortImportsPlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -68,7 +68,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin],
+        plugins: [sortImportsPlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -79,7 +79,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin, mergePlugin],
+        plugins: [sortImportsPlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -92,7 +92,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin],
+        plugins: [sortImportsPlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -103,7 +103,7 @@ describe('[babel] @trivago/prettier-plugin-sort-imports', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin, mergePlugin],
+        plugins: [sortImportsPlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };

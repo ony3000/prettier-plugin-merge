@@ -2,7 +2,7 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { format, SortImportsPlugin, TailwindcssPlugin, BraceStylePlugin } from '../../settings';
+import { format, sortImportsPlugin, tailwindcssPlugin, braceStylePlugin } from '../../settings';
 import { counterComponentCode } from '../fixtures';
 import {
   sortImportsAndTailwindcssResult,
@@ -22,7 +22,7 @@ describe('[babel] multiple plugin', () => {
     test('[sort-imports -> tailwindcss]', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin, TailwindcssPlugin, mergePlugin],
+        plugins: [sortImportsPlugin, tailwindcssPlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -33,7 +33,7 @@ describe('[babel] multiple plugin', () => {
     test('[tailwindcss -> sort-imports]', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, SortImportsPlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, sortImportsPlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
       };
@@ -46,7 +46,7 @@ describe('[babel] multiple plugin', () => {
     test('[sort-imports -> brace-style]', () => {
       const options = {
         ...baseOptions,
-        plugins: [SortImportsPlugin, BraceStylePlugin, mergePlugin],
+        plugins: [sortImportsPlugin, braceStylePlugin, mergePlugin],
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
         braceStyle: 'allman',
@@ -58,7 +58,7 @@ describe('[babel] multiple plugin', () => {
     test('[brace-style -> sort-imports]: [brace-style] is ignored.', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin, SortImportsPlugin, mergePlugin],
+        plugins: [braceStylePlugin, sortImportsPlugin, mergePlugin],
         braceStyle: 'allman',
         importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
         importOrderSeparation: true,
@@ -70,7 +70,7 @@ describe('[babel] multiple plugin', () => {
     test('[tailwindcss -> brace-style]', () => {
       const options = {
         ...baseOptions,
-        plugins: [TailwindcssPlugin, BraceStylePlugin, mergePlugin],
+        plugins: [tailwindcssPlugin, braceStylePlugin, mergePlugin],
         braceStyle: 'allman',
       };
 
@@ -80,7 +80,7 @@ describe('[babel] multiple plugin', () => {
     test('[brace-style -> tailwindcss]: [brace-style] is ignored.', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin, TailwindcssPlugin, mergePlugin],
+        plugins: [braceStylePlugin, tailwindcssPlugin, mergePlugin],
         braceStyle: 'allman',
       };
 

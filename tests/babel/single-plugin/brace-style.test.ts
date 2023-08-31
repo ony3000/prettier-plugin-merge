@@ -2,7 +2,7 @@ import type { Options } from 'prettier';
 
 import mergePlugin from '@/index';
 
-import { format, BraceStylePlugin } from '../../settings';
+import { format, braceStylePlugin } from '../../settings';
 import { counterComponentCode, jestConfigCode, jestSetupCode, nextConfigCode } from '../fixtures';
 import {
   braceStylePluginResult,
@@ -20,7 +20,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin],
+        plugins: [braceStylePlugin],
         braceStyle: 'allman',
       };
 
@@ -30,7 +30,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin, mergePlugin],
+        plugins: [braceStylePlugin, mergePlugin],
         braceStyle: 'allman',
       };
 
@@ -42,7 +42,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin],
+        plugins: [braceStylePlugin],
         braceStyle: 'allman',
       };
 
@@ -52,7 +52,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin, mergePlugin],
+        plugins: [braceStylePlugin, mergePlugin],
         braceStyle: 'allman',
       };
 
@@ -64,7 +64,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin],
+        plugins: [braceStylePlugin],
         braceStyle: 'allman',
       };
 
@@ -74,7 +74,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin, mergePlugin],
+        plugins: [braceStylePlugin, mergePlugin],
         braceStyle: 'allman',
       };
 
@@ -86,7 +86,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('Standalone use without merge plugin', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin],
+        plugins: [braceStylePlugin],
         braceStyle: 'allman',
       };
 
@@ -96,7 +96,7 @@ describe('[babel] prettier-plugin-brace-style', () => {
     test('A combination of a single plugin and a merge plugin also has no effect', () => {
       const options = {
         ...baseOptions,
-        plugins: [BraceStylePlugin, mergePlugin],
+        plugins: [braceStylePlugin, mergePlugin],
         braceStyle: 'allman',
       };
 
