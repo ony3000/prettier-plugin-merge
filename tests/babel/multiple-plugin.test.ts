@@ -1,5 +1,6 @@
 import mergePlugin from '@/index';
 
+import type { Fixture } from '../settings';
 import { format, sortImportsPlugin, tailwindcssPlugin, braceStylePlugin } from '../settings';
 
 const sortImportsPluginOptions = {
@@ -9,10 +10,14 @@ const sortImportsPluginOptions = {
 const braceStylePluginOptions = {
   braceStyle: 'allman',
 };
+const options = {
+  parser: 'babel',
+};
 
-describe('babel/multiple-plugin', () => {
-  test('plugins that do not implement printers have no order constraints #1 (sort-imports -> tailwindcss)', () => {
-    const input = `
+const fixtures: Fixture[] = [
+  {
+    name: 'plugins that do not implement printers have no order constraints #1 (sort-imports -> tailwindcss)',
+    input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
 import { useState } from 'react';
@@ -33,8 +38,8 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const output = `import { useState } from "react";
+`,
+    output: `import { useState } from "react";
 
 import { CounterContainer } from "@/layouts";
 
@@ -56,18 +61,15 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const options = {
-      parser: 'babel',
+`,
+    options: {
       plugins: [sortImportsPlugin, tailwindcssPlugin, mergePlugin],
       ...sortImportsPluginOptions,
-    };
-
-    expect(format(input, options)).toBe(output);
-  });
-
-  test('plugins that do not implement printers have no order constraints #2 (tailwindcss -> sort-imports)', () => {
-    const input = `
+    },
+  },
+  {
+    name: 'plugins that do not implement printers have no order constraints #2 (tailwindcss -> sort-imports)',
+    input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
 import { useState } from 'react';
@@ -88,8 +90,8 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const output = `import { useState } from "react";
+`,
+    output: `import { useState } from "react";
 
 import { CounterContainer } from "@/layouts";
 
@@ -111,18 +113,15 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const options = {
-      parser: 'babel',
+`,
+    options: {
       plugins: [tailwindcssPlugin, sortImportsPlugin, mergePlugin],
       ...sortImportsPluginOptions,
-    };
-
-    expect(format(input, options)).toBe(output);
-  });
-
-  test('the plugin implementing the printer may be ignored unless placed immediately before this plugin #1 (sort-imports -> brace-style)', () => {
-    const input = `
+    },
+  },
+  {
+    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #1 (sort-imports -> brace-style)',
+    input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
 import { useState } from 'react';
@@ -143,8 +142,8 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const output = `import { useState } from "react";
+`,
+    output: `import { useState } from "react";
 
 import { CounterContainer } from "@/layouts";
 
@@ -168,19 +167,16 @@ export default function Counter({ label = "Counter", onChange = undefined })
     </CounterContainer>
   );
 }
-`;
-    const options = {
-      parser: 'babel',
+`,
+    options: {
       plugins: [sortImportsPlugin, braceStylePlugin, mergePlugin],
       ...sortImportsPluginOptions,
       ...braceStylePluginOptions,
-    };
-
-    expect(format(input, options)).toBe(output);
-  });
-
-  test('the plugin implementing the printer may be ignored unless placed immediately before this plugin #2 (brace-style -> sort-imports) - `brace-style` is ignored', () => {
-    const input = `
+    },
+  },
+  {
+    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #2 (brace-style -> sort-imports) - `brace-style` is ignored',
+    input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
 import { useState } from 'react';
@@ -201,8 +197,8 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const output = `import { useState } from "react";
+`,
+    output: `import { useState } from "react";
 
 import { CounterContainer } from "@/layouts";
 
@@ -224,19 +220,16 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const options = {
-      parser: 'babel',
+`,
+    options: {
       plugins: [braceStylePlugin, sortImportsPlugin, mergePlugin],
       ...braceStylePluginOptions,
       ...sortImportsPluginOptions,
-    };
-
-    expect(format(input, options)).toBe(output);
-  });
-
-  test('the plugin implementing the printer may be ignored unless placed immediately before this plugin #3 (tailwindcss -> brace-style)', () => {
-    const input = `
+    },
+  },
+  {
+    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #3 (tailwindcss -> brace-style)',
+    input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
 import { useState } from 'react';
@@ -257,8 +250,8 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const output = `import { CounterButton } from "./parts";
+`,
+    output: `import { CounterButton } from "./parts";
 import { CounterContainer } from "@/layouts";
 import { useState } from "react";
 
@@ -280,18 +273,15 @@ export default function Counter({ label = "Counter", onChange = undefined })
     </CounterContainer>
   );
 }
-`;
-    const options = {
-      parser: 'babel',
+`,
+    options: {
       plugins: [tailwindcssPlugin, braceStylePlugin, mergePlugin],
       ...braceStylePluginOptions,
-    };
-
-    expect(format(input, options)).toBe(output);
-  });
-
-  test('the plugin implementing the printer may be ignored unless placed immediately before this plugin #4 (brace-style -> tailwindcss) - `brace-style` is ignored', () => {
-    const input = `
+    },
+  },
+  {
+    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #4 (brace-style -> tailwindcss) - `brace-style` is ignored',
+    input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
 import { useState } from 'react';
@@ -312,8 +302,8 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const output = `import { CounterButton } from "./parts";
+`,
+    output: `import { CounterButton } from "./parts";
 import { CounterContainer } from "@/layouts";
 import { useState } from "react";
 
@@ -333,13 +323,23 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     </CounterContainer>
   );
 }
-`;
-    const options = {
-      parser: 'babel',
+`,
+    options: {
       plugins: [braceStylePlugin, tailwindcssPlugin, mergePlugin],
       ...braceStylePluginOptions,
-    };
+    },
+  },
+];
 
-    expect(format(input, options)).toBe(output);
-  });
+describe('babel/multiple-plugin', () => {
+  for (const fixture of fixtures) {
+    test(fixture.name, () => {
+      expect(
+        format(fixture.input, {
+          ...options,
+          ...(fixture.options ?? {}),
+        }),
+      ).toBe(fixture.output);
+    });
+  }
 });

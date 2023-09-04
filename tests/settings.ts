@@ -1,4 +1,4 @@
-import type { Plugin } from 'prettier';
+import type { Options, Plugin } from 'prettier';
 import {
   parsers as tailwindcssParsers,
   printers as tailwindcssPrinters,
@@ -6,6 +6,13 @@ import {
 } from 'prettier-plugin-tailwindcss';
 
 import mergePlugin from '@/index';
+
+export type Fixture = {
+  name: string;
+  input: string;
+  output: string;
+  options?: Options;
+};
 
 export { format } from 'prettier';
 export { default as sortImportsPlugin } from '@trivago/prettier-plugin-sort-imports';
