@@ -24,11 +24,11 @@ const printerWrappedMergePlugin: Plugin = {
 };
 
 const options: Options = {
-  parser: 'typescript',
+  parser: 'babel',
   plugins: [printerWrappedMergePlugin, dummyPlugin],
 };
 
-describe('typescript/dummy-plugin', () => {
+describe('babel/others', () => {
   test('print function should only be called once', () => {
     const input = '// Lorem ipsum\n';
 
