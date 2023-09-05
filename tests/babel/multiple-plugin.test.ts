@@ -23,7 +23,7 @@ const options = {
 
 const fixtures: Fixture[] = [
   {
-    name: 'plugins that do not implement printers have no order constraints #1 (sort-imports -> tailwindcss)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #1 (sort-imports -> tailwindcss)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -75,7 +75,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'plugins that do not implement printers have no order constraints #2 (tailwindcss -> sort-imports)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #2 (tailwindcss -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -127,7 +127,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #1 (sort-imports -> brace-style)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #3 (sort-imports -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -182,7 +182,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #2 (brace-style -> sort-imports) - `brace-style` is ignored',
+    name: 'two plugins whose formatting regions are disjoint are commutative #4 (brace-style -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -211,10 +211,12 @@ import { CounterContainer } from "@/layouts";
 
 import { CounterButton } from "./parts";
 
-export default function Counter({ label = "Counter", onChange = undefined }) {
+export default function Counter({ label = "Counter", onChange = undefined })
+{
   const [count, setCount] = useState(0);
 
-  const incrementHandler = () => {
+  const incrementHandler = () =>
+  {
     setCount((prevCount) => prevCount + 1);
     onChange?.(count + 1);
   };
@@ -235,7 +237,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #3 (tailwindcss -> brace-style)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #5 (tailwindcss -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -287,7 +289,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #4 (brace-style -> tailwindcss) - `brace-style` is ignored',
+    name: 'two plugins whose formatting regions are disjoint are commutative #6 (brace-style -> tailwindcss)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -314,10 +316,12 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
 import { CounterContainer } from "@/layouts";
 import { useState } from "react";
 
-export default function Counter({ label = "Counter", onChange = undefined }) {
+export default function Counter({ label = "Counter", onChange = undefined })
+{
   const [count, setCount] = useState(0);
 
-  const incrementHandler = () => {
+  const incrementHandler = () =>
+  {
     setCount((prevCount) => prevCount + 1);
     onChange?.(count + 1);
   };
