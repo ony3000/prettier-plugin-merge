@@ -1,7 +1,13 @@
 import mergePlugin from '@/index';
 
 import type { Fixture } from '../settings';
-import { format, sortImportsPlugin, tailwindcssPlugin, braceStylePlugin } from '../settings';
+import {
+  format,
+  sortImportsPlugin,
+  braceStylePlugin,
+  tailwindcssPlugin,
+  baseOptions,
+} from '../settings';
 
 const sortImportsPluginOptions = {
   importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
@@ -11,6 +17,7 @@ const braceStylePluginOptions = {
   braceStyle: 'allman',
 };
 const options = {
+  ...baseOptions,
   parser: 'babel',
 };
 

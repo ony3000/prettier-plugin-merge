@@ -1,9 +1,10 @@
 import mergePlugin from '@/index';
 
 import type { Fixture } from '../settings';
-import { format } from '../settings';
+import { format, baseOptions } from '../settings';
 
 const options = {
+  ...baseOptions,
   parser: 'babel',
 };
 
