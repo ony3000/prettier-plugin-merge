@@ -15,6 +15,7 @@ specifiers:
   jest: 29.5.0
   prettier: ~2.8.4
   prettier-plugin-brace-style: 0.2.1
+  prettier-plugin-classnames: 0.1.1
   prettier-plugin-tailwindcss: 0.3.0
   ts-jest: 29.1.0
   typescript: 4.9.5
@@ -36,6 +37,7 @@ devDependencies:
   jest: 29.5.0
   prettier: 2.8.4
   prettier-plugin-brace-style: 0.2.1_prettier@2.8.4
+  prettier-plugin-classnames: 0.1.1_prettier@2.8.4
   prettier-plugin-tailwindcss: 0.3.0_zmkqdpv3ldc45e6wei6qtrbrca
   ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
   typescript: 4.9.5
@@ -1704,6 +1706,12 @@ packages:
   /cjs-module-lexer/1.2.2:
     resolution: {integrity: sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==}
     dev: true
+
+  /classnames/2.3.2:
+    resolution: {integrity: sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==}
+    requiresBuild: true
+    dev: true
+    optional: true
 
   /cliui/8.0.1:
     resolution: {integrity: sha512-BSeNnyus75C4//NQ9gQt1/csTXyo/8Sb+afLAkzAptFuMsod9HFokGNudZpi/oQV73hnVK+sR+5PVRMd+Dr7YQ==}
@@ -3815,6 +3823,16 @@ packages:
       prettier: 2.8.4
     optionalDependencies:
       prettier-plugin-merge: 0.1.1_prettier@2.8.4
+    dev: true
+
+  /prettier-plugin-classnames/0.1.1_prettier@2.8.4:
+    resolution: {integrity: sha512-kA1Xp3YQEZJNJwrlu+PlbhNZk2DfzgE6I56C5IANh8eW/+Cmd+2RN2c5Qt1PiMEuw31CyWVTFTnzndFhm6rnmw==}
+    peerDependencies:
+      prettier: ~2.8.4
+    dependencies:
+      prettier: 2.8.4
+    optionalDependencies:
+      classnames: 2.3.2
     dev: true
 
   /prettier-plugin-merge/0.1.1_prettier@2.8.4:
