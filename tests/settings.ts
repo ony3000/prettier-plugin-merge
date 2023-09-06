@@ -17,6 +17,7 @@ export type Fixture = {
 export { format } from 'prettier';
 export { default as sortImportsPlugin } from '@trivago/prettier-plugin-sort-imports';
 export { default as braceStylePlugin } from 'prettier-plugin-brace-style';
+export { default as classnamesPlugin } from 'prettier-plugin-classnames';
 
 export const tailwindcssPlugin = {
   parsers: tailwindcssParsers,

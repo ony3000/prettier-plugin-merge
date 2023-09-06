@@ -5,6 +5,7 @@ import {
   format,
   sortImportsPlugin,
   braceStylePlugin,
+  classnamesPlugin,
   tailwindcssPlugin,
   baseOptions,
 } from '../settings';
@@ -338,6 +339,220 @@ export default function Counter({ label = "Counter", onChange = undefined })
     options: {
       plugins: [braceStylePlugin, tailwindcssPlugin, mergePlugin],
       ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #7 (sort-imports -> classnames)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { useState } from "react";
+
+import { CounterContainer } from "@/layouts";
+
+import { CounterButton } from "./parts";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [sortImportsPlugin, classnamesPlugin, mergePlugin],
+      ...sortImportsPluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #8 (classnames -> sort-imports)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { useState } from "react";
+
+import { CounterContainer } from "@/layouts";
+
+import { CounterButton } from "./parts";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [classnamesPlugin, sortImportsPlugin, mergePlugin],
+      ...sortImportsPluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #9 (brace-style -> classnames)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children })
+{
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [braceStylePlugin, classnamesPlugin, mergePlugin],
+      ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #10 (classnames -> brace-style)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children })
+{
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [classnamesPlugin, braceStylePlugin, mergePlugin],
+      ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins with some overlapping formatting regions #1 (tailwindcss -> classnames)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
+        dark:border-neutral-500/30 dark:bg-neutral-900/50"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [tailwindcssPlugin, classnamesPlugin, mergePlugin],
+    },
+  },
+  {
+    name: 'two plugins with some overlapping formatting regions #2 (classnames -> tailwindcss)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="rounded-xl border border-zinc-400/30 bg-gray-100/50
+        px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [classnamesPlugin, tailwindcssPlugin, mergePlugin],
     },
   },
 ];
