@@ -10,7 +10,13 @@ function createPrinter(): Printer {
   ): Doc {
     const node = path.getValue();
 
-    const { originalText } = options;
+    if (node?.comments) {
+      node.comments.forEach((comment: any) => {
+        // eslint-disable-next-line no-param-reassign
+        comment.printed = true;
+      });
+    }
+
     const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
     const pluginIndex = plugins.findIndex(
       (plugin) =>
@@ -27,6 +33,7 @@ function createPrinter(): Printer {
       );
     }
 
+    const { originalText } = options;
     const sequentiallyFormattedText = plugins.slice(0, pluginIndex).reduce(
       (previousText, plugin) =>
         format(previousText, {
@@ -36,13 +43,6 @@ function createPrinter(): Printer {
         }),
       originalText,
     );
-
-    if (node?.comments) {
-      node.comments.forEach((comment: any) => {
-        // eslint-disable-next-line no-param-reassign
-        comment.printed = true;
-      });
-    }
 
     return sequentiallyFormattedText;
   }
