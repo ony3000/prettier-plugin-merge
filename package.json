@@ -30,8 +30,12 @@
     "test": "jest --ci --passWithNoTests",
     "test:watch": "jest --watch"
   },
+  "dependencies": {
+    "diff": "5.1.0"
+  },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "@types/diff": "5.0.3",
     "@types/jest": "29.5.2",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
