@@ -1,6 +1,21 @@
 import type { AstPath, ParserOptions, Doc, Printer, Plugin } from 'prettier';
 import { format } from 'prettier';
 
+function sequentialFormatting(options: ParserOptions, plugins: Plugin[]): string {
+  const { originalText } = options;
+  const sequentiallyFormattedText = plugins.reduce(
+    (previousText, plugin) =>
+      format(previousText, {
+        ...options,
+        plugins: [plugin],
+        rangeEnd: Infinity,
+      }),
+    originalText,
+  );
+
+  return sequentiallyFormattedText;
+}
+
 function createPrinter(): Printer {
   function main(
     path: AstPath,
@@ -33,18 +48,7 @@ function createPrinter(): Printer {
       );
     }
 
-    const { originalText } = options;
-    const sequentiallyFormattedText = plugins.slice(0, pluginIndex).reduce(
-      (previousText, plugin) =>
-        format(previousText, {
-          ...options,
-          plugins: [plugin],
-          rangeEnd: Infinity,
-        }),
-      originalText,
-    );
-
-    return sequentiallyFormattedText;
+    return sequentialFormatting(options, plugins.slice(0, pluginIndex));
   }
 
   return {
