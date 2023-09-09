@@ -4,7 +4,7 @@ A Prettier plugin that sequentially applies the formatting results of other Pret
 
 **Note**: Prettier v3 is not yet supported.
 
-![Comparison of formatting without merge plugin and formatting with merge plugin.](./.github/banner.png)
+![The process of applying formats sequentially.](./.github/banner.png)
 
 ## Installation
 
@@ -22,16 +22,16 @@ pnpm add --save-dev prettier@~2.8 prettier-plugin-merge
 
 ## Configuration
 
-**Note**: This plugin MUST come last. Other plugins usually have no order constraints, but it is recommended that plugins implementing printers come immediately before this plugin.
+**Note**: This plugin MUST come last. Other plugins usually have no order constraints.
 
 JSON:
 
 ```json
 {
   "plugins": [
-    "OTHER_PRETTIER_PLUGIN_1",
-    "OTHER_PRETTIER_PLUGIN_2",
-    "OTHER_PRETTIER_PLUGIN_3",
+    "other-prettier-plugin-1",
+    "other-prettier-plugin-2",
+    "other-prettier-plugin-3",
     "prettier-plugin-merge"
   ]
 }
@@ -42,9 +42,9 @@ JS:
 ```javascript
 module.exports = {
   plugins: [
-    require('OTHER_PRETTIER_PLUGIN_1'),
-    require('OTHER_PRETTIER_PLUGIN_2'),
-    require('OTHER_PRETTIER_PLUGIN_3'),
+    require('other-prettier-plugin-1'),
+    require('other-prettier-plugin-2'),
+    require('other-prettier-plugin-3'),
     require('prettier-plugin-merge'),
   ],
 };
