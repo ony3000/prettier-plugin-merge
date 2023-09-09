@@ -5,6 +5,7 @@ import {
   format,
   sortImportsPlugin,
   braceStylePlugin,
+  classnamesPlugin,
   tailwindcssPlugin,
   baseOptions,
 } from '../settings';
@@ -23,7 +24,7 @@ const options = {
 
 const fixtures: Fixture[] = [
   {
-    name: 'plugins that do not implement printers have no order constraints #1 (sort-imports -> tailwindcss)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #1 (sort-imports -> tailwindcss)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -75,7 +76,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'plugins that do not implement printers have no order constraints #2 (tailwindcss -> sort-imports)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #2 (tailwindcss -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -127,7 +128,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #1 (sort-imports -> brace-style)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #3 (sort-imports -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -182,7 +183,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #2 (brace-style -> sort-imports) - `brace-style` is ignored',
+    name: 'two plugins whose formatting regions are disjoint are commutative #4 (brace-style -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -211,10 +212,12 @@ import { CounterContainer } from "@/layouts";
 
 import { CounterButton } from "./parts";
 
-export default function Counter({ label = "Counter", onChange = undefined }) {
+export default function Counter({ label = "Counter", onChange = undefined })
+{
   const [count, setCount] = useState(0);
 
-  const incrementHandler = () => {
+  const incrementHandler = () =>
+  {
     setCount((prevCount) => prevCount + 1);
     onChange?.(count + 1);
   };
@@ -235,7 +238,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #3 (tailwindcss -> brace-style)',
+    name: 'two plugins whose formatting regions are disjoint are commutative #5 (tailwindcss -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -287,7 +290,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'the plugin implementing the printer may be ignored unless placed immediately before this plugin #4 (brace-style -> tailwindcss) - `brace-style` is ignored',
+    name: 'two plugins whose formatting regions are disjoint are commutative #6 (brace-style -> tailwindcss)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -314,10 +317,12 @@ export default function Counter({ label = 'Counter', onChange = undefined }) {
 import { CounterContainer } from "@/layouts";
 import { useState } from "react";
 
-export default function Counter({ label = "Counter", onChange = undefined }) {
+export default function Counter({ label = "Counter", onChange = undefined })
+{
   const [count, setCount] = useState(0);
 
-  const incrementHandler = () => {
+  const incrementHandler = () =>
+  {
     setCount((prevCount) => prevCount + 1);
     onChange?.(count + 1);
   };
@@ -334,6 +339,220 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     options: {
       plugins: [braceStylePlugin, tailwindcssPlugin, mergePlugin],
       ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #7 (sort-imports -> classnames)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { useState } from "react";
+
+import { CounterContainer } from "@/layouts";
+
+import { CounterButton } from "./parts";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [sortImportsPlugin, classnamesPlugin, mergePlugin],
+      ...sortImportsPluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #8 (classnames -> sort-imports)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { useState } from "react";
+
+import { CounterContainer } from "@/layouts";
+
+import { CounterButton } from "./parts";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [classnamesPlugin, sortImportsPlugin, mergePlugin],
+      ...sortImportsPluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #9 (brace-style -> classnames)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children })
+{
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [braceStylePlugin, classnamesPlugin, mergePlugin],
+      ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #10 (classnames -> brace-style)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children })
+{
+  return (
+    <div
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+        dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [classnamesPlugin, braceStylePlugin, mergePlugin],
+      ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins with some overlapping formatting regions #1 (tailwindcss -> classnames)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
+        dark:border-neutral-500/30 dark:bg-neutral-900/50"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [tailwindcssPlugin, classnamesPlugin, mergePlugin],
+    },
+  },
+  {
+    name: 'two plugins with some overlapping formatting regions #2 (classnames -> tailwindcss)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+export function Callout({ children }) {
+  return (
+    <div className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
+      {children}
+    </div>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+export function Callout({ children }) {
+  return (
+    <div
+      className="rounded-xl border border-zinc-400/30 bg-gray-100/50
+        px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
+    >
+      {children}
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [classnamesPlugin, tailwindcssPlugin, mergePlugin],
     },
   },
 ];
