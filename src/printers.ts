@@ -2,6 +2,16 @@ import * as Diff from 'diff';
 import type { AstPath, ParserOptions, Doc, Printer, Plugin } from 'prettier';
 import { format } from 'prettier';
 
+enum PairingMode {
+  EVEN = 'even',
+  ODD = 'odd',
+}
+
+type SubstitutePatch = {
+  from: string;
+  to: string;
+};
+
 function sequentialFormattingAndTryMerging(
   options: ParserOptions,
   plugins: Plugin[],
@@ -20,7 +30,7 @@ function sequentialFormattingAndTryMerging(
   /**
    * Changes that may be removed during the sequential formatting process.
    */
-  const patches: string[] = [];
+  const patches: SubstitutePatch[] = [];
 
   plugins.forEach((plugin) => {
     sequentiallyFormattedText = format(sequentiallyFormattedText, {
@@ -60,13 +70,29 @@ function sequentialFormattingAndTryMerging(
         : temporaryFormattedText;
 
     if (temporaryFormattedTextWithoutPrinter !== temporaryFormattedText) {
-      patches.push(
-        Diff.createPatch(
-          'merging-text',
-          temporaryFormattedTextWithoutPrinter,
-          temporaryFormattedText,
-        ),
-      );
+      let temporaryText = '';
+      let mode: PairingMode = PairingMode.EVEN;
+
+      Diff.diffLines(temporaryFormattedTextWithoutPrinter, temporaryFormattedText)
+        .filter((change) => 'added' in change && 'removed' in change)
+        .forEach((change) => {
+          if (!change.added && change.removed) {
+            if (mode === PairingMode.EVEN) {
+              temporaryText = change.value;
+              mode = PairingMode.ODD;
+            } else {
+              patches.push({ from: temporaryText, to: '' });
+              temporaryText = change.value;
+            }
+          } else if (change.added && !change.removed) {
+            if (mode === PairingMode.EVEN) {
+              patches.push({ from: '', to: change.value });
+            } else {
+              patches.push({ from: temporaryText, to: change.value });
+              mode = PairingMode.EVEN;
+            }
+          }
+        });
     }
 
     if (patches.length === 0) {
@@ -74,44 +100,10 @@ function sequentialFormattingAndTryMerging(
       return;
     }
 
-    const changes = Diff.diffLines(sequentiallyMergedText, temporaryFormattedText);
-    let fuzzFactorSum = 0;
-
-    changes.forEach((change, index) => {
-      if ('added' in change && 'removed' in change && change.added && !change.removed) {
-        const conjugate = changes[index - 1];
-
-        if (
-          'added' in conjugate &&
-          'removed' in conjugate &&
-          !conjugate.added &&
-          conjugate.removed
-        ) {
-          fuzzFactorSum += Math.max(change.count ?? 0, conjugate.count ?? 0);
-        }
-      }
-    });
-
-    try {
-      let patchedText = temporaryFormattedTextWithoutPrinter;
-
-      patches.forEach((patch) => {
-        const partialPatchedTextOrNot = Diff.applyPatch(patchedText, patch, {
-          fuzzFactor: fuzzFactorSum,
-        });
-
-        if (partialPatchedTextOrNot === false) {
-          throw new Error('Patch failed.');
-        }
-
-        patchedText = partialPatchedTextOrNot;
-      });
-
-      sequentiallyMergedText = patchedText;
-    } catch (_) {
-      // fallback
-      sequentiallyMergedText = sequentiallyFormattedText;
-    }
+    sequentiallyMergedText = patches.reduce(
+      (patchedPrevText, { from, to }) => patchedPrevText.replace(from, to),
+      temporaryFormattedTextWithoutPrinter,
+    );
   });
 
   return sequentiallyMergedText ?? sequentiallyFormattedText;
