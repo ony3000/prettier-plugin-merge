@@ -46,7 +46,7 @@ describe('babel/performance', () => {
     expect(averageExecutionTimeWithPlugin012 < averageExecutionTimeWithPlugin020).toBe(true);
   });
 
-  for (const percent of [10, 20, 30, 40, 50, 60, 70, 80, 90]) {
+  for (const percent of [10, 20, 30, 40, 50, 60, 70, 80, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99]) {
     test(`The current version reduces the difference between v0.1.2 and v0.2.0 by ${percent}%`, () => {
       const expectedTime = timeDifferenceWithPlugin020 * (1 - percent / 100);
 
