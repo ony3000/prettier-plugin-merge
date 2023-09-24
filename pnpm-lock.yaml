@@ -4,6 +4,7 @@ specifiers:
   '@trivago/prettier-plugin-sort-imports': 4.1.1
   '@types/diff': 5.0.3
   '@types/jest': 29.5.2
+  '@types/node': 20.2.5
   '@typescript-eslint/eslint-plugin': 5.54.0
   '@typescript-eslint/parser': 5.54.0
   diff: 5.1.0
@@ -33,6 +34,7 @@ devDependencies:
   '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.4
   '@types/diff': 5.0.3
   '@types/jest': 29.5.2
+  '@types/node': 20.2.5
   '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
   '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
   eslint: 8.35.0
@@ -42,7 +44,7 @@ devDependencies:
   eslint-import-resolver-node: 0.3.7
   eslint-import-resolver-typescript: 3.5.3_yckic57kx266ph64dhq6ozvb54
   eslint-plugin-import: 2.27.5_tqrcrxlenpngfto46ddarus52y
-  jest: 29.5.0
+  jest: 29.5.0_@types+node@20.2.5
   ppm-012: /prettier-plugin-merge/0.1.2_prettier@2.8.4
   ppm-020: /prettier-plugin-merge/0.2.0_prettier@2.8.4
   prettier: 2.8.4
@@ -51,8 +53,8 @@ devDependencies:
   prettier-plugin-tailwindcss: 0.3.0_zmkqdpv3ldc45e6wei6qtrbrca
   ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
   typescript: 4.9.5
-  vite: 4.3.9
-  vite-plugin-dts: 3.0.0-beta.2_typescript@4.9.5
+  vite: 4.3.9_@types+node@20.2.5
+  vite-plugin-dts: 3.0.0-beta.2_6yd3dr4iiziaqkscqiabuqynye
 
 packages:
 
@@ -935,24 +937,24 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
-  /@microsoft/api-extractor-model/7.27.3:
+  /@microsoft/api-extractor-model/7.27.3_@types+node@20.2.5:
     resolution: {integrity: sha512-fSFvw7otYHduOkyshjTbapKKgwF8bgquVHvgF8VgeKtMYvqXkoaj7W6VcM7PNY7E2bbblhUgC4XNdqZLD4SJGw==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4
+      '@rushstack/node-core-library': 3.59.4_@types+node@20.2.5
     transitivePeerDependencies:
       - '@types/node'
     dev: true
 
-  /@microsoft/api-extractor/7.36.0:
+  /@microsoft/api-extractor/7.36.0_@types+node@20.2.5:
     resolution: {integrity: sha512-P+kYgJFDXIr+UNzhRMhlpM/dderi6ab4lxn35vdhfAIMPtGCSXIJxrrtpTOQmQW8CZtmoZX06LYoUsKCc1zjow==}
     hasBin: true
     dependencies:
-      '@microsoft/api-extractor-model': 7.27.3
+      '@microsoft/api-extractor-model': 7.27.3_@types+node@20.2.5
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
-      '@rushstack/node-core-library': 3.59.4
+      '@rushstack/node-core-library': 3.59.4_@types+node@20.2.5
       '@rushstack/rig-package': 0.4.0
       '@rushstack/ts-command-line': 4.15.1
       colors: 1.2.5
@@ -1026,7 +1028,7 @@ packages:
       rollup: 3.23.0
     dev: true
 
-  /@rushstack/node-core-library/3.59.4:
+  /@rushstack/node-core-library/3.59.4_@types+node@20.2.5:
     resolution: {integrity: sha512-YAKJDC6Mz/KA1D7bvB88WaRX3knt/ZuLzkRu5G9QADGSjLtvTWzCNCytRF2PCSaaHOZaZsWul4F1KQdgFgUDqA==}
     peerDependencies:
       '@types/node': '*'
@@ -1034,6 +1036,7 @@ packages:
       '@types/node':
         optional: true
     dependencies:
+      '@types/node': 20.2.5
       colors: 1.2.5
       fs-extra: 7.0.1
       import-lazy: 4.0.0
@@ -2982,7 +2985,7 @@ packages:
       - supports-color
     dev: true
 
-  /jest-cli/29.5.0:
+  /jest-cli/29.5.0_@types+node@20.2.5:
     resolution: {integrity: sha512-L1KcP1l4HtfwdxXNFCL5bmUbLQiKrakMUriBEcc1Vfz6gx31ORKdreuWvmQVBit+1ss9NNR3yxjwfwzZNdQXJw==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
@@ -2999,7 +3002,7 @@ packages:
       exit: 0.1.2
       graceful-fs: 4.2.11
       import-local: 3.1.0
-      jest-config: 29.5.0
+      jest-config: 29.5.0_@types+node@20.2.5
       jest-util: 29.5.0
       jest-validate: 29.5.0
       prompts: 2.4.2
@@ -3008,44 +3011,6 @@ packages:
       - '@types/node'
       - supports-color
       - ts-node
-    dev: true
-
-  /jest-config/29.5.0:
-    resolution: {integrity: sha512-kvDUKBnNJPNBmFFOhDbm59iu1Fii1Q6SxyhXfvylq3UTHbg6o7j/g8k2dZyXWLvfdKB1vAPxNZnMgtKJcmu3kA==}
-    engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
-    peerDependencies:
-      '@types/node': '*'
-      ts-node: '>=9.0.0'
-    peerDependenciesMeta:
-      '@types/node':
-        optional: true
-      ts-node:
-        optional: true
-    dependencies:
-      '@babel/core': 7.22.1
-      '@jest/test-sequencer': 29.5.0
-      '@jest/types': 29.5.0
-      babel-jest: 29.5.0_@babel+core@7.22.1
-      chalk: 4.1.2
-      ci-info: 3.8.0
-      deepmerge: 4.3.1
-      glob: 7.2.3
-      graceful-fs: 4.2.11
-      jest-circus: 29.5.0
-      jest-environment-node: 29.5.0
-      jest-get-type: 29.4.3
-      jest-regex-util: 29.4.3
-      jest-resolve: 29.5.0
-      jest-runner: 29.5.0
-      jest-util: 29.5.0
-      jest-validate: 29.5.0
-      micromatch: 4.0.5
-      parse-json: 5.2.0
-      pretty-format: 29.5.0
-      slash: 3.0.0
-      strip-json-comments: 3.1.1
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /jest-config/29.5.0_@types+node@20.2.5:
@@ -3373,7 +3338,7 @@ packages:
       supports-color: 8.1.1
     dev: true
 
-  /jest/29.5.0:
+  /jest/29.5.0_@types+node@20.2.5:
     resolution: {integrity: sha512-juMg3he2uru1QoXX078zTa7pO85QyB9xajZc6bU+d9yEGwrKX6+vGmJQ3UdVZsvTEUARIdObzH68QItim6OSSQ==}
     engines: {node: ^14.15.0 || ^16.10.0 || >=18.0.0}
     hasBin: true
@@ -3386,7 +3351,7 @@ packages:
       '@jest/core': 29.5.0
       '@jest/types': 29.5.0
       import-local: 3.1.0
-      jest-cli: 29.5.0
+      jest-cli: 29.5.0_@types+node@20.2.5
     transitivePeerDependencies:
       - '@types/node'
       - supports-color
@@ -4335,7 +4300,7 @@ packages:
     dependencies:
       bs-logger: 0.2.6
       fast-json-stable-stringify: 2.1.0
-      jest: 29.5.0
+      jest: 29.5.0_@types+node@20.2.5
       jest-util: 29.5.0
       json5: 2.2.3
       lodash.memoize: 4.1.2
@@ -4464,15 +4429,15 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vite-plugin-dts/3.0.0-beta.2_typescript@4.9.5:
+  /vite-plugin-dts/3.0.0-beta.2_6yd3dr4iiziaqkscqiabuqynye:
     resolution: {integrity: sha512-8Ua+MyljJeXWYerMvvbX8voFyc+kCMG49F6rCQ6QRD2eVVMkbZkDoafVjbwWogmipSVirKS8zCBMN5WckXmyxg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       typescript: '*'
     dependencies:
-      '@microsoft/api-extractor': 7.36.0
+      '@microsoft/api-extractor': 7.36.0_@types+node@20.2.5
       '@rollup/pluginutils': 5.0.2_rollup@3.23.0
-      '@rushstack/node-core-library': 3.59.4
+      '@rushstack/node-core-library': 3.59.4_@types+node@20.2.5
       '@vue/language-core': 1.8.3_typescript@4.9.5
       debug: 4.3.4
       kolorist: 1.8.0
@@ -4480,7 +4445,7 @@ packages:
       vue-tsc: 1.8.3_typescript@4.9.5
     optionalDependencies:
       rollup: 3.23.0
-      vite: 4.3.9
+      vite: 4.3.9_@types+node@20.2.5
     transitivePeerDependencies:
       - '@types/node'
       - less
@@ -4491,7 +4456,7 @@ packages:
       - terser
     dev: true
 
-  /vite/4.3.9:
+  /vite/4.3.9_@types+node@20.2.5:
     resolution: {integrity: sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -4516,6 +4481,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.2.5
       esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.23.0
