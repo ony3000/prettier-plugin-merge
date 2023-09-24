@@ -4,5 +4,14 @@
   "trailingComma": "all",
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": ["<THIRD_PARTY_MODULES>", "^@/(.*)$", "^\\.(.*)$"],
-  "importOrderSeparation": true
+  "importOrderSeparation": true,
+  "overrides": [
+    {
+      "files": ["tests/**/performance/Callout.*"],
+      "options": {
+        "printWidth": 80,
+        "singleQuote": false
+      }
+    }
+  ]
 }
