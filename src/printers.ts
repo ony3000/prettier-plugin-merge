@@ -125,6 +125,7 @@ function createPrinter(): Printer {
       throw new Error('A default plugin with the detected parser does not exist.');
     }
 
+    const parserName = options.parser as string;
     const node = path.getValue();
 
     if (node?.comments) {
@@ -149,9 +150,13 @@ function createPrinter(): Printer {
       );
     }
 
+    const parserImplementedPlugins = plugins
+      .slice(0, pluginIndex)
+      .filter((plugin) => plugin.parsers?.[parserName]);
+
     return sequentialFormattingAndTryMerging(
       options,
-      plugins.slice(0, pluginIndex),
+      parserImplementedPlugins,
       defaultPluginCandidate,
     );
   }
