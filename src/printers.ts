@@ -24,8 +24,7 @@ function sequentialFormattingAndTryMerging(
     rangeEnd: Infinity,
   };
 
-  let sequentiallyFormattedText = originalText;
-  let sequentiallyMergedText: string | undefined;
+  let sequentiallyMergedText = originalText;
 
   /**
    * Changes that may be removed during the sequential formatting process.
@@ -33,17 +32,12 @@ function sequentialFormattingAndTryMerging(
   const patches: SubstitutePatch[] = [];
 
   plugins.forEach((plugin) => {
-    sequentiallyFormattedText = format(sequentiallyFormattedText, {
+    const temporaryFormattedText = format(sequentiallyMergedText, {
       ...sequentialFormattingOptions,
       plugins: [plugin],
     });
 
-    const temporaryFormattedText = format(sequentiallyMergedText ?? originalText, {
-      ...sequentialFormattingOptions,
-      plugins: [plugin],
-    });
-
-    if (sequentiallyMergedText === undefined) {
+    if (sequentiallyMergedText === originalText) {
       sequentiallyMergedText = temporaryFormattedText;
       return;
     }
@@ -106,7 +100,7 @@ function sequentialFormattingAndTryMerging(
     );
   });
 
-  return sequentiallyMergedText ?? sequentiallyFormattedText;
+  return sequentiallyMergedText;
 }
 
 function createPrinter(): Printer {
