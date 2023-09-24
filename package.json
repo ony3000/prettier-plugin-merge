@@ -27,8 +27,7 @@
     "dev": "vite build --watch --minify=false",
     "build": "vite build",
     "lint": "eslint src",
-    "test": "pnpm run build && jest --ci --passWithNoTests",
-    "test:watch": "jest --watch"
+    "test": "pnpm run build && jest --ci --passWithNoTests"
   },
   "dependencies": {
     "diff": "5.1.0"
