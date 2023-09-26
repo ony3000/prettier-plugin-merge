@@ -55,6 +55,7 @@
     "prettier-plugin-classnames": "0.1.1",
     "prettier-plugin-tailwindcss": "0.3.0",
     "ts-jest": "29.1.0",
+    "tsconfig": "workspace:*",
     "turbo": "1.10.14",
     "typescript": "4.9.5"
   },
