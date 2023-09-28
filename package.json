@@ -30,12 +30,8 @@
     "lint": "eslint src",
     "test": "pnpm run build && jest --ci --passWithNoTests"
   },
-  "dependencies": {
-    "diff": "5.1.0"
-  },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
-    "@types/diff": "5.0.3",
     "@types/jest": "29.5.2",
     "@types/node": "20.2.5",
     "eslint": "8.35.0",
