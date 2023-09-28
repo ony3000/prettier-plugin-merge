@@ -25,6 +25,7 @@
     }
   },
   "scripts": {
+    "clean": "pnpm -r exec rm -rf node_modules",
     "dev": "vite build --watch --minify=false",
     "build": "vite build",
     "lint": "eslint src",
