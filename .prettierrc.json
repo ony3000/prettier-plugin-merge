@@ -7,7 +7,7 @@
   "importOrderSeparation": true,
   "overrides": [
     {
-      "files": ["tests/**/performance/Callout.*"],
+      "files": ["packages/test-suite/**/performance/Callout.*"],
       "options": {
         "printWidth": 80,
         "singleQuote": false
