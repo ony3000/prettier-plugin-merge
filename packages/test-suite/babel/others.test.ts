@@ -1,6 +1,5 @@
+import { v2Plugin as mergePlugin } from 'bundle-entry/standalone';
 import type { Options, Plugin } from 'prettier';
-
-import mergePlugin from '@/index';
 
 import { format, dummyPlugin } from '../settings';
 

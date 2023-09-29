@@ -9,13 +9,13 @@
   },
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "bundle-entry": "workspace:*",
     "ppm-012": "npm:prettier-plugin-merge@0.1.2",
     "ppm-020": "npm:prettier-plugin-merge@0.2.0",
     "prettier": "2.8.4",
     "prettier-plugin-brace-style": "0.2.1",
     "prettier-plugin-classnames": "0.1.1",
-    "prettier-plugin-tailwindcss": "0.3.0",
-    "v2-plugin": "workspace:*"
+    "prettier-plugin-tailwindcss": "0.3.0"
   },
   "devDependencies": {
     "@types/jest": "29.5.2",

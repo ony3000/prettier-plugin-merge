@@ -35,7 +35,10 @@ describe('typescript/performance', () => {
   const trialCount = 5;
   const averageExecutionTimeWithPlugin012 = calculateAverageExecutionTime(trialCount, 'ppm-012');
   const averageExecutionTimeWithPlugin020 = calculateAverageExecutionTime(trialCount, 'ppm-020');
-  const averageExecutionTimeWithCurrentPlugin = calculateAverageExecutionTime(trialCount, '.');
+  const averageExecutionTimeWithCurrentPlugin = calculateAverageExecutionTime(
+    trialCount,
+    'bundle-entry',
+  );
 
   const timeDifferenceWithPlugin020 =
     averageExecutionTimeWithPlugin020 - averageExecutionTimeWithPlugin012;

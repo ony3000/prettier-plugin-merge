@@ -1,11 +1,10 @@
+import { v2Plugin as mergePlugin } from 'bundle-entry/standalone';
 import type { Options, Plugin } from 'prettier';
 import {
   parsers as tailwindcssParsers,
   printers as tailwindcssPrinters,
   options as tailwindcssOptions, // @ts-ignore
 } from 'prettier-plugin-tailwindcss';
-
-import mergePlugin from '@/index';
 
 export type Fixture = {
   name: string;

@@ -68,6 +68,7 @@ importers:
       '@trivago/prettier-plugin-sort-imports': 4.1.1
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
+      bundle-entry: workspace:*
       eslint: 8.35.0
       eslint-config-custom: workspace:*
       jest: 29.5.0
@@ -80,16 +81,15 @@ importers:
       ts-jest: 29.1.0
       tsconfig: workspace:*
       typescript: 4.9.5
-      v2-plugin: workspace:*
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.4
+      bundle-entry: link:../bundle-entry
       ppm-012: /prettier-plugin-merge/0.1.2_prettier@2.8.4
       ppm-020: /prettier-plugin-merge/0.2.0_prettier@2.8.4
       prettier: 2.8.4
       prettier-plugin-brace-style: 0.2.1_prettier@2.8.4
       prettier-plugin-classnames: 0.1.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.3.0_zmkqdpv3ldc45e6wei6qtrbrca
-      v2-plugin: link:../v2-plugin
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5

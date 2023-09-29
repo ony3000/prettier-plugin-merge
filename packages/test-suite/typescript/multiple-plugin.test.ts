@@ -1,4 +1,4 @@
-import mergePlugin from '@/index';
+import { v2Plugin as mergePlugin } from 'bundle-entry/standalone';
 
 import type { Fixture } from '../settings';
 import {
