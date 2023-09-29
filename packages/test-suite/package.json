@@ -5,6 +5,7 @@
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "lint": "eslint .",
     "test": "jest --ci --passWithNoTests"
   },
   "dependencies": {

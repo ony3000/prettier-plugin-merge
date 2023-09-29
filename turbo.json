@@ -1,6 +1,14 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "test": {}
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "build": {},
+    "lint": {},
+    "test": {
+      "dependsOn": ["bundle-entry#build"]
+    }
   }
 }

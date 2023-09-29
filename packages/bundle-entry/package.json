@@ -6,8 +6,9 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "esbuild index.ts standalone.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch",
-    "build": "esbuild index.ts standalone.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify"
+    "dev": "esbuild index.ts standalone.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch=forever",
+    "build": "esbuild index.ts standalone.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify",
+    "lint": "eslint ."
   },
   "dependencies": {
     "prettier": "2.8.4",
