@@ -2,45 +2,24 @@
   "private": true,
   "name": "prettier-plugin-merge",
   "version": "0.2.1",
-  "description": "A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.",
-  "repository": "https://github.com/ony3000/prettier-plugin-merge",
-  "keywords": [
-    "prettier",
-    "plugin",
-    "merge"
-  ],
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
-  "type": "module",
-  "files": [
-    "dist"
-  ],
-  "types": "./dist/index.d.ts",
-  "main": "./dist/prettier-plugin-merge.umd.cjs",
-  "module": "./dist/prettier-plugin-merge.js",
-  "exports": {
-    ".": {
-      "import": "./dist/prettier-plugin-merge.js",
-      "require": "./dist/prettier-plugin-merge.umd.cjs"
-    }
-  },
   "scripts": {
     "clean": "pnpm -r exec rm -rf node_modules",
     "dev": "turbo run dev --no-daemon --filter bundle-entry",
     "build": "turbo run build --no-daemon --filter bundle-entry",
     "lint": "turbo run lint --no-daemon",
-    "test": "turbo run test --no-daemon --filter test-suite"
+    "test": "turbo run test --no-daemon --filter test-suite",
+    "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/test-suite packages/tsconfig packages/v2-plugin"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "eslint": "8.35.0",
+    "merge-packages": "0.1.6",
     "prettier": "~2.8.4",
     "tsconfig": "workspace:*",
     "turbo": "1.10.14",
     "typescript": "4.9.5"
-  },
-  "peerDependencies": {
-    "prettier": "~2.8.4"
   },
   "packageManager": "pnpm@7.33.0"
 }
