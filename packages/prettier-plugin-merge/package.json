@@ -14,7 +14,9 @@
     "dist"
   ],
   "main": "dist/index.js",
-  "scripts": {},
+  "scripts": {
+    "prepare-release": "cp -r ../bundle-entry/dist . && npm version prerelease --preid alpha && npm pack"
+  },
   "dependencies": {
     "diff": "5.1.0"
   },

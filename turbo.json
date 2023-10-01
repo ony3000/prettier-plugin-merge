@@ -9,6 +9,13 @@
     "lint": {},
     "test": {
       "dependsOn": ["bundle-entry#build"]
+    },
+    "bundle-entry#prepare-release": {
+      "cache": false
+    },
+    "prettier-plugin-merge#prepare-release": {
+      "cache": false,
+      "dependsOn": ["bundle-entry#prepare-release"]
     }
   }
 }
