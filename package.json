@@ -10,7 +10,8 @@
     "build": "turbo run build --no-daemon --filter bundle-entry",
     "lint": "turbo run lint --no-daemon",
     "test": "turbo run test --no-daemon --filter test-suite",
-    "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/test-suite packages/tsconfig packages/v2-plugin",
+    "test:v2": "turbo run test --no-daemon --filter v2-with-no-other-plugins",
+    "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/tsconfig packages/v2-plugin",
     "prepare-release": "pnpm -r exec rm -rf dist && turbo run prepare-release --no-daemon --filter prettier-plugin-merge"
   },
   "devDependencies": {

@@ -177,6 +177,26 @@ importers:
       tsconfig: link:../tsconfig
       typescript: 4.9.5
 
+  tests/v2-with-no-other-plugins:
+    specifiers:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: workspace:*
+      jest: 29.5.0
+      prettier: 2.8.4
+      ts-jest: 29.1.0
+      tsconfig: workspace:*
+      typescript: 4.9.5
+    devDependencies:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: link:../../packages/bundle-entry
+      jest: 29.5.0_@types+node@20.2.5
+      prettier: 2.8.4
+      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
+
 packages:
 
   /@ampproject/remapping/2.2.1:
