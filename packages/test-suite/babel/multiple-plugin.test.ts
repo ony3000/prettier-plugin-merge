@@ -555,6 +555,77 @@ export function Callout({ children }) {
       plugins: [classnamesPlugin, tailwindcssPlugin, mergePlugin],
     },
   },
+  {
+    name: 'issue #7',
+    input: `import type { ComponentProps } from "react";
+
+import { classNames } from "@/adaptors";
+import { pretendard } from "@/fonts";
+
+export function MyComponent() {
+  if (foo) {
+    console.log("foo");
+  } else {
+    console.log("bar");
+  }
+
+  return (
+    <div>
+      <button
+        type="button"
+        className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
+          dark:border-neutral-500/30 dark:bg-neutral-900/50"
+        onClick={() => {}}
+      >
+        Click me
+      </button>
+    </div>
+  );
+}
+`,
+    output: `import type { ComponentProps } from "react";
+
+import { classNames } from "@/adaptors";
+import { pretendard } from "@/fonts";
+
+export function MyComponent()
+{
+  if (foo)
+  {
+    console.log("foo");
+  }
+  else
+  {
+    console.log("bar");
+  }
+
+  return (
+    <div>
+      <button
+        type="button"
+        className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
+          dark:border-neutral-500/30 dark:bg-neutral-900/50"
+        onClick={() =>
+        {}}
+      >
+        Click me
+      </button>
+    </div>
+  );
+}
+`,
+    options: {
+      plugins: [
+        braceStylePlugin,
+        sortImportsPlugin,
+        tailwindcssPlugin,
+        classnamesPlugin,
+        mergePlugin,
+      ],
+      ...braceStylePluginOptions,
+      ...sortImportsPluginOptions,
+    },
+  },
 ];
 
 describe('babel/multiple-plugin', () => {
