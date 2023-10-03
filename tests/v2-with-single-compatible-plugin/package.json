@@ -1,0 +1,22 @@
+{
+  "private": true,
+  "name": "v2-with-single-compatible-plugin",
+  "version": "0.0.0",
+  "description": "prettier v2 test using single plugin compatible with prettier v2 and v3",
+  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --ci --passWithNoTests"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.2",
+    "@types/node": "20.2.5",
+    "bundle-entry": "workspace:*",
+    "jest": "29.5.0",
+    "prettier": "2.8.4",
+    "prettier-plugin-tailwindcss": "0.4.1",
+    "ts-jest": "29.1.0",
+    "tsconfig": "workspace:*",
+    "typescript": "4.9.5"
+  }
+}

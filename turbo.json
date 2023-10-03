@@ -5,7 +5,9 @@
       "cache": false,
       "persistent": true
     },
-    "build": {},
+    "build": {
+      "cache": false
+    },
     "lint": {},
     "test": {
       "dependsOn": ["bundle-entry#build"]
