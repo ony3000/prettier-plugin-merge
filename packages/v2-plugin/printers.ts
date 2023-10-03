@@ -24,6 +24,7 @@ function sequentialFormattingAndTryMerging(
     rangeEnd: Infinity,
   };
 
+  let isFirst = true;
   let sequentiallyMergedText = originalText;
 
   /**
@@ -37,8 +38,9 @@ function sequentialFormattingAndTryMerging(
       plugins: [plugin],
     });
 
-    if (sequentiallyMergedText === originalText) {
+    if (isFirst) {
       sequentiallyMergedText = temporaryFormattedText;
+      isFirst = false;
       return;
     }
 
