@@ -2,6 +2,7 @@
   "private": true,
   "name": "v2-with-no-other-plugins",
   "version": "0.0.0",
+  "description": "prettier v2 test with no other plugins",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {

@@ -11,7 +11,7 @@ const entryPoints = [
   "typescript/hello.ts",
 ];
 
-describe("prettier v2 with no other plugins", () => {
+describe("prettier v2 test with no other plugins", () => {
   for (const entry of entryPoints) {
     const filePath = resolve(__dirname, entry).split(sep).join("/");
     const command = `pnpm prettier --check ${filePath}`;
