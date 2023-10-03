@@ -177,6 +177,78 @@ importers:
       tsconfig: link:../tsconfig
       typescript: 4.9.5
 
+  tests/v2-using-multiple-compatible-plugins:
+    specifiers:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: workspace:*
+      jest: 29.5.0
+      prettier: 2.8.4
+      prettier-plugin-brace-style: 0.3.1
+      prettier-plugin-tailwindcss: 0.4.1
+      ts-jest: 29.1.0
+      tsconfig: workspace:*
+      typescript: 4.9.5
+    devDependencies:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: link:../../packages/bundle-entry
+      jest: 29.5.0_@types+node@20.2.5
+      prettier: 2.8.4
+      prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
+      prettier-plugin-tailwindcss: 0.4.1_prettier@2.8.4
+      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
+
+  tests/v2-using-multiple-plugins-with-some-v2-plugin:
+    specifiers:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: workspace:*
+      jest: 29.5.0
+      prettier: 2.8.4
+      prettier-plugin-brace-style: 0.3.1
+      prettier-plugin-tailwindcss: 0.3.0
+      ts-jest: 29.1.0
+      tsconfig: workspace:*
+      typescript: 4.9.5
+    devDependencies:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: link:../../packages/bundle-entry
+      jest: 29.5.0_@types+node@20.2.5
+      prettier: 2.8.4
+      prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
+      prettier-plugin-tailwindcss: 0.3.0_prettier@2.8.4
+      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
+
+  tests/v2-using-multiple-plugins-with-some-v3-plugin:
+    specifiers:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: workspace:*
+      jest: 29.5.0
+      prettier: 2.8.4
+      prettier-plugin-brace-style: 0.3.1
+      prettier-plugin-tailwindcss: 0.5.4
+      ts-jest: 29.1.0
+      tsconfig: workspace:*
+      typescript: 4.9.5
+    devDependencies:
+      '@types/jest': 29.5.2
+      '@types/node': 20.2.5
+      bundle-entry: link:../../packages/bundle-entry
+      jest: 29.5.0_@types+node@20.2.5
+      prettier: 2.8.4
+      prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
+      prettier-plugin-tailwindcss: 0.5.4_prettier@2.8.4
+      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
+      tsconfig: link:../../packages/tsconfig
+      typescript: 4.9.5
+
   tests/v2-with-no-other-plugins:
     specifiers:
       '@types/jest': 29.5.2
@@ -3806,6 +3878,18 @@ packages:
       prettier: 2.8.4
     optionalDependencies:
       prettier-plugin-merge: 0.1.2_prettier@2.8.4
+
+  /prettier-plugin-brace-style/0.3.1_prettier@2.8.4:
+    resolution: {integrity: sha512-hYUhEW03D3qbSKt9p72uKnqxuYTHNNCTNroawhh9u4GsHSrKoiTlAmJqLwRWAbH5iYUVFXOudcVwt5y5Sxwj5g==}
+    peerDependencies:
+      '@prettier/sync': ^0.3.0
+      prettier: ^2 || ^3
+    peerDependenciesMeta:
+      '@prettier/sync':
+        optional: true
+    dependencies:
+      prettier: 2.8.4
+    dev: true
 
   /prettier-plugin-classnames/0.1.1_prettier@2.8.4:
     resolution: {integrity: sha512-kA1Xp3YQEZJNJwrlu+PlbhNZk2DfzgE6I56C5IANh8eW/+Cmd+2RN2c5Qt1PiMEuw31CyWVTFTnzndFhm6rnmw==}
