@@ -177,6 +177,9 @@ importers:
       tsconfig: link:../tsconfig
       typescript: 4.9.5
 
+  tests/prettier-config:
+    specifiers: {}
+
   tests/v2-using-multiple-compatible-plugins:
     specifiers:
       '@types/jest': 29.5.2
@@ -184,6 +187,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       prettier-plugin-brace-style: 0.3.1
       prettier-plugin-tailwindcss: 0.4.1
       ts-jest: 29.1.0
@@ -195,6 +199,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.4.1_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
@@ -208,6 +213,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       prettier-plugin-brace-style: 0.3.1
       prettier-plugin-tailwindcss: 0.3.0
       ts-jest: 29.1.0
@@ -219,6 +225,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.3.0_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
@@ -232,6 +239,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       prettier-plugin-brace-style: 0.3.1
       prettier-plugin-tailwindcss: 0.5.4
       ts-jest: 29.1.0
@@ -243,6 +251,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.5.4_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
@@ -256,6 +265,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       ts-jest: 29.1.0
       tsconfig: workspace:*
       typescript: 4.9.5
@@ -265,6 +275,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
       tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
@@ -276,6 +287,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       prettier-plugin-tailwindcss: 0.4.1
       ts-jest: 29.1.0
       tsconfig: workspace:*
@@ -286,6 +298,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.4.1_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
       tsconfig: link:../../packages/tsconfig
@@ -298,6 +311,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       prettier-plugin-tailwindcss: 0.3.0
       ts-jest: 29.1.0
       tsconfig: workspace:*
@@ -308,6 +322,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.3.0_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
       tsconfig: link:../../packages/tsconfig
@@ -320,6 +335,7 @@ importers:
       bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
+      prettier-config: workspace:*
       prettier-plugin-tailwindcss: 0.5.4
       ts-jest: 29.1.0
       tsconfig: workspace:*
@@ -330,6 +346,7 @@ importers:
       bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
+      prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.5.4_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
       tsconfig: link:../../packages/tsconfig
