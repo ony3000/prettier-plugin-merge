@@ -1,7 +1,4 @@
-// @ts-nocheck
-import type { ComponentProps } from "react";
-
-export default function Callout({ children }: ComponentProps<"div">) {
+export default function Callout({ children }) {
   return (
     <div
       className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
