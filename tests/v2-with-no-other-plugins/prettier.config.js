@@ -4,5 +4,13 @@ module.exports = {
   ...baseConfig,
 
   // plugins and plugin options
-  plugins: ["bundle-entry"],
+  plugins: [],
+  overrides: [
+    {
+      files: ["babel/**", "typescript/**"],
+      options: {
+        plugins: ["bundle-entry"],
+      },
+    },
+  ],
 };

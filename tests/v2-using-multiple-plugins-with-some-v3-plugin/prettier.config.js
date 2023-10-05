@@ -4,15 +4,16 @@ module.exports = {
   ...baseConfig,
 
   // plugins and plugin options
-  plugins: [
-    "prettier-plugin-brace-style",
-    "prettier-plugin-tailwindcss",
-    "bundle-entry",
-  ],
+  plugins: [],
   overrides: [
     {
       files: ["babel/**", "typescript/**"],
       options: {
+        plugins: [
+          "prettier-plugin-brace-style",
+          "prettier-plugin-tailwindcss",
+          "bundle-entry",
+        ],
         braceStyle: "allman",
       },
     },
