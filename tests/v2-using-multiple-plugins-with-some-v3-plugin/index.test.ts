@@ -14,14 +14,7 @@ describe("prettier v2 test using multiple plugins (some of which are only availa
       try {
         execSync(command);
       } catch (error) {
-        if (
-          // @ts-ignore
-          error?.message?.match(/require\(\) of ES Module [^ ]+ not supported/)
-        ) {
-          // In this case, it is treated as if the plugin does not exist.
-        } else {
-          isFormatted = false;
-        }
+        isFormatted = false;
       }
 
       expect(isFormatted).toBe(true);
