@@ -11,7 +11,6 @@
     "lint": "turbo run lint --no-daemon",
     "format": "turbo run format --no-daemon",
     "format:fix": "turbo run format:fix --no-daemon",
-    "test": "turbo run test --no-daemon --filter test-suite",
     "test:perf": "turbo run test --force --no-daemon --filter performance-test",
     "test:v2": "turbo run test --no-daemon --filter ./tests/v2-*",
     "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/tsconfig packages/v2-plugin",
