@@ -9,6 +9,12 @@
       "cache": false
     },
     "lint": {},
+    "format": {
+      "dependsOn": ["bundle-entry#build"]
+    },
+    "format:fix": {
+      "dependsOn": ["bundle-entry#build"]
+    },
     "test": {
       "dependsOn": ["bundle-entry#build"]
     },
