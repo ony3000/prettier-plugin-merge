@@ -4,20 +4,20 @@ A Prettier plugin that sequentially applies the formatting results of other Pret
 
 **Note**: Prettier v3 is not yet supported.
 
-![The process of applying formats sequentially.](./.github/banner.png)
+![The process of applying formats sequentially.](https://github.com/ony3000/prettier-plugin-merge/assets/8164191/36abd9f6-dd0b-4695-9ffa-f8a316cbf69d)
 
 ## Installation
 
 ```sh
-npm install --save-dev prettier@~2.8 prettier-plugin-merge
+npm install -D prettier@~2.8 prettier-plugin-merge
 ```
 
 ```sh
-yarn add --dev prettier@~2.8 prettier-plugin-merge
+yarn add -D prettier@~2.8 prettier-plugin-merge
 ```
 
 ```sh
-pnpm add --save-dev prettier@~2.8 prettier-plugin-merge
+pnpm add -D prettier@~2.8 prettier-plugin-merge
 ```
 
 ## Configuration

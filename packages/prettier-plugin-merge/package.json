@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-merge",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.",
   "repository": "https://github.com/ony3000/prettier-plugin-merge",
   "keywords": [
