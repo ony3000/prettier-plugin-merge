@@ -1,2 +1,7 @@
 dist
+tests
 pnpm-lock.yaml
+LICENSE
+!packages/**/LICENSE
+README.md
+!packages/**/README.md
