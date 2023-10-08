@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "name": "v3-with-no-other-plugins",
+  "version": "0.0.0",
+  "description": "prettier v3 test with no other plugins",
+  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "jest --ci --passWithNoTests"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.2",
+    "@types/node": "20.2.5",
+    "bundle-entry": "workspace:*",
+    "jest": "29.5.0",
+    "prettier": "3.0.3",
+    "prettier-config": "workspace:*",
+    "ts-jest": "29.1.0",
+    "tsconfig": "workspace:*",
+    "typescript": "4.9.5"
+  }
+}
