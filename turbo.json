@@ -1,10 +1,6 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
     "build": {
       "cache": false
     },
@@ -16,10 +12,6 @@
       "dependsOn": ["bundle-entry#build"]
     },
     "test": {
-      "dependsOn": ["bundle-entry#build"]
-    },
-    "prettier-plugin-merge#prepare-release": {
-      "cache": false,
       "dependsOn": ["bundle-entry#build"]
     }
   }

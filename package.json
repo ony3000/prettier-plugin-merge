@@ -6,20 +6,16 @@
   "license": "MIT",
   "scripts": {
     "clean": "pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
-    "dev": "turbo run dev --no-daemon --filter bundle-entry",
     "build": "turbo run build --no-daemon --filter bundle-entry",
     "lint": "turbo run lint --no-daemon",
     "format": "turbo run format --no-daemon",
     "format:fix": "turbo run format:fix --no-daemon",
     "test:perf": "turbo run test --force --no-daemon --filter performance-test",
-    "test:v2": "turbo run test --no-daemon --filter ./tests/v2-*",
-    "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/tsconfig packages/v2-plugin",
-    "prepare-release": "pnpm -r exec rm -rf dist && turbo run prepare-release --no-daemon --filter prettier-plugin-merge"
+    "test:v2": "turbo run test --no-daemon --filter ./tests/v2-*"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "eslint": "8.35.0",
-    "merge-packages": "0.1.6",
     "prettier": "~2.8.4",
     "tsconfig": "workspace:*",
     "turbo": "1.10.14",
