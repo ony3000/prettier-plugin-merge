@@ -30,9 +30,11 @@ importers:
       tsconfig: workspace:*
       typescript: 4.9.5
       v2-plugin: workspace:*
+      v3-plugin: workspace:*
     dependencies:
       prettier: 2.8.4
       v2-plugin: link:../v2-plugin
+      v3-plugin: link:../v3-plugin
     devDependencies:
       '@types/node': 20.2.5
       esbuild: 0.17.19
@@ -133,6 +135,25 @@ importers:
     dependencies:
       diff: 5.1.0
       prettier: 2.8.4
+    devDependencies:
+      '@types/diff': 5.0.3
+      eslint: 8.35.0
+      eslint-config-custom: link:../eslint-config-custom
+      tsconfig: link:../tsconfig
+      typescript: 4.9.5
+
+  packages/v3-plugin:
+    specifiers:
+      '@types/diff': 5.0.3
+      diff: 5.1.0
+      eslint: 8.35.0
+      eslint-config-custom: workspace:*
+      prettier: 3.0.3
+      tsconfig: workspace:*
+      typescript: 4.9.5
+    dependencies:
+      diff: 5.1.0
+      prettier: 3.0.3
     devDependencies:
       '@types/diff': 5.0.3
       eslint: 8.35.0
@@ -4705,7 +4726,6 @@ packages:
     resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: true
 
   /pretty-format/29.5.0:
     resolution: {integrity: sha512-V2mGkI31qdttvTFX7Mt4efOqHXqJWMu4/r66Xh3Z3BwZaPfPJgp6/gbwoujRpPUtfEF6AUUWx3Jim3GCw5g/Qw==}
