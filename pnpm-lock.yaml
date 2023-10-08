@@ -371,208 +371,6 @@ importers:
       tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
-  tests/v3-loop:
-    specifiers:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      cross-env: 7.0.3
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      cross-env: 7.0.3
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-using-multiple-compatible-plugins:
-    specifiers:
-      '@prettier/sync': 0.3.0
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-brace-style: 0.3.1
-      prettier-plugin-tailwindcss: 0.4.1
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@prettier/sync': 0.3.0_prettier@3.0.3
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-brace-style: 0.3.1_oeltfpcujneonilznjtouhichi
-      prettier-plugin-tailwindcss: 0.4.1_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-using-multiple-plugins-with-some-v2-plugin:
-    specifiers:
-      '@prettier/sync': 0.3.0
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-brace-style: 0.3.1
-      prettier-plugin-tailwindcss: 0.3.0
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@prettier/sync': 0.3.0_prettier@3.0.3
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-brace-style: 0.3.1_oeltfpcujneonilznjtouhichi
-      prettier-plugin-tailwindcss: 0.3.0_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-using-multiple-plugins-with-some-v3-plugin:
-    specifiers:
-      '@prettier/sync': 0.3.0
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-brace-style: 0.3.1
-      prettier-plugin-tailwindcss: 0.5.4
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@prettier/sync': 0.3.0_prettier@3.0.3
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-brace-style: 0.3.1_oeltfpcujneonilznjtouhichi
-      prettier-plugin-tailwindcss: 0.5.4_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-with-no-other-plugins:
-    specifiers:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-with-single-compatible-plugin:
-    specifiers:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-tailwindcss: 0.4.1
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-tailwindcss: 0.4.1_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-with-single-v2-plugin:
-    specifiers:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-tailwindcss: 0.3.0
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-tailwindcss: 0.3.0_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-with-single-v3-plugin:
-    specifiers:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-tailwindcss: 0.5.4
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-tailwindcss: 0.5.4_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
 packages:
 
   /@ampproject/remapping/2.2.1:
@@ -1487,14 +1285,6 @@ packages:
       tslib: 2.5.3
     dev: true
 
-  /@prettier/sync/0.3.0_prettier@3.0.3:
-    resolution: {integrity: sha512-3dcmCyAxIcxy036h1I7MQU/uEEBq8oLwf1CE3xeze+MPlgkdlb/+w6rGR/1dhp6Hqi17fRS6nvwnOzkESxEkOw==}
-    peerDependencies:
-      prettier: ^3.0.0
-    dependencies:
-      prettier: 3.0.3
-    dev: true
-
   /@sinclair/typebox/0.25.24:
     resolution: {integrity: sha512-XJfwUVUKDHF5ugKwIcxEgc9k8b7HbznCp6eUfWgu710hMPNIO4aw4/zB5RogDQz8nd6gyCDpU9O/m6qYEWY6yQ==}
     dev: true
@@ -2179,14 +1969,6 @@ packages:
 
   /convert-source-map/2.0.0:
     resolution: {integrity: sha512-Kvp459HrV2FEJ1CAsi1Ku+MY3kasH19TFykTz2xWmMeq6bk2NU3XXvfJ+Q61m0xktWwt+1HSYf3JZsTms3aRJg==}
-    dev: true
-
-  /cross-env/7.0.3:
-    resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
-    engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
-    hasBin: true
-    dependencies:
-      cross-spawn: 7.0.3
     dev: true
 
   /cross-spawn/7.0.3:
@@ -4190,19 +3972,6 @@ packages:
       prettier-plugin-merge: 0.1.2_prettier@2.8.4
     dev: true
 
-  /prettier-plugin-brace-style/0.3.1_oeltfpcujneonilznjtouhichi:
-    resolution: {integrity: sha512-hYUhEW03D3qbSKt9p72uKnqxuYTHNNCTNroawhh9u4GsHSrKoiTlAmJqLwRWAbH5iYUVFXOudcVwt5y5Sxwj5g==}
-    peerDependencies:
-      '@prettier/sync': ^0.3.0
-      prettier: ^2 || ^3
-    peerDependenciesMeta:
-      '@prettier/sync':
-        optional: true
-    dependencies:
-      '@prettier/sync': 0.3.0_prettier@3.0.3
-      prettier: 3.0.3
-    dev: true
-
   /prettier-plugin-brace-style/0.3.1_prettier@2.8.4:
     resolution: {integrity: sha512-hYUhEW03D3qbSKt9p72uKnqxuYTHNNCTNroawhh9u4GsHSrKoiTlAmJqLwRWAbH5iYUVFXOudcVwt5y5Sxwj5g==}
     peerDependencies:
@@ -4307,61 +4076,6 @@ packages:
         optional: true
     dependencies:
       prettier: 2.8.4
-    dev: true
-
-  /prettier-plugin-tailwindcss/0.3.0_prettier@3.0.3:
-    resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
-    engines: {node: '>=12.17.0'}
-    peerDependencies:
-      '@ianvs/prettier-plugin-sort-imports': '*'
-      '@prettier/plugin-pug': '*'
-      '@shopify/prettier-plugin-liquid': '*'
-      '@shufo/prettier-plugin-blade': '*'
-      '@trivago/prettier-plugin-sort-imports': '*'
-      prettier: '>=2.2.0'
-      prettier-plugin-astro: '*'
-      prettier-plugin-css-order: '*'
-      prettier-plugin-import-sort: '*'
-      prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
-      prettier-plugin-organize-attributes: '*'
-      prettier-plugin-organize-imports: '*'
-      prettier-plugin-style-order: '*'
-      prettier-plugin-svelte: '*'
-      prettier-plugin-twig-melody: '*'
-    peerDependenciesMeta:
-      '@ianvs/prettier-plugin-sort-imports':
-        optional: true
-      '@prettier/plugin-pug':
-        optional: true
-      '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@shufo/prettier-plugin-blade':
-        optional: true
-      '@trivago/prettier-plugin-sort-imports':
-        optional: true
-      prettier-plugin-astro:
-        optional: true
-      prettier-plugin-css-order:
-        optional: true
-      prettier-plugin-import-sort:
-        optional: true
-      prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
-        optional: true
-      prettier-plugin-organize-attributes:
-        optional: true
-      prettier-plugin-organize-imports:
-        optional: true
-      prettier-plugin-style-order:
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-      prettier-plugin-twig-melody:
-        optional: true
-    dependencies:
-      prettier: 3.0.3
     dev: true
 
   /prettier-plugin-tailwindcss/0.3.0_zmkqdpv3ldc45e6wei6qtrbrca:
@@ -4531,61 +4245,6 @@ packages:
       prettier: 2.8.4
     dev: true
 
-  /prettier-plugin-tailwindcss/0.4.1_prettier@3.0.3:
-    resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
-    engines: {node: '>=12.17.0'}
-    peerDependencies:
-      '@ianvs/prettier-plugin-sort-imports': '*'
-      '@prettier/plugin-pug': '*'
-      '@shopify/prettier-plugin-liquid': '*'
-      '@shufo/prettier-plugin-blade': '*'
-      '@trivago/prettier-plugin-sort-imports': '*'
-      prettier: ^2.2 || ^3.0
-      prettier-plugin-astro: '*'
-      prettier-plugin-css-order: '*'
-      prettier-plugin-import-sort: '*'
-      prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
-      prettier-plugin-organize-attributes: '*'
-      prettier-plugin-organize-imports: '*'
-      prettier-plugin-style-order: '*'
-      prettier-plugin-svelte: '*'
-      prettier-plugin-twig-melody: '*'
-    peerDependenciesMeta:
-      '@ianvs/prettier-plugin-sort-imports':
-        optional: true
-      '@prettier/plugin-pug':
-        optional: true
-      '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@shufo/prettier-plugin-blade':
-        optional: true
-      '@trivago/prettier-plugin-sort-imports':
-        optional: true
-      prettier-plugin-astro:
-        optional: true
-      prettier-plugin-css-order:
-        optional: true
-      prettier-plugin-import-sort:
-        optional: true
-      prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
-        optional: true
-      prettier-plugin-organize-attributes:
-        optional: true
-      prettier-plugin-organize-imports:
-        optional: true
-      prettier-plugin-style-order:
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-      prettier-plugin-twig-melody:
-        optional: true
-    dependencies:
-      prettier: 3.0.3
-    dev: true
-
   /prettier-plugin-tailwindcss/0.5.4_prettier@2.8.4:
     resolution: {integrity: sha512-QZzzB1bID6qPsKHTeA9qPo1APmmxfFrA5DD3LQ+vbTmAnY40eJI7t9Q1ocqel2EKMWNPLJqdTDWZj1hKYgqSgg==}
     engines: {node: '>=14.21.3'}
@@ -4641,71 +4300,10 @@ packages:
       prettier: 2.8.4
     dev: true
 
-  /prettier-plugin-tailwindcss/0.5.4_prettier@3.0.3:
-    resolution: {integrity: sha512-QZzzB1bID6qPsKHTeA9qPo1APmmxfFrA5DD3LQ+vbTmAnY40eJI7t9Q1ocqel2EKMWNPLJqdTDWZj1hKYgqSgg==}
-    engines: {node: '>=14.21.3'}
-    peerDependencies:
-      '@ianvs/prettier-plugin-sort-imports': '*'
-      '@prettier/plugin-pug': '*'
-      '@shopify/prettier-plugin-liquid': '*'
-      '@shufo/prettier-plugin-blade': '*'
-      '@trivago/prettier-plugin-sort-imports': '*'
-      prettier: ^3.0
-      prettier-plugin-astro: '*'
-      prettier-plugin-css-order: '*'
-      prettier-plugin-import-sort: '*'
-      prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
-      prettier-plugin-organize-attributes: '*'
-      prettier-plugin-organize-imports: '*'
-      prettier-plugin-style-order: '*'
-      prettier-plugin-svelte: '*'
-      prettier-plugin-twig-melody: '*'
-    peerDependenciesMeta:
-      '@ianvs/prettier-plugin-sort-imports':
-        optional: true
-      '@prettier/plugin-pug':
-        optional: true
-      '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@shufo/prettier-plugin-blade':
-        optional: true
-      '@trivago/prettier-plugin-sort-imports':
-        optional: true
-      prettier-plugin-astro:
-        optional: true
-      prettier-plugin-css-order:
-        optional: true
-      prettier-plugin-import-sort:
-        optional: true
-      prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
-        optional: true
-      prettier-plugin-organize-attributes:
-        optional: true
-      prettier-plugin-organize-imports:
-        optional: true
-      prettier-plugin-style-order:
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-      prettier-plugin-twig-melody:
-        optional: true
-    dependencies:
-      prettier: 3.0.3
-    dev: true
-
   /prettier/2.8.4:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
-
-  /prettier/3.0.3:
-    resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
-    engines: {node: '>=14'}
-    hasBin: true
-    dev: true
 
   /pretty-format/29.5.0:
     resolution: {integrity: sha512-V2mGkI31qdttvTFX7Mt4efOqHXqJWMu4/r66Xh3Z3BwZaPfPJgp6/gbwoujRpPUtfEF6AUUWx3Jim3GCw5g/Qw==}
