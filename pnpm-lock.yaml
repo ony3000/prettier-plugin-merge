@@ -4,18 +4,18 @@ importers:
 
   .:
     specifiers:
-      '@trivago/prettier-plugin-sort-imports': 4.1.1
+      '@trivago/prettier-plugin-sort-imports': 4.2.0
       eslint: 8.35.0
       merge-packages: 0.1.6
-      prettier: ~2.8.4
+      prettier: 3.0.3
       tsconfig: workspace:*
       turbo: 1.10.14
       typescript: 4.9.5
     devDependencies:
-      '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.4
+      '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@3.0.3
       eslint: 8.35.0
       merge-packages: 0.1.6
-      prettier: 2.8.4
+      prettier: 3.0.3
       tsconfig: link:packages/tsconfig
       turbo: 1.10.14
       typescript: 4.9.5
@@ -1548,6 +1548,26 @@ packages:
       javascript-natural-sort: 0.7.1
       lodash: 4.17.21
       prettier: 2.8.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@trivago/prettier-plugin-sort-imports/4.2.0_prettier@3.0.3:
+    resolution: {integrity: sha512-YBepjbt+ZNBVmN3ev1amQH3lWCmHyt5qTbLCp/syXJRu/Kw2koXh44qayB1gMRxcL/gV8egmjN5xWSrYyfUtyw==}
+    peerDependencies:
+      '@vue/compiler-sfc': 3.x
+      prettier: 2.x - 3.x
+    peerDependenciesMeta:
+      '@vue/compiler-sfc':
+        optional: true
+    dependencies:
+      '@babel/generator': 7.17.7
+      '@babel/parser': 7.22.4
+      '@babel/traverse': 7.17.3
+      '@babel/types': 7.17.0
+      javascript-natural-sort: 0.7.1
+      lodash: 4.17.21
+      prettier: 3.0.3
     transitivePeerDependencies:
       - supports-color
     dev: true

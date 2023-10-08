@@ -18,10 +18,10 @@
     "prepare-release": "pnpm -r exec rm -rf dist && turbo run prepare-release --no-daemon --filter prettier-plugin-merge"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "eslint": "8.35.0",
     "merge-packages": "0.1.6",
-    "prettier": "~2.8.4",
+    "prettier": "3.0.3",
     "tsconfig": "workspace:*",
     "turbo": "1.10.14",
     "typescript": "4.9.5"
