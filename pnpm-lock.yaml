@@ -21,12 +21,12 @@ importers:
   packages/bundle-entry:
     specifiers:
       mkdirp: 3.0.1
-      prettier: 2.8.4
+      prettier: 3.0.3
       prettier-plugin-merge: file:./prettier-plugin-merge-0.3.0-alpha.0.tgz
     dependencies:
       mkdirp: 3.0.1
-      prettier: 2.8.4
-      prettier-plugin-merge: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@2.8.4
+      prettier: 3.0.3
+      prettier-plugin-merge: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@3.0.3
 
   packages/eslint-config-custom:
     specifiers:
@@ -3701,17 +3701,10 @@ packages:
       prettier: 3.0.3
     dev: true
 
-  /prettier/2.8.4:
-    resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    dev: false
-
   /prettier/3.0.3:
     resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
     engines: {node: '>=14'}
     hasBin: true
-    dev: true
 
   /pretty-format/29.5.0:
     resolution: {integrity: sha512-V2mGkI31qdttvTFX7Mt4efOqHXqJWMu4/r66Xh3Z3BwZaPfPJgp6/gbwoujRpPUtfEF6AUUWx3Jim3GCw5g/Qw==}
@@ -4354,7 +4347,7 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@2.8.4:
+  file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@3.0.3:
     resolution: {integrity: sha512-GkdySkaa3UzfCUy0XfIjzSXNxOSzNT5jJYX3LZ/SUqId5ulf7rVZrANiyTcZtXFVZwsmFVSMv2EPM4plSGUbag==, tarball: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz}
     id: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz
     name: prettier-plugin-merge
@@ -4363,5 +4356,5 @@ packages:
       prettier: ~2.8.4
     dependencies:
       diff: 5.1.0
-      prettier: 2.8.4
+      prettier: 3.0.3
     dev: false

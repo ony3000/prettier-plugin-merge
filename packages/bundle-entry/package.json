@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "mkdirp": "3.0.1",
-    "prettier": "2.8.4",
+    "prettier": "3.0.3",
     "prettier-plugin-merge": "file:./prettier-plugin-merge-0.3.0-alpha.0.tgz"
   }
 }
