@@ -6,8 +6,7 @@
   "license": "MIT",
   "main": "dist/index.js",
   "scripts": {
-    "build": "mkdirp dist && cp node_modules/prettier-plugin-merge/dist/index.js dist",
-    "lint": "eslint ."
+    "build": "mkdirp dist && cp node_modules/prettier-plugin-merge/dist/index.js dist"
   },
   "dependencies": {
     "mkdirp": "3.0.1",
