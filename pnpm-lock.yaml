@@ -26,13 +26,15 @@ importers:
       esbuild: 0.17.19
       eslint: 8.35.0
       eslint-config-custom: workspace:*
+      mkdirp: 3.0.1
       prettier: 2.8.4
+      prettier-plugin-merge: file:./prettier-plugin-merge-0.3.0-alpha.0.tgz
       tsconfig: workspace:*
       typescript: 4.9.5
-      v2-plugin: workspace:*
     dependencies:
+      mkdirp: 3.0.1
       prettier: 2.8.4
-      v2-plugin: link:../v2-plugin
+      prettier-plugin-merge: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@2.8.4
     devDependencies:
       '@types/node': 20.2.5
       esbuild: 0.17.19
@@ -3739,6 +3741,12 @@ packages:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
+  /mkdirp/3.0.1:
+    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: false
+
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
@@ -5004,3 +5012,15 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
+
+  file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@2.8.4:
+    resolution: {integrity: sha512-GkdySkaa3UzfCUy0XfIjzSXNxOSzNT5jJYX3LZ/SUqId5ulf7rVZrANiyTcZtXFVZwsmFVSMv2EPM4plSGUbag==, tarball: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz}
+    id: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz
+    name: prettier-plugin-merge
+    version: 0.3.0-alpha.0
+    peerDependencies:
+      prettier: ~2.8.4
+    dependencies:
+      diff: 5.1.0
+      prettier: 2.8.4
+    dev: false
