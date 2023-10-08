@@ -11,9 +11,6 @@
     "lint": "turbo run lint --no-daemon",
     "format": "turbo run format --no-daemon",
     "format:fix": "turbo run format:fix --no-daemon",
-    "test:perf": "turbo run test --force --no-daemon --filter performance-test",
-    "test:v2": "turbo run test --no-daemon --filter ./tests/v2-*",
-    "test:v3": "turbo run test --no-daemon --filter ./tests/v3-*",
     "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/tsconfig packages/v2-plugin",
     "prepare-release": "pnpm -r exec rm -rf dist && turbo run prepare-release --no-daemon --filter prettier-plugin-merge"
   },
