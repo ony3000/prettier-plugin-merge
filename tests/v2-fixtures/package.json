@@ -1,0 +1,29 @@
+{
+  "private": true,
+  "name": "v2-fixtures",
+  "version": "0.0.0",
+  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "jest --ci --passWithNoTests"
+  },
+  "dependencies": {
+    "@trivago/prettier-plugin-sort-imports": "4.2.0",
+    "prettier-plugin-brace-style": "0.3.1",
+    "prettier-plugin-classnames": "0.2.1",
+    "prettier-plugin-tailwindcss": "0.4.1"
+  },
+  "devDependencies": {
+    "@types/jest": "29.5.2",
+    "@types/node": "20.2.5",
+    "bundle-entry": "workspace:*",
+    "jest": "29.5.0",
+    "prettier": "2.8.4",
+    "prettier-config": "workspace:*",
+    "ts-jest": "29.1.0",
+    "tsconfig": "workspace:*",
+    "typescript": "4.9.5"
+  }
+}
