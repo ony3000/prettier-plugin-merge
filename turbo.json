@@ -9,12 +9,6 @@
       "cache": false
     },
     "lint": {},
-    "format": {
-      "dependsOn": ["bundle-entry#build"]
-    },
-    "format:fix": {
-      "dependsOn": ["bundle-entry#build"]
-    },
     "prettier-plugin-merge#prepare-release": {
       "cache": false,
       "dependsOn": ["bundle-entry#build"]
