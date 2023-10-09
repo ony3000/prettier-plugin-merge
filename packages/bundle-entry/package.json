@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "prettier": "2.8.4",
-    "v2-plugin": "workspace:*"
+    "v2-plugin": "workspace:*",
+    "v3-plugin": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "20.2.5",
