@@ -5,13 +5,12 @@
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
+    "clean": "pnpm -r exec rm -rf .turbo && pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
     "build": "turbo run build --no-daemon --filter bundle-entry",
-    "lint": "turbo run lint --no-daemon",
-    "format": "turbo run format --no-daemon",
-    "format:fix": "turbo run format:fix --no-daemon",
+    "format": "turbo run format --no-daemon --filter !./tests/*-v3-plugin",
+    "format:fix": "turbo run format:fix --no-daemon --filter !./tests/*-v3-plugin",
     "test:perf": "turbo run test --force --no-daemon --filter performance-test",
-    "test:v2": "turbo run test --no-daemon --filter ./tests/v2-*"
+    "test:v2": "turbo run test --no-daemon --filter ./tests/v2-* --filter !./tests/*-v3-plugin"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
