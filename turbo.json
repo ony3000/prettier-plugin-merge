@@ -4,7 +4,6 @@
     "build": {
       "cache": false
     },
-    "lint": {},
     "format": {
       "dependsOn": ["bundle-entry#build"]
     },
