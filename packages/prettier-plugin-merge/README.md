@@ -2,7 +2,7 @@
 
 A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.
 
-![The process of applying formats sequentially.](https://github.com/ony3000/prettier-plugin-merge/assets/8164191/36abd9f6-dd0b-4695-9ffa-f8a316cbf69d)
+![Schematic diagram of how formats are merged.](https://github.com/ony3000/prettier-plugin-merge/assets/8164191/0a413542-fff1-436b-859b-76f92ed70a6a)
 
 ## Installation
 
