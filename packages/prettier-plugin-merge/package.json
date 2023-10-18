@@ -6,7 +6,10 @@
   "keywords": [
     "prettier",
     "plugin",
-    "merge"
+    "merge",
+    "sequential",
+    "formatting",
+    "multiple"
   ],
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
