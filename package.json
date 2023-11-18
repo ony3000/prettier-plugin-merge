@@ -1,21 +1,40 @@
 {
-  "private": true,
-  "name": "root",
-  "version": "0.0.0",
+  "name": "prettier-plugin-merge",
+  "version": "0.3.1",
+  "description": "A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.",
+  "repository": "https://github.com/ony3000/prettier-plugin-merge",
+  "keywords": [
+    "prettier",
+    "plugin",
+    "merge",
+    "sequential",
+    "formatting",
+    "multiple"
+  ],
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
   "scripts": {
     "clean": "pnpm -r exec rm -rf .turbo && pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
     "dev": "turbo run dev --no-daemon --filter bundle-entry",
     "build": "turbo run build --no-daemon --filter bundle-entry",
     "lint": "eslint src",
     "merge-deps": "merge-packages packages/bundle-entry packages/v2-plugin packages/v3-plugin",
-    "prepare-release": "pnpm -r exec rm -rf dist && turbo run prepare-release --no-daemon --filter prettier-plugin-merge"
+    "prepare-release": "pnpm run build && npm version prerelease --preid=alpha --git-tag-version=false && pnpm run merge-deps && npm pack"
+  },
+  "dependencies": {
+    "diff": "5.1.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "@types/diff": "5.0.3",
+    "@types/node": "20.2.5",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
+    "esbuild": "0.17.19",
     "eslint": "8.35.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-config-airbnb-typescript": "17.0.0",
@@ -27,6 +46,9 @@
     "prettier": "2.8.4",
     "turbo": "1.10.14",
     "typescript": "4.9.5"
+  },
+  "peerDependencies": {
+    "prettier": "^2 || ^3"
   },
   "packageManager": "pnpm@7.33.0"
 }
