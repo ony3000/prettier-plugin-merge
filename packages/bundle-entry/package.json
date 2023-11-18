@@ -20,7 +20,6 @@
     "esbuild": "0.17.19",
     "eslint": "8.35.0",
     "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
     "typescript": "4.9.5"
   }
 }

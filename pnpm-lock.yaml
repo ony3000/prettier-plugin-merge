@@ -8,7 +8,6 @@ importers:
       eslint: 8.35.0
       merge-packages: 0.1.6
       prettier: 2.8.4
-      tsconfig: workspace:*
       turbo: 1.10.14
       typescript: 4.9.5
     devDependencies:
@@ -16,7 +15,6 @@ importers:
       eslint: 8.35.0
       merge-packages: 0.1.6
       prettier: 2.8.4
-      tsconfig: link:packages/tsconfig
       turbo: 1.10.14
       typescript: 4.9.5
 
@@ -27,7 +25,6 @@ importers:
       eslint: 8.35.0
       eslint-config-custom: workspace:*
       prettier: 2.8.4
-      tsconfig: workspace:*
       typescript: 4.9.5
       v2-plugin: workspace:*
       v3-plugin: workspace:*
@@ -40,7 +37,6 @@ importers:
       esbuild: 0.17.19
       eslint: 8.35.0
       eslint-config-custom: link:../eslint-config-custom
-      tsconfig: link:../tsconfig
       typescript: 4.9.5
 
   packages/eslint-config-custom:
@@ -102,9 +98,6 @@ importers:
       prettier: 2.8.4
       typescript: 4.9.5
 
-  packages/tsconfig:
-    specifiers: {}
-
   packages/v2-plugin:
     specifiers:
       '@types/diff': 5.0.3
@@ -112,7 +105,6 @@ importers:
       eslint: 8.35.0
       eslint-config-custom: workspace:*
       prettier: 2.8.4
-      tsconfig: workspace:*
       typescript: 4.9.5
     dependencies:
       diff: 5.1.0
@@ -121,7 +113,6 @@ importers:
       '@types/diff': 5.0.3
       eslint: 8.35.0
       eslint-config-custom: link:../eslint-config-custom
-      tsconfig: link:../tsconfig
       typescript: 4.9.5
 
   packages/v3-plugin:
@@ -132,7 +123,6 @@ importers:
       eslint: 8.35.0
       eslint-config-custom: workspace:*
       prettier: 3.0.3
-      tsconfig: workspace:*
       typescript: 4.9.5
     dependencies:
       diff: 5.1.0
@@ -142,7 +132,6 @@ importers:
       '@types/node': 20.2.5
       eslint: 8.35.0
       eslint-config-custom: link:../eslint-config-custom
-      tsconfig: link:../tsconfig
       typescript: 4.9.5
 
 packages:

@@ -15,7 +15,6 @@
     "@types/diff": "5.0.3",
     "eslint": "8.35.0",
     "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*",
     "typescript": "4.9.5"
   }
 }
