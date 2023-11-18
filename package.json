@@ -18,12 +18,14 @@
   ],
   "main": "dist/index.js",
   "scripts": {
-    "clean": "pnpm -r exec rm -rf .turbo && pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
-    "dev": "turbo run dev --no-daemon --filter bundle-entry",
-    "build": "turbo run build --no-daemon --filter bundle-entry",
+    "clean": "pnpm run clean:bundle && pnpm -r exec rimraf node_modules/ && rimraf package.merged.json",
+    "clean:bundle": "rimraf dist/",
+    "dev": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch",
+    "build": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify",
+    "build:plain": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\"",
     "lint": "eslint src",
-    "merge-deps": "merge-packages packages/bundle-entry packages/v2-plugin packages/v3-plugin",
-    "prepare-release": "pnpm run build && npm version prerelease --preid=alpha --git-tag-version=false && pnpm run merge-deps && npm pack"
+    "merge-deps": "rimraf package.merged.json && merge-packages ./ src/packages/v2-plugin/ src/packages/v3-plugin/",
+    "prepare-release": "pnpm run build:plain && npm version prerelease --preid=alpha --git-tag-version=false && pnpm run merge-deps && npm pack"
   },
   "dependencies": {
     "diff": "5.1.0"
@@ -32,6 +34,7 @@
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "@types/diff": "5.0.3",
     "@types/node": "20.2.5",
+    "@types/prettier": "2.7.3",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
     "esbuild": "0.17.19",
@@ -44,7 +47,7 @@
     "eslint-plugin-import": "2.27.5",
     "merge-packages": "0.1.6",
     "prettier": "2.8.4",
-    "turbo": "1.10.14",
+    "rimraf": "5.0.1",
     "typescript": "4.9.5"
   },
   "peerDependencies": {
