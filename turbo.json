@@ -8,7 +8,6 @@
     "build": {
       "cache": false
     },
-    "lint": {},
     "prettier-plugin-merge#prepare-release": {
       "cache": false,
       "dependsOn": ["bundle-entry#build"]

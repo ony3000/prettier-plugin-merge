@@ -7,8 +7,7 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "esbuild index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch=forever",
-    "build": "esbuild index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify",
-    "lint": "eslint ."
+    "build": "esbuild index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify"
   },
   "dependencies": {
     "prettier": "2.8.4",
@@ -18,8 +17,6 @@
   "devDependencies": {
     "@types/node": "20.2.5",
     "esbuild": "0.17.19",
-    "eslint": "8.35.0",
-    "eslint-config-custom": "workspace:*",
     "typescript": "4.9.5"
   }
 }
