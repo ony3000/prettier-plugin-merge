@@ -13,7 +13,6 @@
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "@types/jest": "29.5.2",
     "@types/node": "20.2.5",
-    "bundle-entry": "workspace:*",
     "jest": "29.5.0",
     "ppm-012": "npm:prettier-plugin-merge@0.1.2",
     "ppm-020": "npm:prettier-plugin-merge@0.2.0",

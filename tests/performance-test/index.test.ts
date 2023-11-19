@@ -54,7 +54,7 @@ describe("performance-test", () => {
     );
     const averageExecutionTimeWithCurrentPlugin = calculateAverageExecutionTime(
       filePath,
-      "bundle-entry",
+      "prettier-plugin-merge",
       trialCount,
     );
 

@@ -14,7 +14,7 @@ module.exports = {
           "prettier-plugin-tailwindcss",
           "prettier-plugin-classnames",
           "prettier-plugin-brace-style",
-          "bundle-entry",
+          "prettier-plugin-merge",
         ],
       },
     },

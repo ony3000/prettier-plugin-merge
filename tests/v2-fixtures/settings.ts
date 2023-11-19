@@ -13,7 +13,7 @@ export type Fixture = {
 };
 
 // @ts-ignore
-export * as mergePlugin from "bundle-entry";
+export * as mergePlugin from "prettier-plugin-merge";
 export { format } from "prettier";
 export { default as sortImportsPlugin } from "@trivago/prettier-plugin-sort-imports";
 // @ts-ignore

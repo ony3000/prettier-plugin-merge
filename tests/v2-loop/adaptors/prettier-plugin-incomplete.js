@@ -1,4 +1,4 @@
-const mergePlugin = require("bundle-entry");
+const mergePlugin = require("prettier-plugin-merge");
 
 const incompleteMergePlugin = {
   parsers: {

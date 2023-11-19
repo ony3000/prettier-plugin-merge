@@ -15,8 +15,11 @@ importers:
       eslint-import-resolver-typescript: 3.5.3
       eslint-plugin-import: 2.27.5
       prettier: ~2.8.4
+      prettier-plugin-merge: 0.3.1
       turbo: 1.10.14
       typescript: 4.9.5
+    dependencies:
+      prettier-plugin-merge: 0.3.1_prettier@2.8.4
     devDependencies:
       '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.4
       '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
@@ -32,22 +35,11 @@ importers:
       turbo: 1.10.14
       typescript: 4.9.5
 
-  packages/bundle-entry:
-    specifiers:
-      mkdirp: 3.0.1
-      prettier: 2.8.4
-      prettier-plugin-merge: file:./prettier-plugin-merge-0.3.0-alpha.0.tgz
-    dependencies:
-      mkdirp: 3.0.1
-      prettier: 2.8.4
-      prettier-plugin-merge: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@2.8.4
-
   tests/performance-test:
     specifiers:
       '@trivago/prettier-plugin-sort-imports': 4.2.0
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       ppm-012: npm:prettier-plugin-merge@0.1.2
       ppm-020: npm:prettier-plugin-merge@0.2.0
@@ -62,7 +54,6 @@ importers:
       '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@2.8.4
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       ppm-012: /prettier-plugin-merge/0.1.2_prettier@2.8.4
       ppm-020: /prettier-plugin-merge/0.2.0_prettier@2.8.4
@@ -82,7 +73,6 @@ importers:
       '@trivago/prettier-plugin-sort-imports': 4.2.0
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -99,7 +89,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -110,7 +99,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -119,7 +107,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -130,7 +117,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -141,7 +127,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -154,7 +139,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -165,7 +149,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -178,7 +161,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -189,7 +171,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -202,7 +183,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -211,7 +191,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -222,7 +201,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -232,7 +210,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -244,7 +221,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -254,7 +230,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -266,7 +241,6 @@ importers:
     specifiers:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: workspace:*
       jest: 29.5.0
       prettier: 2.8.4
       prettier-config: workspace:*
@@ -276,7 +250,6 @@ importers:
     devDependencies:
       '@types/jest': 29.5.2
       '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
       jest: 29.5.0_@types+node@20.2.5
       prettier: 2.8.4
       prettier-config: link:../prettier-config
@@ -3287,12 +3260,6 @@ packages:
     resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
     dev: true
 
-  /mkdirp/3.0.1:
-    resolution: {integrity: sha512-+NsyUUAZDmo6YVHzL/stxSu3t9YS1iljliy3BSDrXJ/dkn1KYdmtZODGGjLcc9XLgVVpH4KshHB8XmZgMhaBXg==}
-    engines: {node: '>=10'}
-    hasBin: true
-    dev: false
-
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
 
@@ -3553,6 +3520,15 @@ packages:
       diff: 5.1.0
       prettier: 2.8.4
     dev: true
+
+  /prettier-plugin-merge/0.3.1_prettier@2.8.4:
+    resolution: {integrity: sha512-EespdeZjdjFPtEAJd48IgcuKBA6EHb27Ms2EpwMbF2PwDqJgSPXO5cOrEJnlzxrBLqsmBiThjT9TrjVqVW/C/g==}
+    peerDependencies:
+      prettier: ^2 || ^3
+    dependencies:
+      diff: 5.1.0
+      prettier: 2.8.4
+    dev: false
 
   /prettier-plugin-tailwindcss/0.3.0_prettier@2.8.4:
     resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
@@ -4416,15 +4392,3 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
     dev: true
-
-  file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@2.8.4:
-    resolution: {integrity: sha512-GkdySkaa3UzfCUy0XfIjzSXNxOSzNT5jJYX3LZ/SUqId5ulf7rVZrANiyTcZtXFVZwsmFVSMv2EPM4plSGUbag==, tarball: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz}
-    id: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz
-    name: prettier-plugin-merge
-    version: 0.3.0-alpha.0
-    peerDependencies:
-      prettier: ~2.8.4
-    dependencies:
-      diff: 5.1.0
-      prettier: 2.8.4
-    dev: false

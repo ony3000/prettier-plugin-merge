@@ -6,12 +6,14 @@
   "license": "MIT",
   "scripts": {
     "clean": "pnpm -r exec rm -rf .turbo && pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
-    "build": "turbo run build --no-daemon --filter bundle-entry",
     "format": "turbo run format --no-daemon --filter !./tests/*-v3-plugin",
     "format:fix": "turbo run format:fix --no-daemon --filter !./tests/*-v3-plugin",
     "lint": "eslint tests",
     "test:perf": "turbo run test --force --no-daemon --filter performance-test",
     "test:v2": "turbo run test --no-daemon --filter ./tests/v2-* --filter !./tests/*-v3-plugin"
+  },
+  "dependencies": {
+    "prettier-plugin-merge": "0.3.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",

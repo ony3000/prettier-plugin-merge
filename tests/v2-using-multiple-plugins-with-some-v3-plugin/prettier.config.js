@@ -12,7 +12,7 @@ module.exports = {
         plugins: [
           "prettier-plugin-brace-style",
           "prettier-plugin-tailwindcss",
-          "bundle-entry",
+          "prettier-plugin-merge",
         ],
         braceStyle: "allman",
       },

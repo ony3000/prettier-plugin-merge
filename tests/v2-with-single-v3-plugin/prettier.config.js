@@ -9,7 +9,7 @@ module.exports = {
     {
       files: ["babel/**", "typescript/**"],
       options: {
-        plugins: ["prettier-plugin-tailwindcss", "bundle-entry"],
+        plugins: ["prettier-plugin-tailwindcss", "prettier-plugin-merge"],
       },
     },
   ],
