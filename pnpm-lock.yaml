@@ -7,14 +7,12 @@ importers:
       '@trivago/prettier-plugin-sort-imports': 4.1.1
       eslint: 8.35.0
       prettier: ~2.8.4
-      tsconfig: workspace:*
       turbo: 1.10.14
       typescript: 4.9.5
     devDependencies:
       '@trivago/prettier-plugin-sort-imports': 4.1.1_prettier@2.8.4
       eslint: 8.35.0
       prettier: 2.8.4
-      tsconfig: link:packages/tsconfig
       turbo: 1.10.14
       typescript: 4.9.5
 
@@ -52,9 +50,6 @@ importers:
       eslint-plugin-import: 2.27.5_tqrcrxlenpngfto46ddarus52y
       typescript: 4.9.5
 
-  packages/tsconfig:
-    specifiers: {}
-
   tests/performance-test:
     specifiers:
       '@trivago/prettier-plugin-sort-imports': 4.2.0
@@ -70,7 +65,6 @@ importers:
       prettier-plugin-classnames: 0.2.1
       prettier-plugin-tailwindcss: 0.4.1
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@2.8.4
@@ -86,7 +80,6 @@ importers:
       prettier-plugin-classnames: 0.2.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.4.1_6w3jfihfczwmgn6ybjepebuqee
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/prettier-config:
@@ -105,7 +98,6 @@ importers:
       prettier-plugin-classnames: 0.2.1
       prettier-plugin-tailwindcss: 0.4.1
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@2.8.4
@@ -120,7 +112,6 @@ importers:
       prettier: 2.8.4
       prettier-config: link:../prettier-config
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-loop:
@@ -132,7 +123,6 @@ importers:
       prettier: 2.8.4
       prettier-config: workspace:*
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -142,7 +132,6 @@ importers:
       prettier: 2.8.4
       prettier-config: link:../prettier-config
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-using-multiple-compatible-plugins:
@@ -156,7 +145,6 @@ importers:
       prettier-plugin-brace-style: 0.3.1
       prettier-plugin-tailwindcss: 0.4.1
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -168,7 +156,6 @@ importers:
       prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.4.1_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-using-multiple-plugins-with-some-v2-plugin:
@@ -182,7 +169,6 @@ importers:
       prettier-plugin-brace-style: 0.3.1
       prettier-plugin-tailwindcss: 0.3.0
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -194,7 +180,6 @@ importers:
       prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.3.0_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-using-multiple-plugins-with-some-v3-plugin:
@@ -208,7 +193,6 @@ importers:
       prettier-plugin-brace-style: 0.3.1
       prettier-plugin-tailwindcss: 0.5.4
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -220,7 +204,6 @@ importers:
       prettier-plugin-brace-style: 0.3.1_prettier@2.8.4
       prettier-plugin-tailwindcss: 0.5.4_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-with-no-other-plugins:
@@ -232,7 +215,6 @@ importers:
       prettier: 2.8.4
       prettier-config: workspace:*
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -242,7 +224,6 @@ importers:
       prettier: 2.8.4
       prettier-config: link:../prettier-config
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-with-single-compatible-plugin:
@@ -255,7 +236,6 @@ importers:
       prettier-config: workspace:*
       prettier-plugin-tailwindcss: 0.4.1
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -266,7 +246,6 @@ importers:
       prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.4.1_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-with-single-v2-plugin:
@@ -279,7 +258,6 @@ importers:
       prettier-config: workspace:*
       prettier-plugin-tailwindcss: 0.3.0
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -290,7 +268,6 @@ importers:
       prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.3.0_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
   tests/v2-with-single-v3-plugin:
@@ -303,7 +280,6 @@ importers:
       prettier-config: workspace:*
       prettier-plugin-tailwindcss: 0.5.4
       ts-jest: 29.1.0
-      tsconfig: workspace:*
       typescript: 4.9.5
     devDependencies:
       '@types/jest': 29.5.2
@@ -314,7 +290,6 @@ importers:
       prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.5.4_prettier@2.8.4
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
 packages:
