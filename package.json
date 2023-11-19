@@ -2,7 +2,6 @@
   "name": "prettier-plugin-merge",
   "version": "0.3.1",
   "description": "A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.",
-  "repository": "https://github.com/ony3000/prettier-plugin-merge",
   "keywords": [
     "prettier",
     "plugin",
@@ -11,18 +10,19 @@
     "formatting",
     "multiple"
   ],
-  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "repository": "https://github.com/ony3000/prettier-plugin-merge",
   "license": "MIT",
+  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "main": "dist/index.js",
   "files": [
     "dist"
   ],
-  "main": "dist/index.js",
   "scripts": {
+    "build": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify",
+    "build:plain": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\"",
     "clean": "pnpm run clean:bundle && pnpm -r exec rimraf node_modules/ && rimraf package.merged.json",
     "clean:bundle": "rimraf dist/",
     "dev": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch",
-    "build": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify",
-    "build:plain": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\"",
     "lint": "eslint src",
     "merge-deps": "rimraf package.merged.json && merge-packages ./ src/packages/v2-plugin/ src/packages/v3-plugin/",
     "prepare-release": "pnpm run build:plain && npm version prerelease --preid=alpha --git-tag-version=false && pnpm run merge-deps && npm pack"
