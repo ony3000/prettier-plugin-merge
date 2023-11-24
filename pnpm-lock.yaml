@@ -110,34 +110,6 @@ importers:
       tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
 
-  tests/v3-using-multiple-plugins-with-some-v2-plugin:
-    specifiers:
-      '@prettier/sync': 0.3.0
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-brace-style: 0.3.1
-      prettier-plugin-tailwindcss: 0.3.0
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@prettier/sync': 0.3.0_prettier@3.0.3
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-brace-style: 0.3.1_oeltfpcujneonilznjtouhichi
-      prettier-plugin-tailwindcss: 0.3.0_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
   tests/v3-using-multiple-plugins-with-some-v3-plugin:
     specifiers:
       '@prettier/sync': 0.3.0
@@ -208,30 +180,6 @@ importers:
       prettier: 3.0.3
       prettier-config: link:../prettier-config
       prettier-plugin-tailwindcss: 0.4.1_prettier@3.0.3
-      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
-      tsconfig: link:../../packages/tsconfig
-      typescript: 4.9.5
-
-  tests/v3-with-single-v2-plugin:
-    specifiers:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: workspace:*
-      jest: 29.5.0
-      prettier: 3.0.3
-      prettier-config: workspace:*
-      prettier-plugin-tailwindcss: 0.3.0
-      ts-jest: 29.1.0
-      tsconfig: workspace:*
-      typescript: 4.9.5
-    devDependencies:
-      '@types/jest': 29.5.2
-      '@types/node': 20.2.5
-      bundle-entry: link:../../packages/bundle-entry
-      jest: 29.5.0_@types+node@20.2.5
-      prettier: 3.0.3
-      prettier-config: link:../prettier-config
-      prettier-plugin-tailwindcss: 0.3.0_prettier@3.0.3
       ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
       tsconfig: link:../../packages/tsconfig
       typescript: 4.9.5
@@ -3533,61 +3481,6 @@ packages:
         optional: true
     dependencies:
       '@prettier/sync': 0.3.0_prettier@3.0.3
-      prettier: 3.0.3
-    dev: true
-
-  /prettier-plugin-tailwindcss/0.3.0_prettier@3.0.3:
-    resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
-    engines: {node: '>=12.17.0'}
-    peerDependencies:
-      '@ianvs/prettier-plugin-sort-imports': '*'
-      '@prettier/plugin-pug': '*'
-      '@shopify/prettier-plugin-liquid': '*'
-      '@shufo/prettier-plugin-blade': '*'
-      '@trivago/prettier-plugin-sort-imports': '*'
-      prettier: '>=2.2.0'
-      prettier-plugin-astro: '*'
-      prettier-plugin-css-order: '*'
-      prettier-plugin-import-sort: '*'
-      prettier-plugin-jsdoc: '*'
-      prettier-plugin-marko: '*'
-      prettier-plugin-organize-attributes: '*'
-      prettier-plugin-organize-imports: '*'
-      prettier-plugin-style-order: '*'
-      prettier-plugin-svelte: '*'
-      prettier-plugin-twig-melody: '*'
-    peerDependenciesMeta:
-      '@ianvs/prettier-plugin-sort-imports':
-        optional: true
-      '@prettier/plugin-pug':
-        optional: true
-      '@shopify/prettier-plugin-liquid':
-        optional: true
-      '@shufo/prettier-plugin-blade':
-        optional: true
-      '@trivago/prettier-plugin-sort-imports':
-        optional: true
-      prettier-plugin-astro:
-        optional: true
-      prettier-plugin-css-order:
-        optional: true
-      prettier-plugin-import-sort:
-        optional: true
-      prettier-plugin-jsdoc:
-        optional: true
-      prettier-plugin-marko:
-        optional: true
-      prettier-plugin-organize-attributes:
-        optional: true
-      prettier-plugin-organize-imports:
-        optional: true
-      prettier-plugin-style-order:
-        optional: true
-      prettier-plugin-svelte:
-        optional: true
-      prettier-plugin-twig-melody:
-        optional: true
-    dependencies:
       prettier: 3.0.3
     dev: true
 
