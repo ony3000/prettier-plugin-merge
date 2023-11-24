@@ -1,8 +1,8 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "format": {},
-    "format:fix": {},
+    "format:check": {},
+    "format:write": {},
     "test": {
       "cache": false
     }

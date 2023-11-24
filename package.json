@@ -5,18 +5,20 @@
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "clean": "pnpm -r exec rm -rf .turbo && pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
-    "format": "turbo run format --no-daemon",
-    "format:fix": "turbo run format:fix --no-daemon",
+    "clean": "pnpm -r exec rimraf .turbo && pnpm -r exec rimraf node_modules",
+    "format:check": "turbo run format:check --no-daemon",
+    "format:write": "turbo run format:write --no-daemon",
     "lint": "eslint tests",
-    "test:perf": "turbo run test --force --no-daemon --filter=performance-test",
-    "test:v2": "turbo run test --no-daemon --filter=./tests/v2-*"
+    "test:perf": "turbo run test --no-daemon --filter=performance-test",
+    "test": "turbo run test --no-daemon --filter=!performance-test"
   },
   "dependencies": {
     "prettier-plugin-merge": "0.3.1"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.1.1",
+    "@types/jest": "29.5.2",
+    "@types/node": "20.2.5",
     "@typescript-eslint/eslint-plugin": "5.54.0",
     "@typescript-eslint/parser": "5.54.0",
     "eslint": "8.35.0",
@@ -27,6 +29,7 @@
     "eslint-import-resolver-typescript": "3.5.3",
     "eslint-plugin-import": "2.27.5",
     "prettier": "~2.8.4",
+    "rimraf": "5.0.1",
     "turbo": "1.10.14",
     "typescript": "4.9.5"
   },

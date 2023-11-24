@@ -5,19 +5,18 @@
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --check .",
-    "format:fix": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
     "test": "jest --ci --passWithNoTests"
   },
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "prettier-plugin-brace-style": "0.3.1",
     "prettier-plugin-classnames": "0.2.1",
+    "prettier-plugin-merge": "link:../../node_modules/prettier-plugin-merge",
     "prettier-plugin-tailwindcss": "0.4.1"
   },
   "devDependencies": {
-    "@types/jest": "29.5.2",
-    "@types/node": "20.2.5",
     "jest": "29.5.0",
     "prettier": "2.8.4",
     "prettier-config": "workspace:*",
