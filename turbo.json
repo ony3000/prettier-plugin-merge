@@ -1,17 +1,10 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "pipeline": {
-    "build": {
-      "cache": false
-    },
-    "format": {
-      "dependsOn": ["bundle-entry#build"]
-    },
-    "format:fix": {
-      "dependsOn": ["bundle-entry#build"]
-    },
+    "format": {},
+    "format:fix": {},
     "test": {
-      "dependsOn": ["bundle-entry#build"]
+      "cache": false
     }
   }
 }

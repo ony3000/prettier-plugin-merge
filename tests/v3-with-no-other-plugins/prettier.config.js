@@ -9,7 +9,7 @@ module.exports = {
     {
       files: ["babel/**", "typescript/**"],
       options: {
-        plugins: ["bundle-entry"],
+        plugins: ["prettier-plugin-merge"],
       },
     },
   ],
