@@ -5,13 +5,29 @@ importers:
   .:
     specifiers:
       '@trivago/prettier-plugin-sort-imports': 4.2.0
+      '@typescript-eslint/eslint-plugin': 5.54.0
+      '@typescript-eslint/parser': 5.54.0
       eslint: 8.35.0
+      eslint-config-airbnb-base: 15.0.0
+      eslint-config-airbnb-typescript: 17.0.0
+      eslint-config-prettier: 8.6.0
+      eslint-import-resolver-node: 0.3.7
+      eslint-import-resolver-typescript: 3.5.3
+      eslint-plugin-import: 2.27.5
       prettier: 3.0.3
       turbo: 1.10.14
       typescript: 4.9.5
     devDependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@3.0.3
+      '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
+      '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
       eslint: 8.35.0
+      eslint-config-airbnb-base: 15.0.0_yckic57kx266ph64dhq6ozvb54
+      eslint-config-airbnb-typescript: 17.0.0_ljtlaqjgwrmro7jha4unrm7hxu
+      eslint-config-prettier: 8.6.0_eslint@8.35.0
+      eslint-import-resolver-node: 0.3.7
+      eslint-import-resolver-typescript: 3.5.3_yckic57kx266ph64dhq6ozvb54
+      eslint-plugin-import: 2.27.5_tqrcrxlenpngfto46ddarus52y
       prettier: 3.0.3
       turbo: 1.10.14
       typescript: 4.9.5
@@ -25,30 +41,6 @@ importers:
       mkdirp: 3.0.1
       prettier: 3.0.3
       prettier-plugin-merge: file:packages/bundle-entry/prettier-plugin-merge-0.3.0-alpha.0.tgz_prettier@3.0.3
-
-  packages/eslint-config-custom:
-    specifiers:
-      '@typescript-eslint/eslint-plugin': 5.54.0
-      '@typescript-eslint/parser': 5.54.0
-      eslint: 8.35.0
-      eslint-config-airbnb-base: 15.0.0
-      eslint-config-airbnb-typescript: 17.0.0
-      eslint-config-prettier: 8.6.0
-      eslint-import-resolver-node: 0.3.7
-      eslint-import-resolver-typescript: 3.5.3
-      eslint-plugin-import: 2.27.5
-      typescript: 4.9.5
-    devDependencies:
-      '@typescript-eslint/eslint-plugin': 5.54.0_6mj2wypvdnknez7kws2nfdgupi
-      '@typescript-eslint/parser': 5.54.0_ycpbpc6yetojsgtrx3mwntkhsu
-      eslint: 8.35.0
-      eslint-config-airbnb-base: 15.0.0_yckic57kx266ph64dhq6ozvb54
-      eslint-config-airbnb-typescript: 17.0.0_ljtlaqjgwrmro7jha4unrm7hxu
-      eslint-config-prettier: 8.6.0_eslint@8.35.0
-      eslint-import-resolver-node: 0.3.7
-      eslint-import-resolver-typescript: 3.5.3_yckic57kx266ph64dhq6ozvb54
-      eslint-plugin-import: 2.27.5_tqrcrxlenpngfto46ddarus52y
-      typescript: 4.9.5
 
   tests/prettier-config:
     specifiers: {}
