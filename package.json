@@ -9,7 +9,7 @@
     "format": "turbo run format --no-daemon",
     "format:fix": "turbo run format:fix --no-daemon",
     "lint": "eslint tests",
-    "test:v3": "turbo run test --no-daemon --filter ./tests/v3-* --filter !./tests/v3-loop"
+    "test:v3": "turbo run test --no-daemon --filter=./tests/v3-* --filter=!./tests/v3-loop"
   },
   "dependencies": {
     "prettier-plugin-merge": "0.3.1"
