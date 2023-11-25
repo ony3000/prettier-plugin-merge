@@ -6,14 +6,12 @@
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "format": "prettier --check .",
-    "format:fix": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:write": "prettier --write .",
     "test": "jest --ci --passWithNoTests"
   },
   "devDependencies": {
     "@prettier/sync": "0.3.0",
-    "@types/jest": "29.5.2",
-    "@types/node": "20.2.5",
     "jest": "29.5.0",
     "prettier": "3.0.3",
     "prettier-config": "workspace:*",
