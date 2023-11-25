@@ -18,7 +18,6 @@
     "prettier": "3.0.3",
     "prettier-config": "workspace:*",
     "ts-jest": "29.1.0",
-    "tsconfig": "workspace:*",
     "typescript": "4.9.5"
   }
 }
