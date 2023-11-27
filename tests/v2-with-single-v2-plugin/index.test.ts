@@ -9,6 +9,7 @@ const entryPoints = [
   "typescript/Counter.tsx",
   "typescript/next-env.d.ts",
   "typescript/hello.ts",
+  "vue/Counter.vue",
 ];
 
 describe("prettier v2 test using single plugin with only prettier v2 supported", () => {

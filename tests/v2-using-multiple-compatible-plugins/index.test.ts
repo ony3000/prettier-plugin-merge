@@ -1,7 +1,11 @@
 import { execSync } from "child_process";
 import { resolve, sep } from "path";
 
-const entryPoints = ["babel/Counter.jsx", "typescript/Counter.tsx"];
+const entryPoints = [
+  "babel/Counter.jsx",
+  "typescript/Counter.tsx",
+  "vue/Counter.vue",
+];
 
 describe("prettier v2 test using multiple plugins (all compatible with prettier v2 and v3)", () => {
   for (const entry of entryPoints) {

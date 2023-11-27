@@ -7,7 +7,7 @@ module.exports = {
   plugins: [],
   overrides: [
     {
-      files: ["babel/**", "typescript/**"],
+      files: ["babel/**", "typescript/**", "vue/**"],
       options: {
         plugins: ["prettier-plugin-merge"],
       },
