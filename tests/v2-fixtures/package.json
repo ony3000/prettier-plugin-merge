@@ -12,7 +12,7 @@
   "dependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.2.0",
     "prettier-plugin-brace-style": "0.3.1",
-    "prettier-plugin-classnames": "0.2.1",
+    "prettier-plugin-classnames": "0.3.1",
     "prettier-plugin-merge": "link:../../node_modules/prettier-plugin-merge",
     "prettier-plugin-tailwindcss": "0.4.1"
   },
@@ -21,6 +21,7 @@
     "prettier": "2.8.4",
     "prettier-config": "workspace:*",
     "ts-jest": "29.1.0",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "vue": "3.3.9"
   }
 }
