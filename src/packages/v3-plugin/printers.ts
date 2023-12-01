@@ -1,4 +1,5 @@
-import * as Diff from 'diff';
+import type { SubstitutePatch } from 'core-parts';
+import { makePatches, applyPatches } from 'core-parts';
 import type { AstPath, ParserOptions, Doc, Printer, Plugin, Options } from 'prettier';
 import { format, resolveConfig, getFileInfo } from 'prettier';
 import {
@@ -8,16 +9,6 @@ import {
   MessageChannel,
   Worker,
 } from 'worker_threads';
-
-enum PairingMode {
-  EVEN = 'even',
-  ODD = 'odd',
-}
-
-type SubstitutePatch = {
-  from: string;
-  to: string;
-};
 
 function sequentialFormattingAndTryMerging(options: ParserOptions, plugins: Plugin[]): string {
   const { originalText, filepath } = options;
@@ -92,40 +83,15 @@ if (!isMainThread && parentPort) {
             plugins: [],
           });
 
-          if (temporaryFormattedTextWithoutPrinter !== temporaryFormattedText) {
-            let temporaryText = '';
-            let mode: PairingMode = PairingMode.EVEN;
-
-            Diff.diffLines(temporaryFormattedTextWithoutPrinter, temporaryFormattedText)
-              .filter((change) => 'added' in change && 'removed' in change)
-              .forEach((change) => {
-                if (!change.added && change.removed) {
-                  if (mode === PairingMode.EVEN) {
-                    temporaryText = change.value;
-                    mode = PairingMode.ODD;
-                  } else {
-                    patches.push({ from: temporaryText, to: '' });
-                    temporaryText = change.value;
-                  }
-                } else if (change.added && !change.removed) {
-                  if (mode === PairingMode.EVEN) {
-                    patches.push({ from: '', to: change.value });
-                  } else {
-                    patches.push({ from: temporaryText, to: change.value });
-                    mode = PairingMode.EVEN;
-                  }
-                }
-              });
-          }
+          patches.push(
+            ...makePatches(temporaryFormattedTextWithoutPrinter, temporaryFormattedText),
+          );
 
           if (patches.length === 0) {
             return temporaryFormattedText;
           }
 
-          return patches.reduce(
-            (patchedPrevText, { from, to }) => patchedPrevText.replace(from, to),
-            temporaryFormattedTextWithoutPrinter,
-          );
+          return applyPatches(temporaryFormattedTextWithoutPrinter, patches);
         },
         Promise.resolve(firstFormattedText),
       );

@@ -1,16 +1,7 @@
-import * as Diff from 'diff';
+import type { SubstitutePatch } from 'core-parts';
+import { makePatches, applyPatches } from 'core-parts';
 import type { AstPath, ParserOptions, Doc, Printer, Plugin } from 'prettier';
 import { format } from 'prettier';
-
-enum PairingMode {
-  EVEN = 'even',
-  ODD = 'odd',
-}
-
-type SubstitutePatch = {
-  from: string;
-  to: string;
-};
 
 function sequentialFormattingAndTryMerging(
   options: ParserOptions,
@@ -65,41 +56,14 @@ function sequentialFormattingAndTryMerging(
           })
         : temporaryFormattedText;
 
-    if (temporaryFormattedTextWithoutPrinter !== temporaryFormattedText) {
-      let temporaryText = '';
-      let mode: PairingMode = PairingMode.EVEN;
-
-      Diff.diffLines(temporaryFormattedTextWithoutPrinter, temporaryFormattedText)
-        .filter((change) => 'added' in change && 'removed' in change)
-        .forEach((change) => {
-          if (!change.added && change.removed) {
-            if (mode === PairingMode.EVEN) {
-              temporaryText = change.value;
-              mode = PairingMode.ODD;
-            } else {
-              patches.push({ from: temporaryText, to: '' });
-              temporaryText = change.value;
-            }
-          } else if (change.added && !change.removed) {
-            if (mode === PairingMode.EVEN) {
-              patches.push({ from: '', to: change.value });
-            } else {
-              patches.push({ from: temporaryText, to: change.value });
-              mode = PairingMode.EVEN;
-            }
-          }
-        });
-    }
+    patches.push(...makePatches(temporaryFormattedTextWithoutPrinter, temporaryFormattedText));
 
     if (patches.length === 0) {
       sequentiallyMergedText = temporaryFormattedText;
       return;
     }
 
-    sequentiallyMergedText = patches.reduce(
-      (patchedPrevText, { from, to }) => patchedPrevText.replace(from, to),
-      temporaryFormattedTextWithoutPrinter,
-    );
+    sequentiallyMergedText = applyPatches(temporaryFormattedTextWithoutPrinter, patches);
   });
 
   return sequentiallyMergedText;
