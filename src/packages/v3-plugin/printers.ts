@@ -50,6 +50,7 @@ if (!isMainThread && parentPort) {
         Object.entries(resolvedConfig ?? {}).filter(([key]) => key !== 'plugins'),
       ),
       rangeEnd: Infinity,
+      plugins: [],
     };
     const pluginNames = ((resolvedConfig?.plugins ?? []) as string[]).filter((pluginName) =>
       configBasedPluginNames.includes(pluginName),
@@ -78,20 +79,18 @@ if (!isMainThread && parentPort) {
             plugins: [pluginName],
           });
 
-          const temporaryFormattedTextWithoutPrinter = await format(temporaryFormattedText, {
-            ...sequentialFormattingOptions,
-            plugins: [],
-          });
-
-          patches.push(
-            ...makePatches(temporaryFormattedTextWithoutPrinter, temporaryFormattedText),
+          const temporaryFormattedTextWithoutPlugin = await format(
+            temporaryFormattedText,
+            sequentialFormattingOptions,
           );
+
+          patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
 
           if (patches.length === 0) {
             return temporaryFormattedText;
           }
 
-          return applyPatches(temporaryFormattedTextWithoutPrinter, patches);
+          return applyPatches(temporaryFormattedTextWithoutPlugin, patches);
         },
         Promise.resolve(firstFormattedText),
       );
@@ -123,14 +122,6 @@ function createPrinter(): Printer {
     print: (path: AstPath) => Doc,
   ): Doc {
     const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
-    const defaultPluginCandidate = plugins.find(
-      (plugin) => typeof options.parser === 'string' && plugin.parsers?.[options.parser],
-    );
-
-    if (!defaultPluginCandidate) {
-      throw new Error('A default plugin with the detected parser does not exist.');
-    }
-
     const parserName = options.parser as string;
     // @ts-ignore
     const comments = options[Symbol.for('comments')];
