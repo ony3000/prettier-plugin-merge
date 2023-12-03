@@ -3,68 +3,40 @@ import { makePatches, applyPatches } from 'core-parts';
 import type { AstPath, ParserOptions, Doc, Printer, Plugin } from 'prettier';
 import { format } from 'prettier';
 
-function sequentialFormattingAndTryMerging(
-  options: ParserOptions,
-  plugins: Plugin[],
-  defaultPlugin: Plugin,
-): string {
-  const parserName = options.parser as string;
+function sequentialFormattingAndTryMerging(options: ParserOptions, plugins: Plugin[]): string {
   const { originalText } = options;
   const sequentialFormattingOptions = {
     ...options,
     rangeEnd: Infinity,
+    plugins: [],
   };
 
-  let isFirst = true;
-  let sequentiallyMergedText = originalText;
+  const firstFormattedText = format(originalText, sequentialFormattingOptions);
 
   /**
    * Changes that may be removed during the sequential formatting process.
    */
   const patches: SubstitutePatch[] = [];
 
-  plugins.forEach((plugin) => {
-    const temporaryFormattedText = format(sequentiallyMergedText, {
+  const sequentiallyMergedText = plugins.reduce((formattedPrevText, plugin) => {
+    const temporaryFormattedText = format(formattedPrevText, {
       ...sequentialFormattingOptions,
       plugins: [plugin],
     });
 
-    if (isFirst) {
-      sequentiallyMergedText = temporaryFormattedText;
-      isFirst = false;
-      return;
-    }
+    const temporaryFormattedTextWithoutPlugin = format(
+      temporaryFormattedText,
+      sequentialFormattingOptions,
+    );
 
-    const pluginParser = plugin.parsers?.[parserName];
-    const pluginAstFormat = pluginParser?.astFormat;
-    const defaultPluginPrinter =
-      defaultPlugin.printers?.[defaultPlugin.parsers?.[parserName].astFormat ?? ''];
-
-    const temporaryFormattedTextWithoutPrinter =
-      pluginAstFormat && defaultPluginPrinter
-        ? format(temporaryFormattedText, {
-            ...sequentialFormattingOptions,
-            plugins: [
-              {
-                ...plugin,
-                printers: {
-                  ...plugin.printers,
-                  [pluginAstFormat]: defaultPluginPrinter,
-                },
-              },
-            ],
-          })
-        : temporaryFormattedText;
-
-    patches.push(...makePatches(temporaryFormattedTextWithoutPrinter, temporaryFormattedText));
+    patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
 
     if (patches.length === 0) {
-      sequentiallyMergedText = temporaryFormattedText;
-      return;
+      return temporaryFormattedText;
     }
 
-    sequentiallyMergedText = applyPatches(temporaryFormattedTextWithoutPrinter, patches);
-  });
+    return applyPatches(temporaryFormattedTextWithoutPlugin, patches);
+  }, firstFormattedText);
 
   return sequentiallyMergedText;
 }
@@ -77,14 +49,6 @@ function createPrinter(): Printer {
     print: (path: AstPath) => Doc,
   ): Doc {
     const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
-    const defaultPluginCandidate = plugins.find(
-      (plugin) => typeof options.parser === 'string' && plugin.parsers?.[options.parser],
-    );
-
-    if (!defaultPluginCandidate) {
-      throw new Error('A default plugin with the detected parser does not exist.');
-    }
-
     const parserName = options.parser as string;
     const node = path.getValue();
 
@@ -114,11 +78,7 @@ function createPrinter(): Printer {
       .slice(0, pluginIndex)
       .filter((plugin) => plugin.parsers?.[parserName]);
 
-    return sequentialFormattingAndTryMerging(
-      options,
-      parserImplementedPlugins,
-      defaultPluginCandidate,
-    );
+    return sequentialFormattingAndTryMerging(options, parserImplementedPlugins);
   }
 
   return {
