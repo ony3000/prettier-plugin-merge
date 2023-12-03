@@ -1,4 +1,5 @@
-import * as Diff from 'diff';
+import type { SubstitutePatch } from 'core-parts';
+import { makePatches, applyPatches } from 'core-parts';
 import type { AstPath, ParserOptions, Doc, Printer, Plugin, Options } from 'prettier';
 import { format, resolveConfig, getFileInfo } from 'prettier';
 import {
@@ -8,16 +9,6 @@ import {
   MessageChannel,
   Worker,
 } from 'worker_threads';
-
-enum PairingMode {
-  EVEN = 'even',
-  ODD = 'odd',
-}
-
-type SubstitutePatch = {
-  from: string;
-  to: string;
-};
 
 function sequentialFormattingAndTryMerging(options: ParserOptions, plugins: Plugin[]): string {
   const { originalText, filepath } = options;
@@ -59,6 +50,7 @@ if (!isMainThread && parentPort) {
         Object.entries(resolvedConfig ?? {}).filter(([key]) => key !== 'plugins'),
       ),
       rangeEnd: Infinity,
+      plugins: [],
     };
     const pluginNames = ((resolvedConfig?.plugins ?? []) as string[]).filter((pluginName) =>
       configBasedPluginNames.includes(pluginName),
@@ -87,45 +79,18 @@ if (!isMainThread && parentPort) {
             plugins: [pluginName],
           });
 
-          const temporaryFormattedTextWithoutPrinter = await format(temporaryFormattedText, {
-            ...sequentialFormattingOptions,
-            plugins: [],
-          });
+          const temporaryFormattedTextWithoutPlugin = await format(
+            temporaryFormattedText,
+            sequentialFormattingOptions,
+          );
 
-          if (temporaryFormattedTextWithoutPrinter !== temporaryFormattedText) {
-            let temporaryText = '';
-            let mode: PairingMode = PairingMode.EVEN;
-
-            Diff.diffLines(temporaryFormattedTextWithoutPrinter, temporaryFormattedText)
-              .filter((change) => 'added' in change && 'removed' in change)
-              .forEach((change) => {
-                if (!change.added && change.removed) {
-                  if (mode === PairingMode.EVEN) {
-                    temporaryText = change.value;
-                    mode = PairingMode.ODD;
-                  } else {
-                    patches.push({ from: temporaryText, to: '' });
-                    temporaryText = change.value;
-                  }
-                } else if (change.added && !change.removed) {
-                  if (mode === PairingMode.EVEN) {
-                    patches.push({ from: '', to: change.value });
-                  } else {
-                    patches.push({ from: temporaryText, to: change.value });
-                    mode = PairingMode.EVEN;
-                  }
-                }
-              });
-          }
+          patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
 
           if (patches.length === 0) {
             return temporaryFormattedText;
           }
 
-          return patches.reduce(
-            (patchedPrevText, { from, to }) => patchedPrevText.replace(from, to),
-            temporaryFormattedTextWithoutPrinter,
-          );
+          return applyPatches(temporaryFormattedTextWithoutPlugin, patches);
         },
         Promise.resolve(firstFormattedText),
       );
@@ -157,14 +122,6 @@ function createPrinter(): Printer {
     print: (path: AstPath) => Doc,
   ): Doc {
     const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
-    const defaultPluginCandidate = plugins.find(
-      (plugin) => typeof options.parser === 'string' && plugin.parsers?.[options.parser],
-    );
-
-    if (!defaultPluginCandidate) {
-      throw new Error('A default plugin with the detected parser does not exist.');
-    }
-
     const parserName = options.parser as string;
     // @ts-ignore
     const comments = options[Symbol.for('comments')];

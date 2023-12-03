@@ -45,30 +45,35 @@ importers:
       rimraf: 5.0.1
       typescript: 4.9.5
 
-  src/packages/v2-plugin:
+  src/packages/core-parts:
     specifiers:
       '@types/diff': 5.0.3
-      '@types/prettier': 2.7.3
       diff: 5.1.0
-      prettier: 2.8.4
     dependencies:
       diff: 5.1.0
-      prettier: 2.8.4
     devDependencies:
       '@types/diff': 5.0.3
+
+  src/packages/v2-plugin:
+    specifiers:
+      '@types/prettier': 2.7.3
+      core-parts: workspace:*
+      prettier: 2.8.4
+    dependencies:
+      core-parts: link:../core-parts
+      prettier: 2.8.4
+    devDependencies:
       '@types/prettier': 2.7.3
 
   src/packages/v3-plugin:
     specifiers:
-      '@types/diff': 5.0.3
       '@types/node': 20.2.5
-      diff: 5.1.0
+      core-parts: workspace:*
       prettier: 3.0.3
     dependencies:
-      diff: 5.1.0
+      core-parts: link:../core-parts
       prettier: 3.0.3
     devDependencies:
-      '@types/diff': 5.0.3
       '@types/node': 20.2.5
 
 packages:
