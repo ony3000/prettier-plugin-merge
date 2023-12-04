@@ -1,117 +1,78 @@
+import { format as formatSync } from '@prettier/sync';
 import type { SubstitutePatch } from 'core-parts';
 import { makePatches, applyPatches } from 'core-parts';
 import type { AstPath, ParserOptions, Doc, Printer, Plugin, Options } from 'prettier';
-import { format, resolveConfig, getFileInfo } from 'prettier';
-import {
-  isMainThread,
-  parentPort,
-  receiveMessageOnPort,
-  MessageChannel,
-  Worker,
-} from 'worker_threads';
 
 function sequentialFormattingAndTryMerging(options: ParserOptions, plugins: Plugin[]): string {
-  const { originalText, filepath } = options;
-  // @ts-ignore
-  const configBasedPluginNames = plugins.map((plugin) => plugin.name).filter(Boolean);
+  const { originalText } = options;
+  const cloneableOptions: Options = {
+    ...Object.fromEntries(
+      (
+        [
+          'printWidth',
+          'tabWidth',
+          'useTabs',
+          'semi',
+          'singleQuote',
+          'jsxSingleQuote',
+          'trailingComma',
+          'bracketSpacing',
+          'bracketSameLine',
+          'jsxBracketSameLine',
+          'rangeStart',
+          'rangeEnd',
+          'parser',
+          'requirePragma',
+          'insertPragma',
+          'proseWrap',
+          'arrowParens',
+          'htmlWhitespaceSensitivity',
+          'endOfLine',
+          'quoteProps',
+          'vueIndentScriptAndStyle',
+          'embeddedLanguageFormatting',
+          'singleAttributePerLine',
+        ] as const
+      ).map((key) => [key, options[key]]),
+    ),
+    plugins: [],
+  };
 
-  const signal = new Int32Array(new SharedArrayBuffer(4));
-  const { port1: mainPort, port2: workerPort } = new MessageChannel();
+  const firstFormattedText = formatSync(originalText, cloneableOptions);
 
-  const worker = new Worker(__filename);
-  worker.unref();
+  /**
+   * Changes that may be removed during the sequential formatting process.
+   */
+  const patches: SubstitutePatch[] = [];
 
-  worker.postMessage(
-    { signal, port: workerPort, payload: { originalText, filepath, configBasedPluginNames } },
-    [workerPort],
-  );
-  Atomics.wait(signal, 0, 0, 3000);
+  const sequentiallyMergedText = plugins.reduce((formattedPrevText, plugin) => {
+    // @ts-ignore
+    const pluginName: string | undefined = plugin.name;
 
-  const response = receiveMessageOnPort(mainPort);
+    if (!pluginName) {
+      return formattedPrevText;
+    }
 
-  if (response === undefined) {
-    throw new Error('No response from worker.');
-  }
-  if (response.message.error) {
-    throw new Error(response.message.error);
-  }
+    const temporaryFormattedText = formatSync(formattedPrevText, {
+      ...cloneableOptions,
+      plugins: [pluginName],
+    });
 
-  return response.message.result;
-}
-
-if (!isMainThread && parentPort) {
-  parentPort.addListener('message', async ({ signal, port, payload }) => {
-    const response: { result?: string; error?: unknown } = {};
-    const { originalText, filepath, configBasedPluginNames } = payload;
-
-    const resolvedConfig = await resolveConfig(filepath);
-    const sequentialFormattingOptions: Options = {
-      ...Object.fromEntries(
-        Object.entries(resolvedConfig ?? {}).filter(([key]) => key !== 'plugins'),
-      ),
-      rangeEnd: Infinity,
-      plugins: [],
-    };
-    const pluginNames = ((resolvedConfig?.plugins ?? []) as string[]).filter((pluginName) =>
-      configBasedPluginNames.includes(pluginName),
+    const temporaryFormattedTextWithoutPlugin = formatSync(
+      temporaryFormattedText,
+      cloneableOptions,
     );
 
-    const fileInfo = await getFileInfo(filepath);
-    const parserName = fileInfo.inferredParser;
+    patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
 
-    if (parserName) {
-      sequentialFormattingOptions.parser = parserName;
+    if (patches.length === 0) {
+      return temporaryFormattedText;
     }
 
-    try {
-      const firstFormattedText = await format(originalText, sequentialFormattingOptions);
+    return applyPatches(temporaryFormattedTextWithoutPlugin, patches);
+  }, firstFormattedText);
 
-      /**
-       * Changes that may be removed during the sequential formatting process.
-       */
-      const patches: SubstitutePatch[] = [];
-
-      const sequentiallyMergedText = await pluginNames.reduce<Promise<string>>(
-        async (promise, pluginName) => {
-          const formattedPrevText = await promise;
-          const temporaryFormattedText = await format(formattedPrevText, {
-            ...sequentialFormattingOptions,
-            plugins: [pluginName],
-          });
-
-          const temporaryFormattedTextWithoutPlugin = await format(
-            temporaryFormattedText,
-            sequentialFormattingOptions,
-          );
-
-          patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
-
-          if (patches.length === 0) {
-            return temporaryFormattedText;
-          }
-
-          return applyPatches(temporaryFormattedTextWithoutPlugin, patches);
-        },
-        Promise.resolve(firstFormattedText),
-      );
-
-      response.result = sequentiallyMergedText;
-    } catch (error) {
-      response.error = error;
-    }
-
-    try {
-      port.postMessage(response);
-    } catch (error) {
-      port.postMessage({
-        error: new Error("The worker's response could not be serialized."),
-      });
-    } finally {
-      port.close();
-      Atomics.store(signal, 0, 1);
-      Atomics.notify(signal, 0);
-    }
-  });
+  return sequentiallyMergedText
 }
 
 function createPrinter(): Printer {

@@ -68,15 +68,12 @@ importers:
   src/packages/v3-plugin:
     specifiers:
       '@prettier/sync': 0.3.0
-      '@types/node': 20.2.5
       core-parts: workspace:*
       prettier: 3.0.3
     dependencies:
       '@prettier/sync': 0.3.0_prettier@3.0.3
       core-parts: link:../core-parts
       prettier: 3.0.3
-    devDependencies:
-      '@types/node': 20.2.5
 
 packages:
 
