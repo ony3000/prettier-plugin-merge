@@ -41,6 +41,34 @@ importers:
       turbo: 1.10.14
       typescript: 4.9.5
 
+  tests/performance-test:
+    specifiers:
+      '@prettier/sync': 0.3.0
+      '@trivago/prettier-plugin-sort-imports': 4.2.0
+      jest: 29.5.0
+      ppm-031: npm:prettier-plugin-merge@0.3.1
+      ppm-current: file:./prettier-plugin-merge-0.3.1.tgz
+      prettier: 3.0.3
+      prettier-config: workspace:*
+      prettier-plugin-brace-style: 0.3.1
+      prettier-plugin-classnames: 0.3.1
+      prettier-plugin-tailwindcss: 0.4.1
+      ts-jest: 29.1.0
+      typescript: 4.9.5
+    devDependencies:
+      '@prettier/sync': 0.3.0_prettier@3.0.3
+      '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@3.0.3
+      jest: 29.5.0
+      ppm-031: /prettier-plugin-merge/0.3.1_prettier@3.0.3
+      ppm-current: file:tests/performance-test/prettier-plugin-merge-0.3.1.tgz_prettier@3.0.3
+      prettier: 3.0.3
+      prettier-config: link:../prettier-config
+      prettier-plugin-brace-style: 0.3.1_oeltfpcujneonilznjtouhichi
+      prettier-plugin-classnames: 0.3.1_oeltfpcujneonilznjtouhichi
+      prettier-plugin-tailwindcss: 0.4.1_xpfwxcyzcsz3w5wn2imjtkkk7q
+      ts-jest: 29.1.0_doipufordlnvh5g4adbwayvyvy
+      typescript: 4.9.5
+
   tests/prettier-config:
     specifiers: {}
 
@@ -1630,7 +1658,6 @@ packages:
   /diff/5.1.0:
     resolution: {integrity: sha512-D+mk+qE8VC/PAUrlAU34N+VfXev0ghe5ywmpqrawphmVZc1bEfn56uo9qpyGp1p4xpzOHkSW4ztBd6L7Xx4ACw==}
     engines: {node: '>=0.3.1'}
-    dev: false
 
   /dir-glob/3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -3551,6 +3578,20 @@ packages:
       prettier: 3.0.3
     dev: true
 
+  /prettier-plugin-classnames/0.3.1_oeltfpcujneonilznjtouhichi:
+    resolution: {integrity: sha512-iWhDF8WI3LNEdCpdS2ekP0GAP8YNZYf1wtMHPsS56sKbSxbXh+zvtZpKRLAJmKn/kucTOjKYEJEPvZbFYAmPHQ==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      '@prettier/sync': ^0.3.0
+      prettier: ^2 || ^3
+    peerDependenciesMeta:
+      '@prettier/sync':
+        optional: true
+    dependencies:
+      '@prettier/sync': 0.3.0_prettier@3.0.3
+      prettier: 3.0.3
+    dev: true
+
   /prettier-plugin-merge/0.3.1_prettier@3.0.3:
     resolution: {integrity: sha512-EespdeZjdjFPtEAJd48IgcuKBA6EHb27Ms2EpwMbF2PwDqJgSPXO5cOrEJnlzxrBLqsmBiThjT9TrjVqVW/C/g==}
     peerDependencies:
@@ -3558,7 +3599,6 @@ packages:
     dependencies:
       diff: 5.1.0
       prettier: 3.0.3
-    dev: false
 
   /prettier-plugin-tailwindcss/0.4.1_prettier@3.0.3:
     resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
@@ -3612,6 +3652,62 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
+      prettier: 3.0.3
+    dev: true
+
+  /prettier-plugin-tailwindcss/0.4.1_xpfwxcyzcsz3w5wn2imjtkkk7q:
+    resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
+    engines: {node: '>=12.17.0'}
+    peerDependencies:
+      '@ianvs/prettier-plugin-sort-imports': '*'
+      '@prettier/plugin-pug': '*'
+      '@shopify/prettier-plugin-liquid': '*'
+      '@shufo/prettier-plugin-blade': '*'
+      '@trivago/prettier-plugin-sort-imports': '*'
+      prettier: ^2.2 || ^3.0
+      prettier-plugin-astro: '*'
+      prettier-plugin-css-order: '*'
+      prettier-plugin-import-sort: '*'
+      prettier-plugin-jsdoc: '*'
+      prettier-plugin-marko: '*'
+      prettier-plugin-organize-attributes: '*'
+      prettier-plugin-organize-imports: '*'
+      prettier-plugin-style-order: '*'
+      prettier-plugin-svelte: '*'
+      prettier-plugin-twig-melody: '*'
+    peerDependenciesMeta:
+      '@ianvs/prettier-plugin-sort-imports':
+        optional: true
+      '@prettier/plugin-pug':
+        optional: true
+      '@shopify/prettier-plugin-liquid':
+        optional: true
+      '@shufo/prettier-plugin-blade':
+        optional: true
+      '@trivago/prettier-plugin-sort-imports':
+        optional: true
+      prettier-plugin-astro:
+        optional: true
+      prettier-plugin-css-order:
+        optional: true
+      prettier-plugin-import-sort:
+        optional: true
+      prettier-plugin-jsdoc:
+        optional: true
+      prettier-plugin-marko:
+        optional: true
+      prettier-plugin-organize-attributes:
+        optional: true
+      prettier-plugin-organize-imports:
+        optional: true
+      prettier-plugin-style-order:
+        optional: true
+      prettier-plugin-svelte:
+        optional: true
+      prettier-plugin-twig-melody:
+        optional: true
+    dependencies:
+      '@trivago/prettier-plugin-sort-imports': 4.2.0_prettier@3.0.3
       prettier: 3.0.3
     dev: true
 
@@ -4352,4 +4448,16 @@ packages:
   /yocto-queue/0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  file:tests/performance-test/prettier-plugin-merge-0.3.1.tgz_prettier@3.0.3:
+    resolution: {integrity: sha512-EespdeZjdjFPtEAJd48IgcuKBA6EHb27Ms2EpwMbF2PwDqJgSPXO5cOrEJnlzxrBLqsmBiThjT9TrjVqVW/C/g==, tarball: file:tests/performance-test/prettier-plugin-merge-0.3.1.tgz}
+    id: file:tests/performance-test/prettier-plugin-merge-0.3.1.tgz
+    name: prettier-plugin-merge
+    version: 0.3.1
+    peerDependencies:
+      prettier: ^2 || ^3
+    dependencies:
+      diff: 5.1.0
+      prettier: 3.0.3
     dev: true
