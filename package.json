@@ -24,7 +24,7 @@
     "clean:bundle": "rimraf dist/",
     "dev": "pnpm run clean:bundle && esbuild src/index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch",
     "lint": "eslint src",
-    "merge-deps": "rimraf package.merged.json && merge-packages ./ src/packages/v2-plugin/ src/packages/v3-plugin/",
+    "merge-deps": "rimraf package.merged.json && merge-packages ./ src/packages/core-parts/ src/packages/v2-plugin/ src/packages/v3-plugin/",
     "prepare-release": "pnpm run build:plain && npm version prerelease --preid=alpha --git-tag-version=false && pnpm run merge-deps && npm pack"
   },
   "dependencies": {
