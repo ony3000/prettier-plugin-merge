@@ -10,7 +10,7 @@
     "format:write": "turbo run format:write --no-daemon",
     "lint": "eslint tests",
     "test:perf": "turbo run test --no-daemon --filter=performance-test",
-    "test": "turbo run test --no-daemon --filter=!performance-test --filter=./tests/v3-* --filter=!./tests/v3-loop"
+    "test": "turbo run test --no-daemon --filter=!performance-test"
   },
   "dependencies": {
     "prettier-plugin-merge": "0.3.1"
