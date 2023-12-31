@@ -13,7 +13,7 @@
     "test": "turbo run test --no-daemon --filter=!performance-test"
   },
   "dependencies": {
-    "prettier-plugin-merge": "0.3.1"
+    "prettier-plugin-merge": "0.4.0"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "4.2.0",

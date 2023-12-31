@@ -5,8 +5,8 @@ importers:
   .:
     dependencies:
       prettier-plugin-merge:
-        specifier: 0.3.1
-        version: 0.3.1(prettier@3.0.3)
+        specifier: 0.4.0
+        version: 0.4.0(prettier@3.0.3)
     devDependencies:
       '@trivago/prettier-plugin-sort-imports':
         specifier: 4.2.0
@@ -3591,6 +3591,17 @@ packages:
     dependencies:
       diff: 5.1.0
       prettier: 3.0.3
+    dev: true
+
+  /prettier-plugin-merge@0.4.0(prettier@3.0.3):
+    resolution: {integrity: sha512-d3FWk1kR4DLLPRPWr6Dk9zNtFAHJDtan65YBS8JWZ/R0eMb56UQnPPzexrgomgOT8LZmqy9TX6iyqgrz02rx1A==}
+    engines: {node: '>=14'}
+    peerDependencies:
+      prettier: ^2 || ^3
+    dependencies:
+      diff: 5.1.0
+      prettier: 3.0.3
+    dev: false
 
   /prettier-plugin-tailwindcss@0.4.1(@trivago/prettier-plugin-sort-imports@4.2.0)(prettier@3.0.3):
     resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
