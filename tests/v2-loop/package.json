@@ -9,6 +9,9 @@
     "format:write": "prettier --write .",
     "test": "jest --ci --passWithNoTests"
   },
+  "dependencies": {
+    "prettier-plugin-merge": "link:../../node_modules/prettier-plugin-merge"
+  },
   "devDependencies": {
     "jest": "29.5.0",
     "prettier": "2.8.4",

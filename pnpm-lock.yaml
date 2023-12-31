@@ -133,6 +133,10 @@ importers:
         version: 3.3.9(typescript@4.9.5)
 
   tests/v2-loop:
+    dependencies:
+      prettier-plugin-merge:
+        specifier: link:../../node_modules/prettier-plugin-merge
+        version: link:../../node_modules/prettier-plugin-merge
     devDependencies:
       jest:
         specifier: 29.5.0
