@@ -78,11 +78,11 @@ importers:
         specifier: workspace:*
         version: link:../prettier-config
       prettier-plugin-brace-style:
-        specifier: 0.4.0
-        version: 0.4.0(prettier@2.8.4)
+        specifier: 0.4.1
+        version: 0.4.1(prettier@2.8.4)
       prettier-plugin-classnames:
-        specifier: 0.3.1
-        version: 0.3.1(prettier@2.8.4)
+        specifier: 0.3.2
+        version: 0.3.2(prettier@2.8.4)
       prettier-plugin-tailwindcss:
         specifier: 0.4.1
         version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@2.8.4)
@@ -101,11 +101,11 @@ importers:
         specifier: 4.2.1
         version: 4.2.1(prettier@2.8.4)
       prettier-plugin-brace-style:
-        specifier: 0.4.0
-        version: 0.4.0(prettier@2.8.4)
+        specifier: 0.4.1
+        version: 0.4.1(prettier@2.8.4)
       prettier-plugin-classnames:
-        specifier: 0.3.1
-        version: 0.3.1(prettier@2.8.4)
+        specifier: 0.3.2
+        version: 0.3.2(prettier@2.8.4)
       prettier-plugin-merge:
         specifier: link:../../node_modules/prettier-plugin-merge
         version: link:../../node_modules/prettier-plugin-merge
@@ -166,8 +166,8 @@ importers:
         specifier: workspace:*
         version: link:../prettier-config
       prettier-plugin-brace-style:
-        specifier: 0.4.0
-        version: 0.4.0(prettier@2.8.4)
+        specifier: 0.4.1
+        version: 0.4.1(prettier@2.8.4)
       prettier-plugin-tailwindcss:
         specifier: 0.4.1
         version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@2.8.4)
@@ -190,8 +190,8 @@ importers:
         specifier: workspace:*
         version: link:../prettier-config
       prettier-plugin-brace-style:
-        specifier: 0.4.0
-        version: 0.4.0(prettier@2.8.4)
+        specifier: 0.4.1
+        version: 0.4.1(prettier@2.8.4)
       prettier-plugin-tailwindcss:
         specifier: 0.3.0
         version: 0.3.0(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@2.8.4)
@@ -3660,8 +3660,8 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
-  /prettier-plugin-brace-style@0.4.0(prettier@2.8.4):
-    resolution: {integrity: sha512-DLiRBFypfCgkqVWLw/5fbigOJ8CCJ3iJKmjba9F1fBgrRcBbPn2vo3sQHjkUmKoHH4tcR3qjJViZrwkzaiPzqg==}
+  /prettier-plugin-brace-style@0.4.1(prettier@2.8.4):
+    resolution: {integrity: sha512-doNEvpNdedtKlYPSfhxNI6L7ylRFKH0Uj+bB+IDkSZi3+kkHYy9wfd/caWNpbFQI9vJ5Mte7Favzjj3mIm2j3Q==}
     engines: {node: '>=14'}
     peerDependencies:
       '@prettier/sync': ^0.3.0
@@ -3672,8 +3672,8 @@ packages:
     dependencies:
       prettier: 2.8.4
 
-  /prettier-plugin-classnames@0.3.1(prettier@2.8.4):
-    resolution: {integrity: sha512-iWhDF8WI3LNEdCpdS2ekP0GAP8YNZYf1wtMHPsS56sKbSxbXh+zvtZpKRLAJmKn/kucTOjKYEJEPvZbFYAmPHQ==}
+  /prettier-plugin-classnames@0.3.2(prettier@2.8.4):
+    resolution: {integrity: sha512-IZos7NZbdozAjbWlGkcLQW/XReg/9z4ol1I0F2RFzXS8Gr88agJRUULTjttDpFC9ySDttfjnBk0HX8h5FTMPSA==}
     engines: {node: '>=14'}
     peerDependencies:
       '@prettier/sync': ^0.3.0
