@@ -1,9 +1,11 @@
 import { execSync } from "child_process";
 import { resolve, sep } from "path";
+import type { TestAPI } from 'vitest';
+import { describe, expect, test } from 'vitest';
 
 const entryPoints = ["babel/Callout.jsx", "typescript/Callout.tsx"];
 
-function testIf(condition: boolean, ...args: Parameters<jest.It>) {
+function testIf(condition: boolean, ...args: Parameters<TestAPI>) {
   return condition ? test(...args) : test.skip(...args);
 }
 

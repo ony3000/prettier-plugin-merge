@@ -1,4 +1,5 @@
 import { format } from "prettier";
+import { describe, expect, test } from 'vitest';
 // @ts-ignore
 import decoratedMergePlugin from "./adaptors/prettier-plugin-decorated";
 // @ts-ignore
@@ -17,8 +18,11 @@ for (const parser of parserNames) {
         parser: "babel",
         plugins: [decoratedMergePlugin, incompleteMergePlugin],
       });
-      // @ts-ignore
-      expect(globalThis.callCount).toBe(1);
+
+      expect(
+        // @ts-ignore
+        globalThis.callCount
+      ).toBe(1);
     });
   });
 }
