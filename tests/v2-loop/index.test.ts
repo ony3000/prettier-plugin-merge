@@ -1,5 +1,5 @@
 import { format } from "prettier";
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 // @ts-ignore
 import decoratedMergePlugin from "./adaptors/prettier-plugin-decorated";
 // @ts-ignore
@@ -21,7 +21,7 @@ for (const parser of parserNames) {
 
       expect(
         // @ts-ignore
-        globalThis.callCount
+        globalThis.callCount,
       ).toBe(1);
     });
   });

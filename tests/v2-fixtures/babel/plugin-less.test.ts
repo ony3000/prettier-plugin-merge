@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
 import { format, mergePlugin, baseOptions } from "../settings";
 

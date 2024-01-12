@@ -1,4 +1,4 @@
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 import { execSync } from "child_process";
 import { resolve, sep } from "path";
 
