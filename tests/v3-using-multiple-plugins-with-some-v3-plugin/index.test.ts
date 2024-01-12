@@ -1,6 +1,6 @@
 import { execSync } from "child_process";
 import { resolve, sep } from "path";
-import { describe, expect, test } from 'vitest';
+import { describe, expect, test } from "vitest";
 
 const entryPoints = [
   "babel/Counter.jsx",

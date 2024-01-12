@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { resolve, sep } from "path";
-import type { TestAPI } from 'vitest';
-import { describe, expect, test } from 'vitest';
+import type { TestAPI } from "vitest";
+import { describe, expect, test } from "vitest";
 
 const entryPoints = ["babel/Callout.jsx", "typescript/Callout.tsx"];
 
