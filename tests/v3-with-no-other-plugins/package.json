@@ -8,13 +8,12 @@
   "scripts": {
     "format:check": "prettier --check .",
     "format:write": "prettier --write .",
-    "test": "jest --ci --passWithNoTests"
+    "test": "vitest run --passWithNoTests"
   },
   "devDependencies": {
-    "jest": "29.5.0",
     "prettier": "3.0.3",
     "prettier-config": "workspace:*",
-    "ts-jest": "29.1.0",
-    "typescript": "4.9.5"
+    "typescript": "4.9.5",
+    "vitest": "1.1.3"
   }
 }
