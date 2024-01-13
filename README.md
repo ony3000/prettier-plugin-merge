@@ -61,7 +61,7 @@ export default {
 };
 ```
 
-## Limitation
+## Compatibility with other Prettier plugins
 
 All other plugins used with this plugin must be compatible with your version of Prettier.
 
