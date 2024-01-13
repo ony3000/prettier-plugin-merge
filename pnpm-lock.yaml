@@ -94,10 +94,6 @@ importers:
       prettier:
         specifier: 3.0.3
         version: 3.0.3
-    devDependencies:
-      '@types/node':
-        specifier: 20.2.5
-        version: 20.2.5
 
 packages:
 

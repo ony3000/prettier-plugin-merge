@@ -7,8 +7,5 @@
   "dependencies": {
     "core-parts": "workspace:*",
     "prettier": "3.0.3"
-  },
-  "devDependencies": {
-    "@types/node": "20.2.5"
   }
 }
