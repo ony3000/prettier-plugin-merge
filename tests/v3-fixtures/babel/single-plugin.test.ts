@@ -920,6 +920,24 @@ module.exports = nextConfig;
       plugins: [tailwindcssPlugin, mergePlugin],
     },
   },
+  {
+    name: "issue #15",
+    input: `
+export function Counter() {
+  return <span className="font-bold px-1">{count}</span>;
+}
+`,
+    output: `export function Counter() {
+  return <span className="px-1 font-bold">{count}</span>;
+}
+`,
+    options: {
+      plugins: [
+        require.resolve("prettier-plugin-tailwindcss"),
+        require.resolve("prettier-plugin-merge"),
+      ],
+    },
+  },
 ];
 
 describe("babel/single-plugin", () => {
