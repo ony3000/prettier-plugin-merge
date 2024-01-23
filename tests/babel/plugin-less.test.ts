@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
-import { format, mergePlugin, baseOptions } from "../settings";
+import { format, baseOptions } from "../settings";
 
 const options = {
   ...baseOptions,
@@ -103,7 +103,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
 }
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
   {
@@ -209,7 +209,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
   {
@@ -251,7 +251,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
   {
@@ -297,7 +297,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
 ];

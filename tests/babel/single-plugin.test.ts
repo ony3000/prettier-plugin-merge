@@ -2,10 +2,6 @@ import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
 import {
   format,
-  mergePlugin,
-  sortImportsPlugin,
-  braceStylePlugin,
-  tailwindcssPlugin,
   baseOptions,
 } from "../settings";
 
@@ -70,7 +66,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
 }
 `,
     options: {
-      plugins: [sortImportsPlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports'],
       ...sortImportsPluginOptions,
     },
   },
@@ -122,7 +118,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
 }
 `,
     options: {
-      plugins: [sortImportsPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -174,7 +170,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
 }
 `,
     options: {
-      plugins: [braceStylePlugin],
+      plugins: ['prettier-plugin-brace-style'],
       ...braceStylePluginOptions,
     },
   },
@@ -226,7 +222,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
 }
 `,
     options: {
-      plugins: [braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -276,7 +272,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
 }
 `,
     options: {
-      plugins: [tailwindcssPlugin],
+      plugins: ['prettier-plugin-tailwindcss'],
     },
   },
   {
@@ -325,7 +321,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
 }
 `,
     options: {
-      plugins: [tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
     },
   },
   {
@@ -378,7 +374,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [sortImportsPlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports'],
       ...sortImportsPluginOptions,
     },
   },
@@ -432,7 +428,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [sortImportsPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -486,7 +482,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [braceStylePlugin],
+      plugins: ['prettier-plugin-brace-style'],
       ...braceStylePluginOptions,
     },
   },
@@ -540,7 +536,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -594,7 +590,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [tailwindcssPlugin],
+      plugins: ['prettier-plugin-tailwindcss'],
     },
   },
   {
@@ -647,7 +643,7 @@ const customJestConfig = {
 module.exports = createJestConfig(customJestConfig);
 `,
     options: {
-      plugins: [tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
     },
   },
   {
@@ -667,7 +663,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [sortImportsPlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports'],
       ...sortImportsPluginOptions,
     },
   },
@@ -688,7 +684,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [sortImportsPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -710,7 +706,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [braceStylePlugin],
+      plugins: ['prettier-plugin-brace-style'],
       ...braceStylePluginOptions,
     },
   },
@@ -732,7 +728,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -754,7 +750,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [tailwindcssPlugin],
+      plugins: ['prettier-plugin-tailwindcss'],
     },
   },
   {
@@ -775,7 +771,7 @@ import '@testing-library/jest-dom/extend-expect';
 import "@testing-library/jest-dom/extend-expect";
 `,
     options: {
-      plugins: [tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
     },
   },
   {
@@ -798,7 +794,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [sortImportsPlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports'],
       ...sortImportsPluginOptions,
     },
   },
@@ -822,7 +818,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [sortImportsPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -846,7 +842,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [braceStylePlugin],
+      plugins: ['prettier-plugin-brace-style'],
       ...braceStylePluginOptions,
     },
   },
@@ -870,7 +866,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -894,7 +890,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [tailwindcssPlugin],
+      plugins: ['prettier-plugin-tailwindcss'],
     },
   },
   {
@@ -917,7 +913,7 @@ const nextConfig = {
 module.exports = nextConfig;
 `,
     options: {
-      plugins: [tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
     },
   },
 ];

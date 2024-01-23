@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
-import { format, mergePlugin, baseOptions } from "../settings";
+import { format, baseOptions } from "../settings";
 
 const options = {
   ...baseOptions,
@@ -129,7 +129,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
   {
@@ -167,7 +167,7 @@ export default function Counter({
 // see https://nextjs.org/docs/basic-features/typescript for more information.
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
   {
@@ -231,7 +231,7 @@ export default function handler(
 }
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
 ];
