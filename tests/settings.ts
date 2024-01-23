@@ -1,4 +1,4 @@
-import type { Options } from "prettier";
+import type { Options } from 'prettier';
 
 export type Fixture = {
   name: string;
@@ -7,7 +7,7 @@ export type Fixture = {
   options?: Options;
 };
 
-export { format } from "prettier";
+export { format } from 'prettier';
 
 export const baseOptions: Options = {
   printWidth: 80,

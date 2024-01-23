@@ -1,15 +1,16 @@
-import { describe, expect, test } from "vitest";
-import type { Fixture } from "../settings";
-import { format, baseOptions } from "../settings";
+import { describe, expect, test } from 'vitest';
+
+import type { Fixture } from '../settings';
+import { format, baseOptions } from '../settings';
 
 const options = {
   ...baseOptions,
-  parser: "vue",
+  parser: 'vue',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: "counter component #1 (no plugin)",
+    name: 'counter component #1 (no plugin)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -69,7 +70,7 @@ const count = ref(0);
     },
   },
   {
-    name: "counter component #2 (merge plugin alone has no effect)",
+    name: 'counter component #2 (merge plugin alone has no effect)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -130,7 +131,7 @@ const count = ref(0);
   },
 ];
 
-describe("vue/plugin-less", () => {
+describe('vue/plugin-less', () => {
   for (const fixture of fixtures) {
     test(fixture.name, () => {
       expect(

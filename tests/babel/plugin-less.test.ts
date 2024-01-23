@@ -1,15 +1,16 @@
-import { describe, expect, test } from "vitest";
-import type { Fixture } from "../settings";
-import { format, baseOptions } from "../settings";
+import { describe, expect, test } from 'vitest';
+
+import type { Fixture } from '../settings';
+import { format, baseOptions } from '../settings';
 
 const options = {
   ...baseOptions,
-  parser: "babel",
+  parser: 'babel',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: "counter component #1 (no plugin)",
+    name: 'counter component #1 (no plugin)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -58,7 +59,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: "counter component #2 (merge plugin alone has no effect)",
+    name: 'counter component #2 (merge plugin alone has no effect)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -107,7 +108,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: "jest.config.js #1 (no plugin)",
+    name: 'jest.config.js #1 (no plugin)',
     input: `
 const nextJest = require('next/jest');
 
@@ -160,7 +161,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: "jest.config.js #2 (merge plugin alone has no effect)",
+    name: 'jest.config.js #2 (merge plugin alone has no effect)',
     input: `
 const nextJest = require('next/jest');
 
@@ -213,7 +214,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: "jest.setup.js #1 (no plugin)",
+    name: 'jest.setup.js #1 (no plugin)',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -234,7 +235,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: "jest.setup.js #2 (merge plugin alone has no effect)",
+    name: 'jest.setup.js #2 (merge plugin alone has no effect)',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -255,7 +256,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: "next.config.js #1 (no plugin)",
+    name: 'next.config.js #1 (no plugin)',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -278,7 +279,7 @@ module.exports = nextConfig;
     },
   },
   {
-    name: "next.config.js #2 (merge plugin alone has no effect)",
+    name: 'next.config.js #2 (merge plugin alone has no effect)',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -302,7 +303,7 @@ module.exports = nextConfig;
   },
 ];
 
-describe("babel/plugin-less", () => {
+describe('babel/plugin-less', () => {
   for (const fixture of fixtures) {
     test(fixture.name, () => {
       expect(

@@ -1,25 +1,23 @@
-import { describe, expect, test } from "vitest";
-import type { Fixture } from "../settings";
-import {
-  format,
-  baseOptions,
-} from "../settings";
+import { describe, expect, test } from 'vitest';
+
+import type { Fixture } from '../settings';
+import { format, baseOptions } from '../settings';
 
 const sortImportsPluginOptions = {
-  importOrder: ["<THIRD_PARTY_MODULES>", "^@[^/]+/(.*)$", "^@/(.*)$", "^[./]"],
+  importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
 };
 const braceStylePluginOptions = {
-  braceStyle: "allman",
+  braceStyle: 'allman',
 };
 const options = {
   ...baseOptions,
-  parser: "typescript",
+  parser: 'typescript',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: "counter component #1 (standalone use without merge plugin)",
+    name: 'counter component #1 (standalone use without merge plugin)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -84,7 +82,7 @@ export default function Counter({
     },
   },
   {
-    name: "counter component #2 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'counter component #2 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -149,7 +147,7 @@ export default function Counter({
     },
   },
   {
-    name: "counter component #3 (standalone use without merge plugin)",
+    name: 'counter component #3 (standalone use without merge plugin)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -214,7 +212,7 @@ export default function Counter({
     },
   },
   {
-    name: "counter component #4 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'counter component #4 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -279,7 +277,7 @@ export default function Counter({
     },
   },
   {
-    name: "counter component #5 (standalone use without merge plugin)",
+    name: 'counter component #5 (standalone use without merge plugin)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -341,7 +339,7 @@ export default function Counter({
     },
   },
   {
-    name: "counter component #6 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'counter component #6 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -403,7 +401,7 @@ export default function Counter({
     },
   },
   {
-    name: "next-env.d.ts #1 (standalone use without merge plugin)",
+    name: 'next-env.d.ts #1 (standalone use without merge plugin)',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -423,7 +421,7 @@ export default function Counter({
     },
   },
   {
-    name: "next-env.d.ts #2 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'next-env.d.ts #2 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -443,7 +441,7 @@ export default function Counter({
     },
   },
   {
-    name: "next-env.d.ts #3 (standalone use without merge plugin)",
+    name: 'next-env.d.ts #3 (standalone use without merge plugin)',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -463,7 +461,7 @@ export default function Counter({
     },
   },
   {
-    name: "next-env.d.ts #4 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'next-env.d.ts #4 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -483,7 +481,7 @@ export default function Counter({
     },
   },
   {
-    name: "next-env.d.ts #5 (standalone use without merge plugin)",
+    name: 'next-env.d.ts #5 (standalone use without merge plugin)',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -502,7 +500,7 @@ export default function Counter({
     },
   },
   {
-    name: "next-env.d.ts #6 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'next-env.d.ts #6 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -521,7 +519,7 @@ export default function Counter({
     },
   },
   {
-    name: "Next.js API route #1 (standalone use without merge plugin)",
+    name: 'Next.js API route #1 (standalone use without merge plugin)',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -554,7 +552,7 @@ export default function handler(
     },
   },
   {
-    name: "Next.js API route #2 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'Next.js API route #2 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -587,7 +585,7 @@ export default function handler(
     },
   },
   {
-    name: "Next.js API route #3 (standalone use without merge plugin)",
+    name: 'Next.js API route #3 (standalone use without merge plugin)',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -621,7 +619,7 @@ export default function handler(
     },
   },
   {
-    name: "Next.js API route #4 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'Next.js API route #4 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -655,7 +653,7 @@ export default function handler(
     },
   },
   {
-    name: "Next.js API route #5 (standalone use without merge plugin)",
+    name: 'Next.js API route #5 (standalone use without merge plugin)',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -687,7 +685,7 @@ export default function handler(
     },
   },
   {
-    name: "Next.js API route #6 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'Next.js API route #6 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -720,7 +718,7 @@ export default function handler(
   },
 ];
 
-describe("typescript/single-plugin", () => {
+describe('typescript/single-plugin', () => {
   for (const fixture of fixtures) {
     test(fixture.name, () => {
       expect(
