@@ -1,25 +1,23 @@
-import { describe, expect, test } from "vitest";
-import type { Fixture } from "../settings";
-import {
-  format,
-  baseOptions,
-} from "../settings";
+import { describe, expect, test } from 'vitest';
+
+import type { Fixture } from '../settings';
+import { format, baseOptions } from '../settings';
 
 const sortImportsPluginOptions = {
-  importOrder: ["<THIRD_PARTY_MODULES>", "^@[^/]+/(.*)$", "^@/(.*)$", "^[./]"],
+  importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
 };
 const braceStylePluginOptions = {
-  braceStyle: "allman",
+  braceStyle: 'allman',
 };
 const options = {
   ...baseOptions,
-  parser: "typescript",
+  parser: 'typescript',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #1 (sort-imports -> tailwindcss)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #1 (sort-imports -> tailwindcss)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -79,12 +77,16 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
+      plugins: [
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-tailwindcss',
+        'prettier-plugin-merge',
+      ],
       ...sortImportsPluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #2 (tailwindcss -> sort-imports)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #2 (tailwindcss -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -144,12 +146,16 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: ['prettier-plugin-tailwindcss', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-tailwindcss',
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-merge',
+      ],
       ...sortImportsPluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #3 (sort-imports -> brace-style)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #3 (sort-imports -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -211,13 +217,17 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
+      plugins: [
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-brace-style',
+        'prettier-plugin-merge',
+      ],
       ...sortImportsPluginOptions,
       ...braceStylePluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #4 (brace-style -> sort-imports)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #4 (brace-style -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -279,78 +289,17 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: ['prettier-plugin-brace-style', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-brace-style',
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-merge',
+      ],
       ...braceStylePluginOptions,
       ...sortImportsPluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #5 (tailwindcss -> brace-style)",
-    input: `
-import { CounterButton } from './parts';
-import { CounterContainer } from '@/layouts';
-import { useState } from 'react';
-
-type CounterProps = {
-  label?: string;
-  onChange?: (newCount: number) => void;
-};
-
-export default function Counter({ label = 'Counter', onChange = undefined }: CounterProps) {
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () => {
-    setCount((prevCount) => prevCount + 1);
-    onChange?.(count + 1);
-  };
-
-  return (
-    <CounterContainer>
-      <span className="px-1">{label}</span>
-      <span className="font-bold px-1">{count}</span>
-      <CounterButton onClick={incrementHandler} />
-    </CounterContainer>
-  );
-}
-`,
-    output: `import { CounterButton } from "./parts";
-import { CounterContainer } from "@/layouts";
-import { useState } from "react";
-
-type CounterProps = {
-  label?: string;
-  onChange?: (newCount: number) => void;
-};
-
-export default function Counter({
-  label = "Counter",
-  onChange = undefined,
-}: CounterProps)
-{
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () =>
-  {
-    setCount((prevCount) => prevCount + 1);
-    onChange?.(count + 1);
-  };
-
-  return (
-    <CounterContainer>
-      <span className="px-1">{label}</span>
-      <span className="px-1 font-bold">{count}</span>
-      <CounterButton onClick={incrementHandler} />
-    </CounterContainer>
-  );
-}
-`,
-    options: {
-      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
-      ...braceStylePluginOptions,
-    },
-  },
-  {
-    name: "two plugins whose formatting regions are disjoint are commutative #6 (brace-style -> tailwindcss)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #5 (tailwindcss -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -410,12 +359,85 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-tailwindcss',
+        'prettier-plugin-brace-style',
+        'prettier-plugin-merge',
+      ],
       ...braceStylePluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #7 (sort-imports -> classnames)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #6 (brace-style -> tailwindcss)',
+    input: `
+import { CounterButton } from './parts';
+import { CounterContainer } from '@/layouts';
+import { useState } from 'react';
+
+type CounterProps = {
+  label?: string;
+  onChange?: (newCount: number) => void;
+};
+
+export default function Counter({ label = 'Counter', onChange = undefined }: CounterProps) {
+  const [count, setCount] = useState(0);
+
+  const incrementHandler = () => {
+    setCount((prevCount) => prevCount + 1);
+    onChange?.(count + 1);
+  };
+
+  return (
+    <CounterContainer>
+      <span className="px-1">{label}</span>
+      <span className="font-bold px-1">{count}</span>
+      <CounterButton onClick={incrementHandler} />
+    </CounterContainer>
+  );
+}
+`,
+    output: `import { CounterButton } from "./parts";
+import { CounterContainer } from "@/layouts";
+import { useState } from "react";
+
+type CounterProps = {
+  label?: string;
+  onChange?: (newCount: number) => void;
+};
+
+export default function Counter({
+  label = "Counter",
+  onChange = undefined,
+}: CounterProps)
+{
+  const [count, setCount] = useState(0);
+
+  const incrementHandler = () =>
+  {
+    setCount((prevCount) => prevCount + 1);
+    onChange?.(count + 1);
+  };
+
+  return (
+    <CounterContainer>
+      <span className="px-1">{label}</span>
+      <span className="px-1 font-bold">{count}</span>
+      <CounterButton onClick={incrementHandler} />
+    </CounterContainer>
+  );
+}
+`,
+    options: {
+      plugins: [
+        'prettier-plugin-brace-style',
+        'prettier-plugin-tailwindcss',
+        'prettier-plugin-merge',
+      ],
+      ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'two plugins whose formatting regions are disjoint are commutative #7 (sort-imports -> classnames)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -447,12 +469,16 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
+      plugins: [
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-classnames',
+        'prettier-plugin-merge',
+      ],
       ...sortImportsPluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #8 (classnames -> sort-imports)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #8 (classnames -> sort-imports)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -484,12 +510,16 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: ['prettier-plugin-classnames', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-classnames',
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-merge',
+      ],
       ...sortImportsPluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #9 (brace-style -> classnames)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #9 (brace-style -> classnames)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -520,12 +550,16 @@ export function Callout({ children })
 }
 `,
     options: {
-      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-brace-style',
+        'prettier-plugin-classnames',
+        'prettier-plugin-merge',
+      ],
       ...braceStylePluginOptions,
     },
   },
   {
-    name: "two plugins whose formatting regions are disjoint are commutative #10 (classnames -> brace-style)",
+    name: 'two plugins whose formatting regions are disjoint are commutative #10 (classnames -> brace-style)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -556,12 +590,16 @@ export function Callout({ children })
 }
 `,
     options: {
-      plugins: ['prettier-plugin-classnames', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-classnames',
+        'prettier-plugin-brace-style',
+        'prettier-plugin-merge',
+      ],
       ...braceStylePluginOptions,
     },
   },
   {
-    name: "two plugins with some overlapping formatting regions #1 (tailwindcss -> classnames)",
+    name: 'two plugins with some overlapping formatting regions #1 (tailwindcss -> classnames)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -591,11 +629,15 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-tailwindcss',
+        'prettier-plugin-classnames',
+        'prettier-plugin-merge',
+      ],
     },
   },
   {
-    name: "two plugins with some overlapping formatting regions #2 (classnames -> tailwindcss)",
+    name: 'two plugins with some overlapping formatting regions #2 (classnames -> tailwindcss)',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -625,11 +667,15 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: ['prettier-plugin-classnames', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
+      plugins: [
+        'prettier-plugin-classnames',
+        'prettier-plugin-tailwindcss',
+        'prettier-plugin-merge',
+      ],
     },
   },
   {
-    name: "issue #7",
+    name: 'issue #7',
     input: `import type { ComponentProps } from "react";
 
 import { classNames } from "@/adaptors";
@@ -701,7 +747,7 @@ export function MyComponent()
   },
 ];
 
-describe("typescript/multiple-plugin", () => {
+describe('typescript/multiple-plugin', () => {
   for (const fixture of fixtures) {
     test(fixture.name, async () => {
       expect(

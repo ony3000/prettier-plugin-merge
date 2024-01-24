@@ -1,25 +1,23 @@
-import { describe, expect, test } from "vitest";
-import type { Fixture } from "../settings";
-import {
-  format,
-  baseOptions,
-} from "../settings";
+import { describe, expect, test } from 'vitest';
+
+import type { Fixture } from '../settings';
+import { format, baseOptions } from '../settings';
 
 const sortImportsPluginOptions = {
-  importOrder: ["<THIRD_PARTY_MODULES>", "^@[^/]+/(.*)$", "^@/(.*)$", "^[./]"],
+  importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
 };
 const braceStylePluginOptions = {
-  braceStyle: "allman",
+  braceStyle: 'allman',
 };
 const options = {
   ...baseOptions,
-  parser: "vue",
+  parser: 'vue',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: "counter component #1 (standalone use without merge plugin)",
+    name: 'counter component #1 (standalone use without merge plugin)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -82,7 +80,7 @@ const count = ref(0);
     },
   },
   {
-    name: "counter component #2 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'counter component #2 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -145,7 +143,7 @@ const count = ref(0);
     },
   },
   {
-    name: "counter component #3 (standalone use without merge plugin)",
+    name: 'counter component #3 (standalone use without merge plugin)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -207,7 +205,7 @@ const count = ref(0);
     },
   },
   {
-    name: "counter component #4 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'counter component #4 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -269,7 +267,7 @@ const count = ref(0);
     },
   },
   {
-    name: "counter component #5 (standalone use without merge plugin)",
+    name: 'counter component #5 (standalone use without merge plugin)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -329,7 +327,7 @@ const count = ref(0);
     },
   },
   {
-    name: "counter component #6 (a combination of a single plugin and a merge plugin also has no effect)",
+    name: 'counter component #6 (a combination of a single plugin and a merge plugin also has no effect)',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -390,7 +388,7 @@ const count = ref(0);
   },
 ];
 
-describe("vue/single-plugin", () => {
+describe('vue/single-plugin', () => {
   for (const fixture of fixtures) {
     test(fixture.name, async () => {
       expect(
