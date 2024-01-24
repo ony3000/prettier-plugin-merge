@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
-import { format, mergePlugin, baseOptions } from "../settings";
+import { format, baseOptions } from "../settings";
 
 const options = {
   ...baseOptions,
@@ -125,7 +125,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [mergePlugin],
+      plugins: ['prettier-plugin-merge'],
     },
   },
 ];

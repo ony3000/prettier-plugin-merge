@@ -2,11 +2,6 @@ import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
 import {
   format,
-  mergePlugin,
-  sortImportsPlugin,
-  braceStylePlugin,
-  classnamesPlugin,
-  tailwindcssPlugin,
   baseOptions,
 } from "../settings";
 
@@ -82,7 +77,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [sortImportsPlugin, tailwindcssPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -145,7 +140,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [tailwindcssPlugin, sortImportsPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -209,7 +204,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [sortImportsPlugin, braceStylePlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
       ...braceStylePluginOptions,
     },
@@ -274,7 +269,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [braceStylePlugin, sortImportsPlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
       ...sortImportsPluginOptions,
     },
@@ -337,7 +332,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [tailwindcssPlugin, braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -399,7 +394,7 @@ const count = ref(0);
 </template>
 `,
     options: {
-      plugins: [braceStylePlugin, tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -448,7 +443,7 @@ function incrementHandler() {
 </template>
 `,
     options: {
-      plugins: [sortImportsPlugin, classnamesPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -497,7 +492,7 @@ function incrementHandler() {
 </template>
 `,
     options: {
-      plugins: [classnamesPlugin, sortImportsPlugin, mergePlugin],
+      plugins: ['prettier-plugin-classnames', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -545,7 +540,7 @@ function incrementHandler()
 </template>
 `,
     options: {
-      plugins: [braceStylePlugin, classnamesPlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -593,7 +588,7 @@ function incrementHandler()
 </template>
 `,
     options: {
-      plugins: [classnamesPlugin, braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-classnames', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -640,7 +635,7 @@ function incrementHandler() {
 </template>
 `,
     options: {
-      plugins: [tailwindcssPlugin, classnamesPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
     },
   },
   {
@@ -685,7 +680,7 @@ function incrementHandler() {
 </template>
 `,
     options: {
-      plugins: [classnamesPlugin, tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-classnames', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
     },
   },
 ];

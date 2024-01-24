@@ -2,11 +2,6 @@ import { describe, expect, test } from "vitest";
 import type { Fixture } from "../settings";
 import {
   format,
-  mergePlugin,
-  sortImportsPlugin,
-  braceStylePlugin,
-  classnamesPlugin,
-  tailwindcssPlugin,
   baseOptions,
 } from "../settings";
 
@@ -84,7 +79,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [sortImportsPlugin, tailwindcssPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -149,7 +144,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [tailwindcssPlugin, sortImportsPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -216,7 +211,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [sortImportsPlugin, braceStylePlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
       ...braceStylePluginOptions,
     },
@@ -284,7 +279,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [braceStylePlugin, sortImportsPlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
       ...sortImportsPluginOptions,
     },
@@ -350,7 +345,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [tailwindcssPlugin, braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -415,7 +410,7 @@ export default function Counter({
 }
 `,
     options: {
-      plugins: [braceStylePlugin, tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -452,7 +447,7 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: [sortImportsPlugin, classnamesPlugin, mergePlugin],
+      plugins: ['@trivago/prettier-plugin-sort-imports', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -489,7 +484,7 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: [classnamesPlugin, sortImportsPlugin, mergePlugin],
+      plugins: ['prettier-plugin-classnames', '@trivago/prettier-plugin-sort-imports', 'prettier-plugin-merge'],
       ...sortImportsPluginOptions,
     },
   },
@@ -525,7 +520,7 @@ export function Callout({ children })
 }
 `,
     options: {
-      plugins: [braceStylePlugin, classnamesPlugin, mergePlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -561,7 +556,7 @@ export function Callout({ children })
 }
 `,
     options: {
-      plugins: [classnamesPlugin, braceStylePlugin, mergePlugin],
+      plugins: ['prettier-plugin-classnames', 'prettier-plugin-brace-style', 'prettier-plugin-merge'],
       ...braceStylePluginOptions,
     },
   },
@@ -596,7 +591,7 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: [tailwindcssPlugin, classnamesPlugin, mergePlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-classnames', 'prettier-plugin-merge'],
     },
   },
   {
@@ -630,7 +625,7 @@ export function Callout({ children }) {
 }
 `,
     options: {
-      plugins: [classnamesPlugin, tailwindcssPlugin, mergePlugin],
+      plugins: ['prettier-plugin-classnames', 'prettier-plugin-tailwindcss', 'prettier-plugin-merge'],
     },
   },
   {
@@ -694,11 +689,11 @@ export function MyComponent()
 `,
     options: {
       plugins: [
-        braceStylePlugin,
-        sortImportsPlugin,
-        tailwindcssPlugin,
-        classnamesPlugin,
-        mergePlugin,
+        'prettier-plugin-brace-style',
+        '@trivago/prettier-plugin-sort-imports',
+        'prettier-plugin-tailwindcss',
+        'prettier-plugin-classnames',
+        'prettier-plugin-merge',
       ],
       ...braceStylePluginOptions,
       ...sortImportsPluginOptions,
