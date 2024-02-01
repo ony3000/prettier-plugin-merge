@@ -17,7 +17,7 @@ const options = {
 
 const fixtures: Fixture[] = [
   {
-    name: 'counter component #1 (standalone use without merge plugin)',
+    name: 'counter component (1) - standalone use without merge plugin',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -69,7 +69,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'counter component #2 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'counter component (2) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -121,7 +121,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'counter component #3 (standalone use without merge plugin)',
+    name: 'counter component (3) - standalone use without merge plugin',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -173,7 +173,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'counter component #4 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'counter component (4) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -225,7 +225,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'counter component #5 (standalone use without merge plugin)',
+    name: 'counter component (5) - standalone use without merge plugin',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -274,7 +274,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'counter component #6 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'counter component (6) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -323,7 +323,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'jest.config.js #1 (standalone use without merge plugin)',
+    name: 'jest.config.js (1) - standalone use without merge plugin',
     input: `
 const nextJest = require('next/jest');
 
@@ -377,7 +377,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: 'jest.config.js #2 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'jest.config.js (2) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 const nextJest = require('next/jest');
 
@@ -431,7 +431,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: 'jest.config.js #3 (standalone use without merge plugin)',
+    name: 'jest.config.js (3) - standalone use without merge plugin',
     input: `
 const nextJest = require('next/jest');
 
@@ -485,7 +485,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: 'jest.config.js #4 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'jest.config.js (4) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 const nextJest = require('next/jest');
 
@@ -539,7 +539,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: 'jest.config.js #5 (standalone use without merge plugin)',
+    name: 'jest.config.js (5) - standalone use without merge plugin',
     input: `
 const nextJest = require('next/jest');
 
@@ -592,7 +592,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: 'jest.config.js #6 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'jest.config.js (6) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 const nextJest = require('next/jest');
 
@@ -645,7 +645,7 @@ module.exports = createJestConfig(customJestConfig);
     },
   },
   {
-    name: 'jest.setup.js #1 (standalone use without merge plugin)',
+    name: 'jest.setup.js (1) - standalone use without merge plugin',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -666,7 +666,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: 'jest.setup.js #2 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'jest.setup.js (2) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -687,7 +687,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: 'jest.setup.js #3 (standalone use without merge plugin)',
+    name: 'jest.setup.js (3) - standalone use without merge plugin',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -709,7 +709,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: 'jest.setup.js #4 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'jest.setup.js (4) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -731,7 +731,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: 'jest.setup.js #5 (standalone use without merge plugin)',
+    name: 'jest.setup.js (5) - standalone use without merge plugin',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -752,7 +752,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: 'jest.setup.js #6 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'jest.setup.js (6) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 // Optional: configure or set up a testing framework before each test.
 // If you delete this file, remove \`setupFilesAfterEnv\` from \`jest.config.js\`
@@ -773,7 +773,7 @@ import "@testing-library/jest-dom/extend-expect";
     },
   },
   {
-    name: 'next.config.js #1 (standalone use without merge plugin)',
+    name: 'next.config.js (1) - standalone use without merge plugin',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -797,7 +797,7 @@ module.exports = nextConfig;
     },
   },
   {
-    name: 'next.config.js #2 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'next.config.js (2) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -821,7 +821,7 @@ module.exports = nextConfig;
     },
   },
   {
-    name: 'next.config.js #3 (standalone use without merge plugin)',
+    name: 'next.config.js (3) - standalone use without merge plugin',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -845,7 +845,7 @@ module.exports = nextConfig;
     },
   },
   {
-    name: 'next.config.js #4 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'next.config.js (4) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -869,7 +869,7 @@ module.exports = nextConfig;
     },
   },
   {
-    name: 'next.config.js #5 (standalone use without merge plugin)',
+    name: 'next.config.js (5) - standalone use without merge plugin',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -892,7 +892,7 @@ module.exports = nextConfig;
     },
   },
   {
-    name: 'next.config.js #6 (a combination of a single plugin and a merge plugin also has no effect)',
+    name: 'next.config.js (6) - a combination of a single plugin and a merge plugin also has no effect',
     input: `
 /** @type {import('next').NextConfig} */
 const nextConfig = {
