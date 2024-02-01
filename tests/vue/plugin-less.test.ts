@@ -10,7 +10,7 @@ const options = {
 
 const fixtures: Fixture[] = [
   {
-    name: 'counter component #1 (no plugin)',
+    name: 'counter component (1) - no plugin',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'
@@ -70,7 +70,7 @@ const count = ref(0);
     },
   },
   {
-    name: 'counter component #2 (merge plugin alone has no effect)',
+    name: 'counter component (2) - merge plugin alone has no effect',
     input: `
 <script setup lang="ts">
 import { CounterButton } from './parts'

@@ -10,7 +10,7 @@ const options = {
 
 const fixtures: Fixture[] = [
   {
-    name: 'counter component #1 (no plugin)',
+    name: 'counter component (1) - no plugin',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -72,7 +72,7 @@ export default function Counter({
     },
   },
   {
-    name: 'counter component #2 (merge plugin alone has no effect)',
+    name: 'counter component (2) - merge plugin alone has no effect',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -134,7 +134,7 @@ export default function Counter({
     },
   },
   {
-    name: 'next-env.d.ts #1 (no plugin)',
+    name: 'next-env.d.ts (1) - no plugin',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -153,7 +153,7 @@ export default function Counter({
     },
   },
   {
-    name: 'next-env.d.ts #2 (merge plugin alone has no effect)',
+    name: 'next-env.d.ts (2) - merge plugin alone has no effect',
     input: `
 /// <reference types="next" />
 /// <reference types="next/image-types/global" />
@@ -172,7 +172,7 @@ export default function Counter({
     },
   },
   {
-    name: 'Next.js API route #1 (no plugin)',
+    name: 'Next.js API route (1) - no plugin',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
@@ -204,7 +204,7 @@ export default function handler(
     },
   },
   {
-    name: 'Next.js API route #2 (merge plugin alone has no effect)',
+    name: 'Next.js API route (2) - merge plugin alone has no effect',
     input: `
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';

@@ -17,7 +17,7 @@ const options = {
 
 const fixtures: Fixture[] = [
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #1 (sort-imports -> tailwindcss)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (1) - sort-imports -> tailwindcss',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -73,7 +73,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #2 (tailwindcss -> sort-imports)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (2) - tailwindcss -> sort-imports',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -129,7 +129,7 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #3 (sort-imports -> brace-style)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (3) - sort-imports -> brace-style',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -188,7 +188,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #4 (brace-style -> sort-imports)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (4) - brace-style -> sort-imports',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -247,7 +247,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #5 (tailwindcss -> brace-style)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (5) - tailwindcss -> brace-style',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -303,7 +303,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #6 (brace-style -> tailwindcss)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (6) - brace-style -> tailwindcss',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -359,7 +359,7 @@ export default function Counter({ label = "Counter", onChange = undefined })
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #7 (sort-imports -> classnames)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (7) - sort-imports -> classnames',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -400,7 +400,7 @@ export function Callout({ children }) {
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #8 (classnames -> sort-imports)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (8) - classnames -> sort-imports',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -441,7 +441,7 @@ export function Callout({ children }) {
     },
   },
   {
-    name: 'two plugins whose formatting regions are disjoint are commutative #9 (brace-style -> classnames)',
+    name: 'two plugins whose formatting regions are disjoint are commutative (9) - brace-style -> classnames',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -521,7 +521,7 @@ export function Callout({ children })
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions #1 (tailwindcss -> classnames)',
+    name: 'two plugins with some overlapping formatting regions (1) - tailwindcss -> classnames',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
@@ -559,7 +559,7 @@ export function Callout({ children }) {
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions #2 (classnames -> tailwindcss)',
+    name: 'two plugins with some overlapping formatting regions (2) - classnames -> tailwindcss',
     input: `
 import { CounterButton } from './parts';
 import { CounterContainer } from '@/layouts';
