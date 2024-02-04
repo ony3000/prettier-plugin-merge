@@ -1,6 +1,6 @@
 # prettier-plugin-merge
 
-A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.
+A Prettier plugin that sequentially merges the formatting results of other Prettier plugins.
 
 ![Schematic diagram of how formats are merged.](.github/banner.png)
 
@@ -22,42 +22,43 @@ npm install -D prettier prettier-plugin-merge
 
 **Note**: This plugin MUST come last. Other plugins usually have no order constraints.
 
-JSON:
+JSON example:
 
+<!-- prettier-ignore -->
 ```json
 {
   "plugins": [
-    "other-prettier-plugin-1",
-    "other-prettier-plugin-2",
-    "other-prettier-plugin-3",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames",
     "prettier-plugin-merge"
   ]
 }
 ```
 
-JS (CommonJS module):
+JS example (CommonJS module):
 
 ```javascript
 module.exports = {
   plugins: [
-    'other-prettier-plugin-1',
-    'other-prettier-plugin-2',
-    'other-prettier-plugin-3',
+    '@trivago/prettier-plugin-sort-imports',
+    'prettier-plugin-brace-style',
     'prettier-plugin-merge',
   ],
+  braceStyle: 'stroustrup',
 };
 ```
 
-JS (ES module):
+JS example (ES module):
 
 ```javascript
 export default {
   plugins: [
-    'other-prettier-plugin-1',
-    'other-prettier-plugin-2',
-    'other-prettier-plugin-3',
+    'prettier-plugin-brace-style',
+    '@trivago/prettier-plugin-sort-imports',
     'prettier-plugin-merge',
   ],
+  importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
+  importOrderSeparation: true,
 };
 ```
 
