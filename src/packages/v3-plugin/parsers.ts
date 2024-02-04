@@ -9,12 +9,17 @@ import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 async function sequentialFormattingAndTryMerging(
   options: ParserOptions,
   plugins: Plugin[],
+  languageImplementedPlugin?: Plugin,
 ): Promise<string> {
+  const customLanguageSupportedPlugins = languageImplementedPlugin
+    ? [languageImplementedPlugin]
+    : [];
+
   const { originalText } = options;
   const sequentialFormattingOptions = {
     ...options,
     rangeEnd: Infinity,
-    plugins: [],
+    plugins: customLanguageSupportedPlugins,
   };
 
   const firstFormattedTextPromise = format(originalText, sequentialFormattingOptions);
@@ -29,7 +34,7 @@ async function sequentialFormattingAndTryMerging(
       const formattedPrevText = await formattedPrevTextPromise;
       const temporaryFormattedText = await format(formattedPrevText, {
         ...sequentialFormattingOptions,
-        plugins: [plugin],
+        plugins: [...customLanguageSupportedPlugins, plugin],
       });
 
       const temporaryFormattedTextWithoutPlugin = await format(
@@ -52,8 +57,9 @@ async function sequentialFormattingAndTryMerging(
 }
 
 function transformParser(
-  parserName: 'babel' | 'typescript' | 'vue',
+  parserName: 'babel' | 'typescript' | 'vue' | 'astro',
   defaultParser: Parser,
+  languageName?: string,
 ): Parser {
   return {
     ...defaultParser,
@@ -76,6 +82,20 @@ function transformParser(
         );
       }
 
+      let languageImplementedPlugin: Plugin | undefined;
+      if (languageName) {
+        languageImplementedPlugin = plugins
+          .slice(0, pluginIndex)
+          .filter((plugin) => plugin.languages?.some((language) => language.name === languageName))
+          .at(0);
+
+        if (!languageImplementedPlugin) {
+          throw new Error(
+            `There doesn't seem to be any plugin that supports ${languageName} formatting.`,
+          );
+        }
+      }
+
       const parserImplementedPlugins = plugins
         .slice(0, pluginIndex)
         .filter((plugin) => plugin.parsers?.[parserName]);
@@ -85,6 +105,7 @@ function transformParser(
           originalText: text,
         },
         parserImplementedPlugins,
+        languageImplementedPlugin,
       );
 
       return {
@@ -100,4 +121,5 @@ export const parsers: { [parserName: string]: Parser } = {
   babel: transformParser('babel', babelParsers.babel),
   typescript: transformParser('typescript', typescriptParsers.typescript),
   vue: transformParser('vue', htmlParsers.vue),
+  astro: transformParser('astro', {} as Parser, 'astro'),
 };
