@@ -1,7 +1,7 @@
 {
   "name": "prettier-plugin-merge",
   "version": "0.5.1",
-  "description": "A Prettier plugin that sequentially applies the formatting results of other Prettier plugins.",
+  "description": "A Prettier plugin that sequentially merges the formatting results of other Prettier plugins.",
   "keywords": [
     "prettier",
     "plugin",
@@ -10,7 +10,10 @@
     "formatting",
     "multiple"
   ],
-  "repository": "https://github.com/ony3000/prettier-plugin-merge",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ony3000/prettier-plugin-merge.git"
+  },
   "license": "MIT",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "main": "dist/index.js",
@@ -23,7 +26,7 @@
     "clean": "pnpm run clean:bundle && pnpm -r exec rimraf node_modules/ && rimraf package.merged.json",
     "clean:bundle": "rimraf dist/",
     "lint": "eslint src/ tests/",
-    "merge-deps": "rimraf package.merged.json && merge-packages ./ src/packages/core-parts/ src/packages/v2-plugin/ src/packages/v3-plugin/ tests/test-settings/ tests/v2-test/ tests/v3-test/",
+    "merge-deps": "rimraf package.merged.json && merge-packages ./ src/packages/core-parts/ src/packages/v2-plugin/ src/packages/v3-plugin/",
     "prepare-release": "pnpm run build:plain && npm version prerelease --preid=alpha --git-tag-version=false && pnpm run merge-deps && npm pack"
   },
   "dependencies": {
