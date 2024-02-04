@@ -105,6 +105,9 @@ importers:
       prettier:
         specifier: 2.8.4
         version: 2.8.4
+      prettier-plugin-astro:
+        specifier: 0.10.0
+        version: 0.10.0
       prettier-plugin-brace-style:
         specifier: 0.5.0
         version: 0.5.0(prettier@2.8.4)
@@ -113,7 +116,7 @@ importers:
         version: 0.5.2(prettier@2.8.4)
       prettier-plugin-tailwindcss:
         specifier: 0.4.1
-        version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@2.8.4)
+        version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
       test-settings:
         specifier: workspace:*
         version: link:../test-settings
@@ -135,6 +138,9 @@ importers:
       prettier:
         specifier: 3.0.3
         version: 3.0.3
+      prettier-plugin-astro:
+        specifier: 0.11.0
+        version: 0.11.0
       prettier-plugin-brace-style:
         specifier: 0.5.0
         version: 0.5.0(prettier@3.0.3)
@@ -143,7 +149,7 @@ importers:
         version: 0.5.2(prettier@3.0.3)
       prettier-plugin-tailwindcss:
         specifier: 0.4.1
-        version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@3.0.3)
+        version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
       test-settings:
         specifier: workspace:*
         version: link:../test-settings
@@ -158,6 +164,10 @@ importers:
         version: 3.3.9(typescript@4.9.5)
 
 packages:
+
+  /@astrojs/compiler@1.8.2:
+    resolution: {integrity: sha512-o/ObKgtMzl8SlpIdzaxFnt7SATKPxu4oIP/1NL+HDJRzxfJcAkOTAb/ZKMRyULbz4q+1t2/DAebs2Z1QairkZw==}
+    dev: true
 
   /@babel/code-frame@7.23.5:
     resolution: {integrity: sha512-CgH3s1a96LipHCmSUmYFPwY7MNx8C3avkq7i4Wl3cfa662ldtUe4VM1TPXX70pfmrlWTb6jLqTYrZyT2ZTJBgA==}
@@ -2832,6 +2842,24 @@ packages:
     engines: {node: '>= 0.8.0'}
     dev: true
 
+  /prettier-plugin-astro@0.10.0:
+    resolution: {integrity: sha512-dPzop0gKZyVGpTDQmfy+e7FKXC9JT3mlpfYA2diOVz+Ui+QR1U4G/s+OesKl2Hib2JJOtAYJs/l+ovgT0ljlFA==}
+    engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
+    dependencies:
+      '@astrojs/compiler': 1.8.2
+      prettier: 2.8.8
+      sass-formatter: 0.7.9
+    dev: true
+
+  /prettier-plugin-astro@0.11.0:
+    resolution: {integrity: sha512-rl2hJ4Kty/aEfGjk3i4JS+bpng9MjgvwqLRNzeb9NqYhqKoWNwOR39cIJXFjU1vR3zYOPnwWNRMelKb0orunYA==}
+    engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
+    dependencies:
+      '@astrojs/compiler': 1.8.2
+      prettier: 3.0.3
+      sass-formatter: 0.7.9
+    dev: true
+
   /prettier-plugin-brace-style@0.5.0(prettier@2.8.4):
     resolution: {integrity: sha512-k9nyvPgkWTijSxHZMX9wr0yDeWk4Y1ZSPv8mMAS8i8G9PNT+6UwdZHfn8PMSDY4ItoHi7XXHzumwNAA7NWcVNA==}
     engines: {node: '>=14'}
@@ -2868,7 +2896,7 @@ packages:
       prettier: 3.0.3
     dev: true
 
-  /prettier-plugin-tailwindcss@0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@2.8.4):
+  /prettier-plugin-tailwindcss@0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.10.0)(prettier@2.8.4):
     resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -2922,9 +2950,10 @@ packages:
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.1(prettier@2.8.4)
       prettier: 2.8.4
+      prettier-plugin-astro: 0.10.0
     dev: true
 
-  /prettier-plugin-tailwindcss@0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier@3.0.3):
+  /prettier-plugin-tailwindcss@0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.11.0)(prettier@3.0.3):
     resolution: {integrity: sha512-hwn2EiJmv8M+AW4YDkbjJ6HlZCTzLyz1QlySn9sMuKV/Px0fjwldlB7tol8GzdgqtkdPtzT3iJ4UzdnYXP25Ag==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -2978,12 +3007,19 @@ packages:
     dependencies:
       '@trivago/prettier-plugin-sort-imports': 4.2.1(prettier@3.0.3)
       prettier: 3.0.3
+      prettier-plugin-astro: 0.11.0
     dev: true
 
   /prettier@2.8.4:
     resolution: {integrity: sha512-vIS4Rlc2FNh0BySk3Wkd6xmwxB0FpOndW5fisM5H8hsZSxU2VWVB5CWIkIjWvrHjIhxk2g3bfMKM87zNTrZddw==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+
+  /prettier@2.8.8:
+    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
+    engines: {node: '>=10.13.0'}
+    hasBin: true
+    dev: true
 
   /prettier@3.0.3:
     resolution: {integrity: sha512-L/4pUDMxcNa8R/EthV08Zt42WBO4h1rarVtK0K+QJG0X187OLo7l699jWw0GKuwzkPQ//jMFA/8Xm6Fh3J/DAg==}
@@ -3104,12 +3140,22 @@ packages:
       queue-microtask: 1.2.3
     dev: true
 
+  /s.color@0.0.15:
+    resolution: {integrity: sha512-AUNrbEUHeKY8XsYr/DYpl+qk5+aM+DChopnWOPEzn8YKzOhv4l2zH6LzZms3tOZP3wwdOyc0RmTciyi46HLIuA==}
+    dev: true
+
   /safe-regex-test@1.0.0:
     resolution: {integrity: sha512-JBUUzyOgEwXQY1NuPtvcj/qcBDbDmEvWufhlnXZIm75DEHp+afM1r1ujJpJsV/gSM4t59tpDyPi1sd6ZaPFfsA==}
     dependencies:
       call-bind: 1.0.2
       get-intrinsic: 1.2.1
       is-regex: 1.1.4
+    dev: true
+
+  /sass-formatter@0.7.9:
+    resolution: {integrity: sha512-CWZ8XiSim+fJVG0cFLStwDvft1VI7uvXdCNJYXhDvowiv+DsbD1nXLiQ4zrE5UBvj5DWZJ93cwN0NX5PMsr1Pw==}
+    dependencies:
+      suf-log: 2.5.3
     dev: true
 
   /semver@6.3.0:
@@ -3283,6 +3329,12 @@ packages:
     resolution: {integrity: sha512-PugKzOsyXpArk0yWmUwqOZecSO0GH0bPoctLcqNDH9J04pVW3lflYE0ujElBGTloevcxF5MofAOZ7C5l2b+wLg==}
     dependencies:
       acorn: 8.11.3
+    dev: true
+
+  /suf-log@2.5.3:
+    resolution: {integrity: sha512-KvC8OPjzdNOe+xQ4XWJV2whQA0aM1kGVczMQ8+dStAO6KfEB140JEVQ9dE76ONZ0/Ylf67ni4tILPJB41U0eow==}
+    dependencies:
+      s.color: 0.0.15
     dev: true
 
   /supports-color@5.5.0:
