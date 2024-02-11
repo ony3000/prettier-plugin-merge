@@ -112,8 +112,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0(prettier@2.8.4)
       prettier-plugin-classnames:
-        specifier: 0.5.2
-        version: 0.5.2(prettier@2.8.4)
+        specifier: 0.6.0
+        version: 0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
       prettier-plugin-tailwindcss:
         specifier: 0.4.1
         version: 0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
@@ -145,8 +145,8 @@ importers:
         specifier: 0.5.0
         version: 0.5.0(prettier@3.0.3)
       prettier-plugin-classnames:
-        specifier: 0.5.2
-        version: 0.5.2(prettier@3.0.3)
+        specifier: 0.6.0
+        version: 0.6.0(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
       prettier-plugin-tailwindcss:
         specifier: 0.5.2
         version: 0.5.2(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
@@ -2878,22 +2878,32 @@ packages:
       prettier: 3.0.3
     dev: true
 
-  /prettier-plugin-classnames@0.5.2(prettier@2.8.4):
-    resolution: {integrity: sha512-SOofg8sE4S1GI8aoZ+kBttI1GxYmCoMpuwoTXKolU509fJo5AXp2EyzF06DgEFcv2C+tqSg2WtWkSQKPmBWa6Q==}
+  /prettier-plugin-classnames@0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4):
+    resolution: {integrity: sha512-diXYCoLJBWXzXulK5NiLi2jjUrFSJxzZbaZnCpERdlmpnqRrSm6AmkHpiM1gE+Cddrt6k7jXpaoPhjm6saXCUg==}
     engines: {node: '>=14'}
     peerDependencies:
       prettier: ^2 || ^3
+      prettier-plugin-astro: '*'
+    peerDependenciesMeta:
+      prettier-plugin-astro:
+        optional: true
     dependencies:
       prettier: 2.8.4
+      prettier-plugin-astro: 0.10.0
     dev: true
 
-  /prettier-plugin-classnames@0.5.2(prettier@3.0.3):
-    resolution: {integrity: sha512-SOofg8sE4S1GI8aoZ+kBttI1GxYmCoMpuwoTXKolU509fJo5AXp2EyzF06DgEFcv2C+tqSg2WtWkSQKPmBWa6Q==}
+  /prettier-plugin-classnames@0.6.0(prettier-plugin-astro@0.11.0)(prettier@3.0.3):
+    resolution: {integrity: sha512-diXYCoLJBWXzXulK5NiLi2jjUrFSJxzZbaZnCpERdlmpnqRrSm6AmkHpiM1gE+Cddrt6k7jXpaoPhjm6saXCUg==}
     engines: {node: '>=14'}
     peerDependencies:
       prettier: ^2 || ^3
+      prettier-plugin-astro: '*'
+    peerDependenciesMeta:
+      prettier-plugin-astro:
+        optional: true
     dependencies:
       prettier: 3.0.3
+      prettier-plugin-astro: 0.11.0
     dev: true
 
   /prettier-plugin-tailwindcss@0.4.1(@trivago/prettier-plugin-sort-imports@4.2.1)(prettier-plugin-astro@0.10.0)(prettier@2.8.4):
