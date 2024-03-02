@@ -109,8 +109,8 @@ importers:
         specifier: 0.10.0
         version: 0.10.0
       prettier-plugin-brace-style:
-        specifier: 0.5.0
-        version: 0.5.0(prettier@2.8.4)
+        specifier: 0.6.0
+        version: 0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
       prettier-plugin-classnames:
         specifier: 0.6.0
         version: 0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
@@ -142,8 +142,8 @@ importers:
         specifier: 0.11.0
         version: 0.11.0
       prettier-plugin-brace-style:
-        specifier: 0.5.0
-        version: 0.5.0(prettier@3.0.3)
+        specifier: 0.6.0
+        version: 0.6.0(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
       prettier-plugin-classnames:
         specifier: 0.6.0
         version: 0.6.0(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
@@ -2860,22 +2860,32 @@ packages:
       sass-formatter: 0.7.9
     dev: true
 
-  /prettier-plugin-brace-style@0.5.0(prettier@2.8.4):
-    resolution: {integrity: sha512-k9nyvPgkWTijSxHZMX9wr0yDeWk4Y1ZSPv8mMAS8i8G9PNT+6UwdZHfn8PMSDY4ItoHi7XXHzumwNAA7NWcVNA==}
+  /prettier-plugin-brace-style@0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4):
+    resolution: {integrity: sha512-RtsjgBaR5YdKmWb6HCEiYF9mcovd3KcKHprJ81qpuxPBw0PE8yZhTH8Ed8Z+0/E3zwRPc1tRkMbyO9fFdxZR5A==}
     engines: {node: '>=14'}
     peerDependencies:
       prettier: ^2 || ^3
+      prettier-plugin-astro: '*'
+    peerDependenciesMeta:
+      prettier-plugin-astro:
+        optional: true
     dependencies:
       prettier: 2.8.4
+      prettier-plugin-astro: 0.10.0
     dev: true
 
-  /prettier-plugin-brace-style@0.5.0(prettier@3.0.3):
-    resolution: {integrity: sha512-k9nyvPgkWTijSxHZMX9wr0yDeWk4Y1ZSPv8mMAS8i8G9PNT+6UwdZHfn8PMSDY4ItoHi7XXHzumwNAA7NWcVNA==}
+  /prettier-plugin-brace-style@0.6.0(prettier-plugin-astro@0.11.0)(prettier@3.0.3):
+    resolution: {integrity: sha512-RtsjgBaR5YdKmWb6HCEiYF9mcovd3KcKHprJ81qpuxPBw0PE8yZhTH8Ed8Z+0/E3zwRPc1tRkMbyO9fFdxZR5A==}
     engines: {node: '>=14'}
     peerDependencies:
       prettier: ^2 || ^3
+      prettier-plugin-astro: '*'
+    peerDependenciesMeta:
+      prettier-plugin-astro:
+        optional: true
     dependencies:
       prettier: 3.0.3
+      prettier-plugin-astro: 0.11.0
     dev: true
 
   /prettier-plugin-classnames@0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4):
