@@ -1,38 +1,30 @@
 {
   "private": true,
-  "name": "testing-prettier-plugin-merge",
+  "name": "root",
   "version": "0.0.0",
-  "description": "This is a branch for testing `prettier-plugin-merge`.",
-  "repository": "https://github.com/ony3000/prettier-plugin-merge",
   "author": "Hyeonjong <nianelo4@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint tests",
-    "test": "vitest run --passWithNoTests"
-  },
-  "dependencies": {
-    "prettier-plugin-merge": "0.5.1"
+    "clean": "pnpm -r exec rm -rf dist && pnpm -r exec rm -rf node_modules",
+    "dev": "turbo run dev --no-daemon --filter bundle-entry",
+    "build": "turbo run build --no-daemon --filter bundle-entry",
+    "lint": "turbo run lint --no-daemon",
+    "format": "turbo run format --no-daemon",
+    "format:fix": "turbo run format:fix --no-daemon",
+    "test:perf": "turbo run test --force --no-daemon --filter performance-test",
+    "test:v2": "turbo run test --no-daemon --filter ./tests/v2-*",
+    "test:v3": "turbo run test --no-daemon --filter ./tests/v3-*",
+    "merge-deps": "merge-packages packages/bundle-entry packages/eslint-config-custom packages/tsconfig packages/v2-plugin",
+    "prepare-release": "pnpm -r exec rm -rf dist && turbo run prepare-release --no-daemon --filter prettier-plugin-merge"
   },
   "devDependencies": {
-    "@trivago/prettier-plugin-sort-imports": "4.2.1",
-    "@types/node": "20.2.5",
-    "@types/prettier": "2.7.3",
-    "@typescript-eslint/eslint-plugin": "5.54.0",
-    "@typescript-eslint/parser": "5.54.0",
+    "@trivago/prettier-plugin-sort-imports": "4.1.1",
     "eslint": "8.35.0",
-    "eslint-config-airbnb-base": "15.0.0",
-    "eslint-config-airbnb-typescript": "17.0.0",
-    "eslint-config-prettier": "8.6.0",
-    "eslint-import-resolver-node": "0.3.7",
-    "eslint-import-resolver-typescript": "3.5.3",
-    "eslint-plugin-import": "2.27.5",
-    "prettier": "2.8.4",
-    "prettier-plugin-brace-style": "0.5.0",
-    "prettier-plugin-classnames": "0.4.0",
-    "prettier-plugin-tailwindcss": "0.4.1",
-    "typescript": "4.9.5",
-    "vitest": "1.1.3",
-    "vue": "3.3.9"
+    "merge-packages": "0.1.6",
+    "prettier": "~2.8.4",
+    "tsconfig": "workspace:*",
+    "turbo": "1.10.14",
+    "typescript": "4.9.5"
   },
-  "packageManager": "pnpm@8.5.1"
+  "packageManager": "pnpm@7.33.0"
 }
