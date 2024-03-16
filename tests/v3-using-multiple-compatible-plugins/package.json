@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "v3-using-multiple-compatible-plugins",
+  "version": "0.0.0",
+  "description": "prettier v3 test using multiple plugins (all compatible with prettier v2 and v3)",
+  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
+    "test": "jest --ci --passWithNoTests"
+  },
+  "devDependencies": {
+    "@prettier/sync": "0.3.0",
+    "@types/jest": "29.5.2",
+    "@types/node": "20.2.5",
+    "bundle-entry": "workspace:*",
+    "jest": "29.5.0",
+    "prettier": "3.0.3",
+    "prettier-config": "workspace:*",
+    "prettier-plugin-brace-style": "0.3.1",
+    "prettier-plugin-tailwindcss": "0.4.1",
+    "ts-jest": "29.1.0",
+    "tsconfig": "workspace:*",
+    "typescript": "4.9.5"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "name": "bundle-entry",
+  "version": "0.0.0",
+  "author": "Hyeonjong <nianelo4@gmail.com>",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "esbuild index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --watch=forever",
+    "build": "esbuild index.ts --bundle --outdir=dist --platform=node \"--external:prettier\" --minify",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "prettier": "2.8.4",
+    "v2-plugin": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "20.2.5",
+    "esbuild": "0.17.19",
+    "eslint": "8.35.0",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*",
+    "typescript": "4.9.5"
+  }
+}
