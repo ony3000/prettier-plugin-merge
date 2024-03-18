@@ -383,8 +383,8 @@ import { CounterButton } from "./parts";
 export function Callout({ children }) {
   return (
     <div
-      className="bg-gray-100/50 border border-zinc-400/30
-dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     >
       {children}
     </div>
@@ -421,8 +421,8 @@ import { CounterButton } from "./parts";
 export function Callout({ children }) {
   return (
     <div
-      className="bg-gray-100/50 border border-zinc-400/30
-dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     >
       {children}
     </div>
@@ -458,8 +458,8 @@ export function Callout({ children })
 {
   return (
     <div
-      className="bg-gray-100/50 border border-zinc-400/30
-dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     >
       {children}
     </div>
@@ -495,8 +495,8 @@ export function Callout({ children })
 {
   return (
     <div
-      className="bg-gray-100/50 border border-zinc-400/30
-dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     >
       {children}
     </div>
@@ -531,8 +531,8 @@ import { useState } from "react";
 export function Callout({ children }) {
   return (
     <div
-      className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4
-py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
+      className="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
+dark:border-neutral-500/30 dark:bg-neutral-900/50"
     >
       {children}
     </div>
@@ -566,8 +566,8 @@ import { useState } from "react";
 export function Callout({ children }) {
   return (
     <div
-      className="rounded-xl border border-zinc-400/30
-bg-gray-100/50 px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
+      className="rounded-xl border border-zinc-400/30 bg-gray-100/50
+px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
     >
       {children}
     </div>

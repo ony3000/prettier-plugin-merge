@@ -361,8 +361,8 @@ export function Callout({ children }) {
     output: `export function Callout({ children }) {
   return (
     <div
-      className="bg-gray-100/50 border border-zinc-400/30
-dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     >
       {children}
     </div>
@@ -388,8 +388,8 @@ export function Callout({ children }) {
     output: `export function Callout({ children }) {
   return (
     <div
-      className="bg-gray-100/50 border border-zinc-400/30
-dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      className="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
+dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     >
       {children}
     </div>
