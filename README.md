@@ -62,6 +62,12 @@ export default {
 };
 ```
 
+## Version correlation with sibling plugins
+
+Starting with `0.6.0`, when there is a minor release on one side, I plan to reflect that change on the other side as well if possible.
+
+![Version correlation.](.github/correlation.png)
+
 ## Compatibility with other Prettier plugins
 
 All other plugins used with this plugin must be compatible with your version of Prettier.
