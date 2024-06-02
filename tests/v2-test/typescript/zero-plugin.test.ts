@@ -1,10 +1,7 @@
-import { format } from 'prettier';
 import type { Fixture } from 'test-settings';
 import { baseOptions } from 'test-settings';
-import { describe, expect, test } from 'vitest';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import * as thisPlugin from '@/packages/v2-plugin';
+import { thisPlugin, testEach } from '../adaptor';
 
 const options = {
   ...baseOptions,
@@ -118,15 +115,4 @@ export default function Counter({ label = "Counter", onChange = undefined }) {
   },
 ];
 
-describe('typescript/zero-plugin', () => {
-  for (const fixture of fixtures) {
-    test(fixture.name, () => {
-      expect(
-        format(fixture.input, {
-          ...options,
-          ...(fixture.options ?? {}),
-        }),
-      ).toBe(fixture.output);
-    });
-  }
-});
+testEach(fixtures, options);

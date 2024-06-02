@@ -1,25 +1,17 @@
-import { format } from 'prettier';
 import type { Fixture } from 'test-settings';
 import { baseOptions } from 'test-settings';
-import { describe, expect, test } from 'vitest';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import * as thisPlugin from '@/packages/v3-plugin';
+import {
+  thisPlugin,
+  sortImportsPluginOptions,
+  braceStylePluginOptions,
+  classnamesPluginOptions,
+  testEach,
+} from '../adaptor';
 
 const options = {
   ...baseOptions,
   parser: 'vue',
-};
-
-const sortImportsPluginOptions = {
-  importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
-  importOrderSeparation: true,
-};
-const braceStylePluginOptions = {
-  braceStyle: 'allman',
-};
-const classnamesPluginOptions = {
-  endingPosition: 'absolute',
 };
 
 const fixtures: Fixture[] = [
@@ -441,15 +433,4 @@ dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   },
 ];
 
-describe('vue/single-plugin', () => {
-  for (const fixture of fixtures) {
-    test(fixture.name, async () => {
-      expect(
-        await format(fixture.input, {
-          ...options,
-          ...(fixture.options ?? {}),
-        }),
-      ).toBe(fixture.output);
-    });
-  }
-});
+testEach(fixtures, options);
