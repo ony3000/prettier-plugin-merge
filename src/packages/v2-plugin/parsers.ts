@@ -53,13 +53,17 @@ function sequentialFormattingAndTryMerging(
 }
 
 function transformParser(
-  parserName: 'babel' | 'typescript' | 'vue' | 'astro' | 'svelte',
+  parserName: SupportedParserNames,
   defaultParser: Parser,
   languageName?: string,
 ): Parser {
   return {
     ...defaultParser,
-    parse: (text: string, parsers: { [parserName: string]: Parser }, options: ParserOptions) => {
+    parse: (
+      text: string,
+      parsers: { [parserName: string]: Parser },
+      options: ParserOptions,
+    ): FormattedTextAST => {
       const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
       const pluginIndex = plugins.findIndex(
         (plugin) =>
