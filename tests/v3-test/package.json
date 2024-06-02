@@ -13,6 +13,7 @@
     "prettier-plugin-astro": "0.11.0",
     "prettier-plugin-brace-style": "0.6.0",
     "prettier-plugin-classnames": "0.6.3",
+    "prettier-plugin-svelte": "3.0.0",
     "prettier-plugin-tailwindcss": "0.5.2",
     "test-settings": "workspace:*",
     "vite-tsconfig-paths": "4.2.3",
