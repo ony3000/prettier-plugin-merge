@@ -4,6 +4,53 @@ A Prettier plugin that sequentially merges the formatting results of other Prett
 
 ![Schematic diagram of how formats are merged.](.github/banner.png)
 
+## Why prettier-plugin-merge?
+
+Prettier has its limitations. If two or more plugins are configured to format a particular language, Prettier will only use the last of those plugins.
+
+So, for example, if you configure it like this for JavaScript formatting, only `prettier-plugin-classnames` will be used.
+
+<!-- prettier-ignore -->
+```jsonc
+{
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames" // Prettier only uses this
+  ]
+}
+```
+
+However, you can overcome this limitation by adding `prettier-plugin-merge` as the last plugin.
+
+<!-- prettier-ignore -->
+```diff
+ {
+   "plugins": [
+     "prettier-plugin-tailwindcss",
+-    "prettier-plugin-classnames"
++    "prettier-plugin-classnames",
++    "prettier-plugin-merge"
+   ]
+ }
+```
+
+As mentioned above, Prettier uses the last of the plugins that can format a particular language (in this case JavaScript), so `prettier-plugin-merge` is used in the changed configuration.
+
+<!-- prettier-ignore -->
+```jsonc
+{
+  "plugins": [
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-classnames",
+    "prettier-plugin-merge" // Prettier only uses this
+  ]
+}
+```
+
+`prettier-plugin-merge` uses plugins written before this one in order, merging as much as possible the differences in formatting results depending on the presence of the plugin.
+
+So you can combine as many plugins as you want.
+
 ## Installation
 
 For Prettier v2:
