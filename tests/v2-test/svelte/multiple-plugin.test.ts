@@ -5,33 +5,33 @@ import { thisPlugin, braceStylePluginOptions, classnamesPluginOptions, testEach 
 
 const options = {
   ...baseOptions,
-  parser: 'astro',
+  parser: 'svelte',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: 'two plugins with some overlapping formatting regions (1) - astro -> brace-style',
+    name: 'two plugins with some overlapping formatting regions (1) - svelte -> brace-style',
     input: `
----
+<script>
 function getDate() {
     return new Date();
 }
 
 const now = getDate();
----
+</script>
 
 <div class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
     <span>Now: {now}</span>
 </div>
 `,
-    output: `---
-function getDate()
-{
-  return new Date();
-}
+    output: `<script>
+  function getDate()
+  {
+    return new Date();
+  }
 
-const now = getDate();
----
+  const now = getDate();
+</script>
 
 <div
   class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
@@ -40,33 +40,33 @@ const now = getDate();
 </div>
 `,
     options: {
-      plugins: ['prettier-plugin-astro', 'prettier-plugin-brace-style', thisPlugin],
+      plugins: ['prettier-plugin-svelte', 'prettier-plugin-brace-style', thisPlugin],
       ...braceStylePluginOptions,
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions (2) - brace-style -> astro',
+    name: 'two plugins with some overlapping formatting regions (2) - brace-style -> svelte',
     input: `
----
+<script>
 function getDate() {
     return new Date();
 }
 
 const now = getDate();
----
+</script>
 
 <div class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
     <span>Now: {now}</span>
 </div>
 `,
-    output: `---
-function getDate()
-{
-  return new Date();
-}
+    output: `<script>
+  function getDate()
+  {
+    return new Date();
+  }
 
-const now = getDate();
----
+  const now = getDate();
+</script>
 
 <div
   class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl"
@@ -75,32 +75,32 @@ const now = getDate();
 </div>
 `,
     options: {
-      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-astro', thisPlugin],
+      plugins: ['prettier-plugin-brace-style', 'prettier-plugin-svelte', thisPlugin],
       ...braceStylePluginOptions,
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions (3) - astro -> tailwindcss',
+    name: 'two plugins with some overlapping formatting regions (3) - svelte -> tailwindcss',
     input: `
----
+<script>
 function getDate() {
     return new Date();
 }
 
 const now = getDate();
----
+</script>
 
 <div class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
     <span>Now: {now}</span>
 </div>
 `,
-    output: `---
-function getDate() {
-  return new Date();
-}
+    output: `<script>
+  function getDate() {
+    return new Date();
+  }
 
-const now = getDate();
----
+  const now = getDate();
+</script>
 
 <div
   class="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
@@ -109,31 +109,31 @@ const now = getDate();
 </div>
 `,
     options: {
-      plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss', thisPlugin],
+      plugins: ['prettier-plugin-svelte', 'prettier-plugin-tailwindcss', thisPlugin],
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions (4) - tailwindcss -> astro',
+    name: 'two plugins with some overlapping formatting regions (4) - tailwindcss -> svelte',
     input: `
----
+<script>
 function getDate() {
     return new Date();
 }
 
 const now = getDate();
----
+</script>
 
 <div class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
     <span>Now: {now}</span>
 </div>
 `,
-    output: `---
-function getDate() {
-  return new Date();
-}
+    output: `<script>
+  function getDate() {
+    return new Date();
+  }
 
-const now = getDate();
----
+  const now = getDate();
+</script>
 
 <div
   class="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50"
@@ -142,31 +142,31 @@ const now = getDate();
 </div>
 `,
     options: {
-      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-astro', thisPlugin],
+      plugins: ['prettier-plugin-tailwindcss', 'prettier-plugin-svelte', thisPlugin],
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions (5) - astro -> classnames',
+    name: 'two plugins with some overlapping formatting regions (5) - svelte -> classnames',
     input: `
----
+<script>
 function getDate() {
     return new Date();
 }
 
 const now = getDate();
----
+</script>
 
 <div class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
     <span>Now: {now}</span>
 </div>
 `,
-    output: `---
-function getDate() {
-  return new Date();
-}
+    output: `<script>
+  function getDate() {
+    return new Date();
+  }
 
-const now = getDate();
----
+  const now = getDate();
+</script>
 
 <div
   class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
@@ -176,32 +176,32 @@ dark:border-neutral-500/30 px-4 py-4 rounded-xl"
 </div>
 `,
     options: {
-      plugins: ['prettier-plugin-astro', 'prettier-plugin-classnames', thisPlugin],
+      plugins: ['prettier-plugin-svelte', 'prettier-plugin-classnames', thisPlugin],
       ...classnamesPluginOptions,
     },
   },
   {
-    name: 'two plugins with some overlapping formatting regions (6) - classnames -> astro',
+    name: 'two plugins with some overlapping formatting regions (6) - classnames -> svelte',
     input: `
----
+<script>
 function getDate() {
     return new Date();
 }
 
 const now = getDate();
----
+</script>
 
 <div class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50 dark:border-neutral-500/30 px-4 py-4 rounded-xl">
     <span>Now: {now}</span>
 </div>
 `,
-    output: `---
-function getDate() {
-  return new Date();
-}
+    output: `<script>
+  function getDate() {
+    return new Date();
+  }
 
-const now = getDate();
----
+  const now = getDate();
+</script>
 
 <div
   class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
@@ -211,7 +211,7 @@ dark:border-neutral-500/30 px-4 py-4 rounded-xl"
 </div>
 `,
     options: {
-      plugins: ['prettier-plugin-classnames', 'prettier-plugin-astro', thisPlugin],
+      plugins: ['prettier-plugin-classnames', 'prettier-plugin-svelte', thisPlugin],
       ...classnamesPluginOptions,
     },
   },

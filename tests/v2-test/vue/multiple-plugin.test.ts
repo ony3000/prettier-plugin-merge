@@ -1,25 +1,17 @@
-import { format } from 'prettier';
 import type { Fixture } from 'test-settings';
 import { baseOptions } from 'test-settings';
-import { describe, expect, test } from 'vitest';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
-import * as thisPlugin from '@/packages/v2-plugin';
+import {
+  thisPlugin,
+  sortImportsPluginOptions,
+  braceStylePluginOptions,
+  classnamesPluginOptions,
+  testEach,
+} from '../adaptor';
 
 const options = {
   ...baseOptions,
   parser: 'vue',
-};
-
-const sortImportsPluginOptions = {
-  importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
-  importOrderSeparation: true,
-};
-const braceStylePluginOptions = {
-  braceStyle: 'allman',
-};
-const classnamesPluginOptions = {
-  endingPosition: 'absolute',
 };
 
 const fixtures: Fixture[] = [
@@ -696,15 +688,4 @@ function incrementHandler() {
   },
 ];
 
-describe('vue/multiple-plugin', () => {
-  for (const fixture of fixtures) {
-    test(fixture.name, () => {
-      expect(
-        format(fixture.input, {
-          ...options,
-          ...(fixture.options ?? {}),
-        }),
-      ).toBe(fixture.output);
-    });
-  }
-});
+testEach(fixtures, options);

@@ -5,12 +5,12 @@ import { thisPlugin, testErrorEach } from '../adaptor';
 
 const options = {
   ...baseOptions,
-  parser: 'astro',
+  parser: 'svelte',
 };
 
 const fixtures: Fixture[] = [
   {
-    name: 'no plugins (1) - it will not work without the astro plugin',
+    name: 'no plugins (1) - it will not work without the svelte plugin',
     input: `any input`,
     output: `any output`,
     options: {
@@ -18,9 +18,9 @@ const fixtures: Fixture[] = [
     },
   },
   {
-    name: 'no plugins (2) - it will not work without the astro plugin',
+    name: 'no plugins (2) - it will not work without the svelte plugin',
     input: `this plugin does not have`,
-    output: `a built-in astro compiler (or parser).`,
+    output: `a built-in svelte compiler (or parser).`,
     options: {
       plugins: [thisPlugin],
     },

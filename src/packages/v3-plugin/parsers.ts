@@ -57,13 +57,13 @@ async function sequentialFormattingAndTryMerging(
 }
 
 function transformParser(
-  parserName: 'babel' | 'typescript' | 'vue' | 'astro',
+  parserName: SupportedParserNames,
   defaultParser: Parser,
   languageName?: string,
 ): Parser {
   return {
     ...defaultParser,
-    parse: async (text: string, options: ParserOptions) => {
+    parse: async (text: string, options: ParserOptions): Promise<FormattedTextAST> => {
       const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
       const pluginIndex = plugins.findIndex(
         (plugin) =>
@@ -120,6 +120,9 @@ function transformParser(
 export const parsers: { [parserName: string]: Parser } = {
   babel: transformParser('babel', babelParsers.babel),
   typescript: transformParser('typescript', typescriptParsers.typescript),
+  angular: transformParser('angular', htmlParsers.angular),
+  html: transformParser('html', htmlParsers.html),
   vue: transformParser('vue', htmlParsers.vue),
   astro: transformParser('astro', {} as Parser, 'astro'),
+  svelte: transformParser('svelte', {} as Parser, 'svelte'),
 };
