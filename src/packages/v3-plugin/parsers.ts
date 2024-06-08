@@ -120,6 +120,7 @@ function transformParser(
 export const parsers: { [parserName: string]: Parser } = {
   babel: transformParser('babel', babelParsers.babel),
   typescript: transformParser('typescript', typescriptParsers.typescript),
+  html: transformParser('html', htmlParsers.html),
   vue: transformParser('vue', htmlParsers.vue),
   astro: transformParser('astro', {} as Parser, 'astro'),
   svelte: transformParser('svelte', {} as Parser, 'svelte'),
