@@ -67,7 +67,7 @@ npm install -D prettier prettier-plugin-merge
 
 ## Configuration
 
-**Note**: This plugin MUST come last. Other plugins usually have no order constraints.
+**Note**: This plugin MUST come last. Other plugins usually have no order constraints. However, if there are multiple plugins formatting the same area, the output may vary depending on the order of those plugins.
 
 JSON example:
 
