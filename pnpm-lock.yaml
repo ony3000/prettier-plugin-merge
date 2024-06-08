@@ -112,8 +112,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
       prettier-plugin-classnames:
-        specifier: 0.6.3
-        version: 0.6.3(prettier-plugin-astro@0.10.0)(prettier@2.8.4)
+        specifier: 0.7.0
+        version: 0.7.0(prettier-plugin-astro@0.10.0)(prettier-plugin-svelte@2.10.1)(prettier@2.8.4)
       prettier-plugin-svelte:
         specifier: 2.10.1
         version: 2.10.1(prettier@2.8.4)(svelte@4.2.17)
@@ -148,8 +148,8 @@ importers:
         specifier: 0.6.0
         version: 0.6.0(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
       prettier-plugin-classnames:
-        specifier: 0.6.3
-        version: 0.6.3(prettier-plugin-astro@0.11.0)(prettier@3.0.3)
+        specifier: 0.7.0
+        version: 0.7.0(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0)(prettier@3.0.3)
       prettier-plugin-svelte:
         specifier: 3.0.0
         version: 3.0.0(prettier@3.0.3)(svelte@4.2.17)
@@ -2980,32 +2980,40 @@ packages:
       prettier-plugin-astro: 0.11.0
     dev: true
 
-  /prettier-plugin-classnames@0.6.3(prettier-plugin-astro@0.10.0)(prettier@2.8.4):
-    resolution: {integrity: sha512-+Pn0OtyAMnmphfSk2wpzvOUs4bohzo8u+SCvb5kEFIiKLtlvWWEMkNeAGqZgKFZe7cp20oDHOvM/FqdJoj4G7A==}
+  /prettier-plugin-classnames@0.7.0(prettier-plugin-astro@0.10.0)(prettier-plugin-svelte@2.10.1)(prettier@2.8.4):
+    resolution: {integrity: sha512-gxnMyTUPs5rPY/JzjLBsiBFA0Dj9/oukk02fGofAQ+FFzGYNZEHWL8Q9TWXmglgJgBzy2Cx0Az9n+Uk4DtianA==}
     engines: {node: '>=14'}
     peerDependencies:
       prettier: ^2 || ^3
       prettier-plugin-astro: '*'
+      prettier-plugin-svelte: '*'
     peerDependenciesMeta:
       prettier-plugin-astro:
+        optional: true
+      prettier-plugin-svelte:
         optional: true
     dependencies:
       prettier: 2.8.4
       prettier-plugin-astro: 0.10.0
+      prettier-plugin-svelte: 2.10.1(prettier@2.8.4)(svelte@4.2.17)
     dev: true
 
-  /prettier-plugin-classnames@0.6.3(prettier-plugin-astro@0.11.0)(prettier@3.0.3):
-    resolution: {integrity: sha512-+Pn0OtyAMnmphfSk2wpzvOUs4bohzo8u+SCvb5kEFIiKLtlvWWEMkNeAGqZgKFZe7cp20oDHOvM/FqdJoj4G7A==}
+  /prettier-plugin-classnames@0.7.0(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0)(prettier@3.0.3):
+    resolution: {integrity: sha512-gxnMyTUPs5rPY/JzjLBsiBFA0Dj9/oukk02fGofAQ+FFzGYNZEHWL8Q9TWXmglgJgBzy2Cx0Az9n+Uk4DtianA==}
     engines: {node: '>=14'}
     peerDependencies:
       prettier: ^2 || ^3
       prettier-plugin-astro: '*'
+      prettier-plugin-svelte: '*'
     peerDependenciesMeta:
       prettier-plugin-astro:
+        optional: true
+      prettier-plugin-svelte:
         optional: true
     dependencies:
       prettier: 3.0.3
       prettier-plugin-astro: 0.11.0
+      prettier-plugin-svelte: 3.0.0(prettier@3.0.3)(svelte@4.2.17)
     dev: true
 
   /prettier-plugin-svelte@2.10.1(prettier@2.8.4)(svelte@4.2.17):
