@@ -19,6 +19,7 @@ async function sequentialFormattingAndTryMerging(
   const sequentialFormattingOptions = {
     ...options,
     rangeEnd: Infinity,
+    endOfLine: 'lf' as const,
     plugins: customLanguageSupportedPlugins,
   };
 
