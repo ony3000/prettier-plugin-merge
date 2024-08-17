@@ -3,6 +3,7 @@ import { baseOptions } from 'test-settings';
 
 import {
   thisPlugin,
+  noopPlugin,
   sortImportsPluginOptions,
   braceStylePluginOptions,
   classnamesPluginOptions,
@@ -391,6 +392,32 @@ dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     options: {
       plugins: ['prettier-plugin-classnames', thisPlugin],
       ...classnamesPluginOptions,
+    },
+  },
+  {
+    name: 'issue #31 (1) - standalone use',
+    input: `
+export function Callout({ children }) {
+  return null;
+}
+`,
+    output: `export function Callout({ children }) {\r\n  return null;\r\n}\r\n`,
+    options: {
+      plugins: [noopPlugin],
+      endOfLine: 'crlf',
+    },
+  },
+  {
+    name: 'issue #31 (2) - a combination of a single plugin and a merge plugin also has no effect',
+    input: `
+export function Callout({ children }) {
+  return null;
+}
+`,
+    output: `export function Callout({ children }) {\r\n  return null;\r\n}\r\n`,
+    options: {
+      plugins: [noopPlugin, thisPlugin],
+      endOfLine: 'crlf',
     },
   },
 ];

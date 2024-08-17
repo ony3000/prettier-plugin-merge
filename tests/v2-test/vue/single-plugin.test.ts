@@ -3,6 +3,7 @@ import { baseOptions } from 'test-settings';
 
 import {
   thisPlugin,
+  noopPlugin,
   sortImportsPluginOptions,
   braceStylePluginOptions,
   classnamesPluginOptions,
@@ -429,6 +430,36 @@ dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     options: {
       plugins: ['prettier-plugin-classnames', thisPlugin],
       ...classnamesPluginOptions,
+    },
+  },
+  {
+    name: 'issue #31 (1) - standalone use',
+    input: `
+<template>
+  <div>
+    <span></span>
+  </div>
+</template>
+`,
+    output: `<template>\r\n  <div>\r\n    <span></span>\r\n  </div>\r\n</template>\r\n`,
+    options: {
+      plugins: [noopPlugin],
+      endOfLine: 'crlf',
+    },
+  },
+  {
+    name: 'issue #31 (2) - a combination of a single plugin and a merge plugin also has no effect',
+    input: `
+<template>
+  <div>
+    <span></span>
+  </div>
+</template>
+`,
+    output: `<template>\r\n  <div>\r\n    <span></span>\r\n  </div>\r\n</template>\r\n`,
+    options: {
+      plugins: [noopPlugin, thisPlugin],
+      endOfLine: 'crlf',
     },
   },
 ];
