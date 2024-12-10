@@ -6,6 +6,33 @@ import { parsers as babelParsers } from 'prettier/plugins/babel';
 import { parsers as htmlParsers } from 'prettier/plugins/html';
 import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 
+const EOL = '\n';
+
+async function formatAsCodeblock(text: string, options: ParserOptions, plugins?: Plugin[]) {
+  let codeblockStart = '```';
+  const codeblockEnd = '```';
+
+  if (options.parser === 'babel') {
+    codeblockStart = '```jsx';
+  } else if (options.parser === 'typescript') {
+    codeblockStart = '```tsx';
+  }
+
+  const formattedCodeblock = await format(`${codeblockStart}${EOL}${text}${EOL}${codeblockEnd}`, {
+    ...options,
+    plugins: plugins ?? [],
+    rangeEnd: Infinity,
+    endOfLine: 'lf',
+    parser: options.parentParser,
+    parentParser: undefined,
+  });
+  const formattedText = formattedCodeblock
+    .trim()
+    .slice(`${codeblockStart}${EOL}`.length, -`${EOL}${codeblockEnd}`.length);
+
+  return formattedText;
+}
+
 async function sequentialFormattingAndTryMerging(
   options: ParserOptions,
   plugins: Plugin[],
@@ -23,7 +50,10 @@ async function sequentialFormattingAndTryMerging(
     plugins: customLanguageSupportedPlugins,
   };
 
-  const firstFormattedTextPromise = format(originalText, sequentialFormattingOptions);
+  const firstFormattedTextPromise =
+    options.parentParser === 'markdown' || options.parentParser === 'mdx'
+      ? formatAsCodeblock(originalText, options)
+      : format(originalText, sequentialFormattingOptions);
 
   /**
    * Changes that may be removed during the sequential formatting process.
@@ -33,15 +63,22 @@ async function sequentialFormattingAndTryMerging(
   const sequentiallyMergedText = await plugins.reduce<Promise<string>>(
     async (formattedPrevTextPromise, plugin) => {
       const formattedPrevText = await formattedPrevTextPromise;
-      const temporaryFormattedText = await format(formattedPrevText, {
-        ...sequentialFormattingOptions,
-        plugins: [...customLanguageSupportedPlugins, plugin],
-      });
 
-      const temporaryFormattedTextWithoutPlugin = await format(
-        temporaryFormattedText,
-        sequentialFormattingOptions,
-      );
+      const temporaryFormattedText =
+        options.parentParser === 'markdown' || options.parentParser === 'mdx'
+          ? await formatAsCodeblock(formattedPrevText, sequentialFormattingOptions, [
+              ...customLanguageSupportedPlugins,
+              plugin,
+            ])
+          : await format(formattedPrevText, {
+              ...sequentialFormattingOptions,
+              plugins: [...customLanguageSupportedPlugins, plugin],
+            });
+
+      const temporaryFormattedTextWithoutPlugin =
+        options.parentParser === 'markdown' || options.parentParser === 'mdx'
+          ? await formatAsCodeblock(temporaryFormattedText, sequentialFormattingOptions)
+          : await format(temporaryFormattedText, sequentialFormattingOptions);
 
       patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
 
