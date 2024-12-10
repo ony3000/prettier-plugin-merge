@@ -4,7 +4,7 @@ import { parsers as babelParsers } from 'prettier/plugins/babel';
 import { parsers as htmlParsers } from 'prettier/plugins/html';
 import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 import type { Fixture } from 'test-settings';
-import { expect, test } from 'vitest';
+import { describe, expect, onTestFailed, test } from 'vitest';
 
 // eslint-disable-next-line import/no-extraneous-dependencies
 import * as thisPlugin from '@/packages/v3-plugin';
@@ -43,6 +43,45 @@ export function testEach(fixtures: Fixture[], options: PrettierBaseOptions & { p
     const formattedText = await format(input, fixedOptions);
 
     expect(formattedText).toBe(output);
+  });
+}
+
+export function testSnapshotEach(
+  fixtures: Omit<Fixture, 'output'>[],
+  options: PrettierBaseOptions & { parser: string },
+) {
+  describe.each(fixtures)('$name', async ({ input, options: fixtureOptions }) => {
+    const fixedOptions = {
+      ...options,
+      ...(fixtureOptions ?? {}),
+    };
+    const formattedText = await format(input, fixedOptions);
+    let skipSecondTest = false;
+
+    test('expectation', () => {
+      onTestFailed(() => {
+        skipSecondTest = true;
+      });
+
+      expect(formattedText).toMatchSnapshot();
+    });
+
+    test('consistency; if there are no plugins or only one, adding a merge plugin should have the same result', async ({
+      skip,
+    }) => {
+      const fixedPlugins = fixedOptions.plugins ?? [];
+
+      if (skipSecondTest || fixedPlugins.length > 1) {
+        skip();
+      }
+
+      const formattedTextWithThisPlugin = await format(formattedText, {
+        ...fixedOptions,
+        plugins: [...fixedPlugins, thisPlugin],
+      });
+
+      expect(formattedTextWithThisPlugin).toBe(formattedText);
+    });
   });
 }
 
