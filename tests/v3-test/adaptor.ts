@@ -66,16 +66,18 @@ export function testSnapshotEach(
       expect(formattedText).toMatchSnapshot();
     });
 
-    test('consistency; when you have less than one plugin, adding a merge plugin should have the same result', async ({
+    test('consistency; if there are no plugins or only one, adding a merge plugin should have the same result', async ({
       skip,
     }) => {
-      if (skipSecondTest || (fixedOptions.plugins ?? []).length > 1) {
+      const fixedPlugins = fixedOptions.plugins ?? [];
+
+      if (skipSecondTest || fixedPlugins.length > 1) {
         skip();
       }
 
       const formattedTextWithThisPlugin = await format(formattedText, {
         ...fixedOptions,
-        plugins: [...(fixedOptions.plugins ?? []), thisPlugin],
+        plugins: [...fixedPlugins, thisPlugin],
       });
 
       expect(formattedTextWithThisPlugin).toBe(formattedText);
