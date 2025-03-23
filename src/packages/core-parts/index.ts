@@ -44,5 +44,8 @@ export function makePatches(oldStr: string, newStr: string): SubstitutePatch[] {
 }
 
 export function applyPatches(text: string, patches: SubstitutePatch[]): string {
-  return patches.reduce((patchedPrevText, { from, to }) => patchedPrevText.replace(from, to), text);
+  return patches.reduce(
+    (patchedPrevText, { from, to }) => patchedPrevText.replace(from, to.replace(/\$/g, '$$$$')),
+    text,
+  );
 }
