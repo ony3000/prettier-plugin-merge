@@ -420,6 +420,40 @@ export function Callout({ children }) {
       endOfLine: 'crlf',
     },
   },
+  {
+    name: 'issue #34 (1) - standalone use',
+    input: `
+export function $1_$$2_$$$3_$$$$4({ children }) {
+  return <div>{children}</div>;
+}
+`,
+    output: `export function $1_$$2_$$$3_$$$$4({ children })
+{
+  return <div>{children}</div>;
+}
+`,
+    options: {
+      plugins: ['prettier-plugin-brace-style'],
+      ...braceStylePluginOptions,
+    },
+  },
+  {
+    name: 'issue #34 (2) - a combination of a single plugin and a merge plugin also has no effect',
+    input: `
+export function $1_$$2_$$$3_$$$$4({ children }) {
+  return <div>{children}</div>;
+}
+`,
+    output: `export function $1_$$2_$$$3_$$$$4({ children })
+{
+  return <div>{children}</div>;
+}
+`,
+    options: {
+      plugins: ['prettier-plugin-brace-style', thisPlugin],
+      ...braceStylePluginOptions,
+    },
+  },
 ];
 
 testEach(fixtures, options);

@@ -150,6 +150,9 @@ importers:
       prettier-plugin-classnames:
         specifier: 0.7.5
         version: 0.7.5(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0)(prettier@3.0.3)
+      prettier-plugin-space-before-function-paren:
+        specifier: 0.0.7
+        version: 0.0.7(prettier@3.0.3)
       prettier-plugin-svelte:
         specifier: 3.0.0
         version: 3.0.0(prettier@3.0.3)(svelte@4.2.17)
@@ -3022,6 +3025,14 @@ packages:
       prettier: 3.0.3
       prettier-plugin-astro: 0.11.0
       prettier-plugin-svelte: 3.0.0(prettier@3.0.3)(svelte@4.2.17)
+    dev: true
+
+  /prettier-plugin-space-before-function-paren@0.0.7(prettier@3.0.3):
+    resolution: {integrity: sha512-xIqNOV947sr/Wb838K6ivlFh3VYNCDJbMR2CJYk3m99H9WBHa5T9r5DfAy+0v5ED+zUMml4DiyTS+ybb0zTayg==}
+    peerDependencies:
+      prettier: '>=3.0.0'
+    dependencies:
+      prettier: 3.0.3
     dev: true
 
   /prettier-plugin-svelte@2.10.1(prettier@2.8.4)(svelte@4.2.17):

@@ -56,9 +56,9 @@ async function sequentialFormattingAndTryMerging(
       : format(originalText, sequentialFormattingOptions);
 
   /**
-   * Changes that may be removed during the sequential formatting process.
+   * List of output differences according to the presence or absence of each plugin.
    */
-  const patches: SubstitutePatch[] = [];
+  const patchesPerPlugin: SubstitutePatch[][] = [];
 
   const sequentiallyMergedText = await plugins.reduce<Promise<string>>(
     async (formattedPrevTextPromise, plugin) => {
@@ -80,13 +80,11 @@ async function sequentialFormattingAndTryMerging(
           ? await formatAsCodeblock(temporaryFormattedText, sequentialFormattingOptions)
           : await format(temporaryFormattedText, sequentialFormattingOptions);
 
-      patches.push(...makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText));
+      patchesPerPlugin.push(
+        makePatches(temporaryFormattedTextWithoutPlugin, temporaryFormattedText),
+      );
 
-      if (patches.length === 0) {
-        return temporaryFormattedText;
-      }
-
-      return applyPatches(temporaryFormattedTextWithoutPlugin, patches);
+      return applyPatches(temporaryFormattedTextWithoutPlugin, patchesPerPlugin);
     },
     firstFormattedTextPromise,
   );

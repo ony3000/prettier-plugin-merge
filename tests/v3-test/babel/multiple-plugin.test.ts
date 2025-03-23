@@ -643,6 +643,177 @@ export function MyComponent()
       ...sortImportsPluginOptions,
     },
   },
+  {
+    name: 'issue #34 (1) - two plugins with some overlapping formatting regions (brace-style -> space-before-function-paren)',
+    input: String.raw`
+const inlineRegexSourcePlugin = {
+  name: 'inline-regex-source',
+  renderChunk(code) {
+    const str = new MagicString(code);
+    str.replace(
+      /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
+      (m, source) => {
+        // escape backslashes
+        source = source.replace(/\\(.)|\[(?:\\s\\S|\\S\\s)\]/g, (m, g1) => {
+          if (g1) {
+            // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
+            if (/[nrt0/]/.test(g1)) {
+              return m;
+            }
+            if ('\\' === g1) {
+              return '\\\\\\\\'; // escape using 4 backslashes
+            }
+            return '\\\\' + g1;
+          } else {
+            return '[^]';
+          }
+        });
+        // escape single quotes
+        source = source.replace(/'/g, "\\'");
+        // wrap source in single quotes
+        return "'" + source + "'";
+      }
+    );
+    return toRenderedChunk(str);
+  },
+};
+`,
+    output: String.raw`const inlineRegexSourcePlugin = {
+  name: 'inline-regex-source',
+  renderChunk(code)
+  {
+    const str = new MagicString(code);
+    str.replace(
+      /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
+      (m, source) =>
+      {
+        // escape backslashes
+        source = source.replace(/\\(.)|\[(?:\\s\\S|\\S\\s)\]/g, (m, g1) =>
+        {
+          if (g1)
+          {
+            // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
+            if (/[nrt0/]/.test(g1))
+            {
+              return m;
+            }
+            if ('\\' === g1)
+            {
+              return '\\\\\\\\'; // escape using 4 backslashes
+            }
+            return '\\\\' + g1;
+          }
+          else
+          {
+            return '[^]';
+          }
+        });
+        // escape single quotes
+        source = source.replace(/'/g, "\\'");
+        // wrap source in single quotes
+        return "'" + source + "'";
+      },
+    );
+    return toRenderedChunk(str);
+  },
+};
+`,
+    options: {
+      plugins: [
+        'prettier-plugin-brace-style',
+        'prettier-plugin-space-before-function-paren',
+        thisPlugin,
+      ],
+      singleQuote: true,
+      // @ts-expect-error
+      braceStyle: 'allman',
+    },
+  },
+  {
+    name: 'issue #34 (2) - two plugins with some overlapping formatting regions (space-before-function-paren -> brace-style)',
+    input: String.raw`
+const inlineRegexSourcePlugin = {
+  name: 'inline-regex-source',
+  renderChunk(code) {
+    const str = new MagicString(code);
+    str.replace(
+      /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
+      (m, source) => {
+        // escape backslashes
+        source = source.replace(/\\(.)|\[(?:\\s\\S|\\S\\s)\]/g, (m, g1) => {
+          if (g1) {
+            // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
+            if (/[nrt0/]/.test(g1)) {
+              return m;
+            }
+            if ('\\' === g1) {
+              return '\\\\\\\\'; // escape using 4 backslashes
+            }
+            return '\\\\' + g1;
+          } else {
+            return '[^]';
+          }
+        });
+        // escape single quotes
+        source = source.replace(/'/g, "\\'");
+        // wrap source in single quotes
+        return "'" + source + "'";
+      }
+    );
+    return toRenderedChunk(str);
+  },
+};
+`,
+    output: String.raw`const inlineRegexSourcePlugin = {
+  name: 'inline-regex-source',
+  renderChunk (code) {
+    const str = new MagicString(code);
+    str.replace(
+      /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
+      (m, source) =>
+      {
+        // escape backslashes
+        source = source.replace(/\\(.)|\[(?:\\s\\S|\\S\\s)\]/g, (m, g1) =>
+        {
+          if (g1)
+          {
+            // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
+            if (/[nrt0/]/.test(g1))
+            {
+              return m;
+            }
+            if ('\\' === g1)
+            {
+              return '\\\\\\\\'; // escape using 4 backslashes
+            }
+            return '\\\\' + g1;
+          }
+          else
+          {
+            return '[^]';
+          }
+        });
+        // escape single quotes
+        source = source.replace(/'/g, "\\'");
+        // wrap source in single quotes
+        return "'" + source + "'";
+      },
+    );
+    return toRenderedChunk(str);
+  },
+};
+`,
+    options: {
+      plugins: [
+        'prettier-plugin-space-before-function-paren',
+        'prettier-plugin-brace-style',
+        thisPlugin,
+      ],
+      singleQuote: true,
+      // @ts-expect-error
+      braceStyle: 'allman',
+    },
+  },
 ];
 
 testEach(fixtures, options);
