@@ -686,24 +686,24 @@ const inlineRegexSourcePlugin: Plugin = {
       /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
       (m, source: string) => {
         // escape backslashes
-        source = source.replace(/\\(.)|\[(?:\\s\\S|\\S\\s)\]/g, (
-          m,
-          g1: string,
-        ) => {
-          if (g1) {
-            // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
-            if (/[nrt0/]/.test(g1)) {
-              return m;
+        source = source.replace(
+          /\\(.)|\[(?:\\s\\S|\\S\\s)\]/g,
+          (m, g1: string) => {
+            if (g1) {
+              // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
+              if (/[nrt0/]/.test(g1)) {
+                return m;
+              }
+              if ('\\' === g1) {
+                return '\\\\\\\\'; // escape using 4 backslashes
+              }
+              return '\\\\' + g1;
             }
-            if ('\\' === g1) {
-              return '\\\\\\\\'; // escape using 4 backslashes
+            else {
+              return '[^]';
             }
-            return '\\\\' + g1;
-          }
-          else {
-            return '[^]';
-          }
-        });
+          },
+        );
         // escape single quotes
         source = source.replace(/'/g, "\\'");
         // wrap source in single quotes
@@ -768,24 +768,23 @@ const inlineRegexSourcePlugin: Plugin = {
       /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
       (m, source: string) => {
         // escape backslashes
-        source = source.replace(
-          /\\(.)|\[(?:\\s\\S|\\S\\s)\]/g,
-          (m, g1: string) => {
-            if (g1) {
-              // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
-              if (/[nrt0/]/.test(g1)) {
-                return m;
-              }
-              if ('\\' === g1) {
-                return '\\\\\\\\'; // escape using 4 backslashes
-              }
-              return '\\\\' + g1;
+        source = source.replace(/\\(.)|\[(?:\\s\\S|\\S\\s)\]/g, (
+          m,
+          g1: string,
+        ) => {
+          if (g1) {
+            // characters like /\n/ can just be kept as "\n" instead of being escaped to "\\n"
+            if (/[nrt0/]/.test(g1)) {
+              return m;
             }
-            else {
-              return '[^]';
+            if ('\\' === g1) {
+              return '\\\\\\\\'; // escape using 4 backslashes
             }
-          },
-        );
+            return '\\\\' + g1;
+          } else {
+            return '[^]';
+          }
+        });
         // escape single quotes
         source = source.replace(/'/g, "\\'");
         // wrap source in single quotes

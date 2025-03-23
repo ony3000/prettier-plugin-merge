@@ -680,7 +680,7 @@ const inlineRegexSourcePlugin = {
 `,
     output: String.raw`const inlineRegexSourcePlugin = {
   name: 'inline-regex-source',
-  renderChunk (code)
+  renderChunk(code)
   {
     const str = new MagicString(code);
     str.replace(
@@ -766,8 +766,7 @@ const inlineRegexSourcePlugin = {
 `,
     output: String.raw`const inlineRegexSourcePlugin = {
   name: 'inline-regex-source',
-  renderChunk (code)
-  {
+  renderChunk (code) {
     const str = new MagicString(code);
     str.replace(
       /\/((?:[^\n\r[\\\/]|\\.|\[(?:[^\n\r\\\]]|\\.)*\])+)\/\s*\.\s*source\b/g,
