@@ -93,13 +93,13 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
         if (unScannedText.indexOf(patch.from) === -1) {
           let diffLength = 0;
 
-          Diff.diffChars(patch.from, unScannedText)
+          Diff.diffWords(patch.from, unScannedText)
             .slice(0, -1)
-            .forEach(({ count = 0, added, removed }) => {
+            .forEach(({ added, removed, value }) => {
               if (added) {
-                diffLength += count;
+                diffLength += value.length;
               } else if (removed) {
-                diffLength -= count;
+                diffLength -= value.length;
               }
             });
 
