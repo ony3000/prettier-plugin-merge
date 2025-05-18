@@ -60,8 +60,27 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
     let conflictingPatches: SubstitutePatch[] = [];
 
     patches.forEach((patch) => {
+      const scannedText = mutablePrevText.slice(0, scannedLength);
+      const unScannedText = mutablePrevText.slice(scannedLength);
+
       if (patch.type === 'keep') {
-        scannedLength += patch.value.length;
+        if (unScannedText.indexOf(patch.value) === -1) {
+          let diffLength = 0;
+
+          Diff.diffWords(patch.value, unScannedText)
+            .slice(0, -1)
+            .forEach(({ added, removed, value }) => {
+              if (added) {
+                diffLength += value.length;
+              } else if (removed) {
+                diffLength -= value.length;
+              }
+            });
+
+          scannedLength += patch.value.length + diffLength;
+        } else {
+          scannedLength += patch.value.length;
+        }
 
         if (conflictingPatches.length) {
           conflictingPatches.push({
@@ -71,9 +90,6 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
           });
         }
       } else {
-        const scannedText = mutablePrevText.slice(0, scannedLength);
-        const unScannedText = mutablePrevText.slice(scannedLength);
-
         if (unScannedText.indexOf(patch.from) === -1) {
           let diffLength = 0;
 
