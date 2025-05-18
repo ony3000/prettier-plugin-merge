@@ -4,9 +4,12 @@ export type SubstitutePatch =
   | {
       type: 'keep';
       value: string;
+      from?: undefined;
+      to?: undefined;
     }
   | {
       type: 'change';
+      value?: undefined;
       from: string;
       to: string;
     };
@@ -54,27 +57,71 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
 
     let mutablePrevText = patchedPrevText;
     let scannedLength = 0;
+    let conflictingPatches: SubstitutePatch[] = [];
 
     patches.forEach((patch) => {
       if (patch.type === 'keep') {
         scannedLength += patch.value.length;
+
+        if (conflictingPatches.length) {
+          conflictingPatches.push({
+            type: 'change',
+            from: patch.value,
+            to: patch.value,
+          });
+        }
       } else {
         const scannedText = mutablePrevText.slice(0, scannedLength);
         const unScannedText = mutablePrevText.slice(scannedLength);
 
         if (unScannedText.indexOf(patch.from) === -1) {
-          /**
-           * A correction value to skip other corresponding patches when a specific patch fails to be applied.
-           */
-          const skipLength = patch.from.length - patch.to.length;
+          let diffLength = 0;
 
-          scannedLength += patch.from.length + skipLength;
+          Diff.diffChars(patch.from, unScannedText)
+            .slice(0, -1)
+            .forEach(({ count = 0, added, removed }) => {
+              if (added) {
+                diffLength += count;
+              } else if (removed) {
+                diffLength -= count;
+              }
+            });
+
+          scannedLength += patch.from.length + diffLength;
+          conflictingPatches.push(patch);
         } else {
-          mutablePrevText = `${scannedText}${unScannedText.replace(
-            patch.from,
-            patch.to.replace(/\$/g, '$$$$'),
-          )}`;
-          scannedLength += patch.to.length;
+          if (conflictingPatches.length === 0) {
+            mutablePrevText = `${scannedText}${unScannedText.replace(
+              patch.from,
+              patch.to.replace(/\$/g, '$$$$'),
+            )}`;
+            scannedLength += patch.to.length;
+          } else {
+            const conflictingFromText = [
+              ...conflictingPatches.map(({ from }) => from),
+              patch.from,
+            ].join('');
+            const conflictingToText = [...conflictingPatches.map(({ to }) => to), patch.to].join(
+              '',
+            );
+
+            const wordDiffs = Diff.diffWords(conflictingFromText, conflictingToText);
+            const removedTextWithoutSpaces = wordDiffs
+              .filter(({ removed }) => removed)
+              .map(({ value }) => value.trim())
+              .join('');
+            const addedTextWithoutSpaces = wordDiffs
+              .filter(({ added }) => added)
+              .map(({ value }) => value.trim())
+              .join('');
+
+            if (removedTextWithoutSpaces === addedTextWithoutSpaces) {
+              scannedLength += patch.from.length;
+              conflictingPatches = [];
+            } else {
+              // Note: A case study is needed.
+            }
+          }
         }
       }
     });
