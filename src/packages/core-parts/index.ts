@@ -67,7 +67,7 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
         if (unScannedText.indexOf(patch.value) === -1) {
           let diffLength = 0;
 
-          Diff.diffWords(patch.value, unScannedText)
+          Diff.diffWords(patch.value, unScannedText.slice(0, patch.value.length * 2))
             .slice(0, -1)
             .forEach(({ added, removed, value }) => {
               if (added) {
@@ -93,7 +93,7 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
         if (unScannedText.indexOf(patch.from) === -1) {
           let diffLength = 0;
 
-          Diff.diffWords(patch.from, unScannedText)
+          Diff.diffWords(patch.from, unScannedText.slice(0, patch.from.length * 2))
             .slice(0, -1)
             .forEach(({ added, removed, value }) => {
               if (added) {
