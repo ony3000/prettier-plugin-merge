@@ -106,8 +106,8 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
           scannedLength += patch.from.length + diffLength;
           conflictingPatches.push(patch);
 
-          const conflictingFromText = [...conflictingPatches.map(({ from }) => from)].join('');
-          const conflictingToText = [...conflictingPatches.map(({ to }) => to)].join('');
+          const conflictingFromText = conflictingPatches.map(({ from }) => from).join('');
+          const conflictingToText = conflictingPatches.map(({ to }) => to).join('');
 
           const wordDiffs = Diff.diffWords(conflictingFromText, conflictingToText);
           const removedTextWithoutSpaces = wordDiffs
@@ -132,13 +132,10 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
             )}`;
             scannedLength += patch.to.length;
           } else {
-            const conflictingFromText = [
-              ...conflictingPatches.map(({ from }) => from),
-              patch.from,
-            ].join('');
-            const conflictingToText = [...conflictingPatches.map(({ to }) => to), patch.to].join(
-              '',
-            );
+            conflictingPatches.push(patch);
+
+            const conflictingFromText = conflictingPatches.map(({ from }) => from).join('');
+            const conflictingToText = conflictingPatches.map(({ to }) => to).join('');
 
             const wordDiffs = Diff.diffWords(conflictingFromText, conflictingToText);
             const removedTextWithoutSpaces = wordDiffs
