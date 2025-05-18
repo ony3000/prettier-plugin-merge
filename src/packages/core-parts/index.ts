@@ -89,6 +89,28 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
 
           scannedLength += patch.from.length + diffLength;
           conflictingPatches.push(patch);
+
+          const conflictingFromText = [
+            ...conflictingPatches.map(({ from }) => from),
+            patch.from,
+          ].join('');
+          const conflictingToText = [...conflictingPatches.map(({ to }) => to), patch.to].join('');
+
+          const wordDiffs = Diff.diffWords(conflictingFromText, conflictingToText);
+          const removedTextWithoutSpaces = wordDiffs
+            .filter(({ removed }) => removed)
+            .map(({ value }) => value.trim())
+            .join('');
+          const addedTextWithoutSpaces = wordDiffs
+            .filter(({ added }) => added)
+            .map(({ value }) => value.trim())
+            .join('');
+
+          if (removedTextWithoutSpaces === addedTextWithoutSpaces) {
+            conflictingPatches = [];
+          } else {
+            // Note: A case study is needed.
+          }
         } else {
           if (conflictingPatches.length === 0) {
             mutablePrevText = `${scannedText}${unScannedText.replace(
