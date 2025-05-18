@@ -59,10 +59,10 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
       if (patch.type === 'keep') {
         scannedLength += patch.value.length;
       } else {
-        const prefix = mutablePrevText.slice(0, scannedLength);
-        const suffix = mutablePrevText.slice(scannedLength);
+        const scannedText = mutablePrevText.slice(0, scannedLength);
+        const unScannedText = mutablePrevText.slice(scannedLength);
 
-        if (suffix.indexOf(patch.from) === -1) {
+        if (unScannedText.indexOf(patch.from) === -1) {
           /**
            * A correction value to skip other corresponding patches when a specific patch fails to be applied.
            */
@@ -70,7 +70,7 @@ export function applyPatches(text: string, patchesPerPlugin: SubstitutePatch[][]
 
           scannedLength += patch.from.length + skipLength;
         } else {
-          mutablePrevText = `${prefix}${suffix.replace(
+          mutablePrevText = `${scannedText}${unScannedText.replace(
             patch.from,
             patch.to.replace(/\$/g, '$$$$'),
           )}`;
