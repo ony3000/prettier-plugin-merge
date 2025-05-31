@@ -47,7 +47,7 @@
     "eslint-import-resolver-typescript": "3.5.3",
     "eslint-plugin-import": "2.27.5",
     "merge-packages": "0.1.6",
-    "prettier": "3.0.3",
+    "prettier": "3.1.0",
     "rimraf": "5.0.1",
     "typescript": "5.8.3"
   },
