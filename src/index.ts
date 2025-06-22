@@ -1,2 +1,2 @@
-// eslint-disable-next-line global-require
-module.exports = require('./packages/v3-plugin');
+export { parsers } from './parsers';
+export { printers } from './printers';
