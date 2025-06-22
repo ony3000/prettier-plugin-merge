@@ -1,5 +1,5 @@
-import type { Fixture } from 'test-settings';
-import { baseOptions } from 'test-settings';
+import type { Fixture } from '../../test-settings';
+import { baseOptions } from '../../test-settings';
 
 import { thisPlugin, classnamesPluginOptions, testEach } from '../adaptor';
 

@@ -1,10 +1,11 @@
-import type { SubstitutePatch } from 'core-parts';
-import { makePatches, applyPatches } from 'core-parts';
 import type { Parser, ParserOptions, Plugin } from 'prettier';
 import { format } from 'prettier';
 import { parsers as babelParsers } from 'prettier/plugins/babel';
 import { parsers as htmlParsers } from 'prettier/plugins/html';
 import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
+
+import type { SubstitutePatch } from '../core-parts';
+import { makePatches, applyPatches } from '../core-parts';
 
 const EOL = '\n';
 

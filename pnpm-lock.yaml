@@ -76,9 +76,6 @@ importers:
 
   src/packages/v3-plugin:
     dependencies:
-      core-parts:
-        specifier: workspace:*
-        version: link:../core-parts
       prettier:
         specifier: 3.1.0
         version: 3.1.0
@@ -111,9 +108,6 @@ importers:
       prettier-plugin-tailwindcss:
         specifier: 0.5.2
         version: 0.5.2(@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.1.0))(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.1.0)(svelte@4.2.19))(prettier@3.1.0)
-      test-settings:
-        specifier: workspace:*
-        version: link:../test-settings
       vite-tsconfig-paths:
         specifier: 4.2.3
         version: 4.2.3(typescript@5.8.3)(vite@5.4.19(@types/node@20.17.46))
