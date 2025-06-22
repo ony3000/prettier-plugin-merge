@@ -1,3 +1,5 @@
+import type { Plugin } from 'prettier';
+
 export const baseOptions: PrettierBaseOptions = {
   printWidth: 80,
   tabWidth: 2,
@@ -27,5 +29,5 @@ export type Fixture = {
   name: string;
   input: string;
   output: string;
-  options?: Partial<PrettierBaseOptions & { plugins: any[] }>;
+  options?: Partial<PrettierBaseOptions & { plugins: (string | Plugin)[] }>;
 };

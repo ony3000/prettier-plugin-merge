@@ -5,7 +5,6 @@ import { parsers as htmlParsers } from 'prettier/plugins/html';
 import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 import { describe, expect, onTestFailed, test } from 'vitest';
 
-// eslint-disable-next-line import/no-extraneous-dependencies
 import * as thisPlugin from '@/index';
 
 import type { Fixture } from './settings';
