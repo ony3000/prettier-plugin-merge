@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`'(1) This plugin doesn\\'t support mdx parser, so it leaves the output of each plugin as is.' > expectation 1`] = `
+exports[`'(1) This plugin doesn\\'t support mdx …' > expectation 1`] = `
 "\`\`\`jsx
 export function Foo({ children }) {
   return (
