@@ -432,7 +432,7 @@ function incrementHandler() {
 <template>
   <div
     class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
-dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   >
     <slot></slot>
   </div>
@@ -482,7 +482,7 @@ function incrementHandler() {
 <template>
   <div
     class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
-dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   >
     <slot></slot>
   </div>
@@ -531,7 +531,7 @@ function incrementHandler()
 <template>
   <div
     class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
-dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   >
     <slot></slot>
   </div>
@@ -580,7 +580,7 @@ function incrementHandler()
 <template>
   <div
     class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
-dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   >
     <slot></slot>
   </div>
@@ -628,7 +628,7 @@ function incrementHandler() {
 <template>
   <div
     class="rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4
-dark:border-neutral-500/30 dark:bg-neutral-900/50"
+      dark:border-neutral-500/30 dark:bg-neutral-900/50"
   >
     <slot></slot>
   </div>

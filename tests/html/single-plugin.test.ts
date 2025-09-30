@@ -62,7 +62,7 @@ const fixtures: Fixture[] = [
     output: `<template>
   <div
     class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
-dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   >
     <slot></slot>
   </div>
@@ -85,7 +85,7 @@ dark:border-neutral-500/30 px-4 py-4 rounded-xl"
     output: `<template>
   <div
     class="bg-gray-100/50 border border-zinc-400/30 dark:bg-neutral-900/50
-dark:border-neutral-500/30 px-4 py-4 rounded-xl"
+      dark:border-neutral-500/30 px-4 py-4 rounded-xl"
   >
     <slot></slot>
   </div>
