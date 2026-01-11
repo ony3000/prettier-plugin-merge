@@ -3,6 +3,7 @@ import {
   sortImportsPluginOptions,
   braceStylePluginOptions,
   classnamesPluginOptions,
+  tailwindcssPluginOptions,
   testEach,
 } from '../adaptor';
 import type { Fixture } from '../settings';
@@ -568,6 +569,7 @@ export function Callout({ children }) {
     options: {
       plugins: ['prettier-plugin-classnames', 'prettier-plugin-tailwindcss', thisPlugin],
       ...classnamesPluginOptions,
+      ...tailwindcssPluginOptions,
     },
   },
   {

@@ -34,6 +34,10 @@ export const classnamesPluginOptions = {
   endingPosition: 'absolute',
 };
 
+export const tailwindcssPluginOptions = {
+  tailwindPreserveWhitespace: true,
+};
+
 export function testEach(fixtures: Fixture[], options: PrettierBaseOptions & { parser: string }) {
   test.each(fixtures)('$name', async ({ input, output, options: fixtureOptions }) => {
     const fixedOptions = {
