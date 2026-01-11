@@ -37,18 +37,16 @@ async function formatAsCodeblock(text: string, options: ParserOptions, plugins?:
 async function sequentialFormattingAndTryMerging(
   options: ParserOptions,
   plugins: Plugin[],
-  languageImplementedPlugin?: Plugin,
+  externalPlugin?: Plugin,
 ): Promise<string> {
-  const customLanguageSupportedPlugins = languageImplementedPlugin
-    ? [languageImplementedPlugin]
-    : [];
+  const maybeExternalPlugins = externalPlugin ? [externalPlugin] : [];
 
   const { originalText } = options;
   const sequentialFormattingOptions = {
     ...options,
     rangeEnd: Infinity,
     endOfLine: 'lf' as const,
-    plugins: customLanguageSupportedPlugins,
+    plugins: maybeExternalPlugins,
   };
 
   const firstFormattedTextPromise =
@@ -68,12 +66,12 @@ async function sequentialFormattingAndTryMerging(
       const temporaryFormattedText =
         options.parentParser === 'markdown' || options.parentParser === 'mdx'
           ? await formatAsCodeblock(formattedPrevText, sequentialFormattingOptions, [
-              ...customLanguageSupportedPlugins,
+              ...maybeExternalPlugins,
               plugin,
             ])
           : await format(formattedPrevText, {
               ...sequentialFormattingOptions,
-              plugins: [...customLanguageSupportedPlugins, plugin],
+              plugins: [...maybeExternalPlugins, plugin],
             });
 
       const temporaryFormattedTextWithoutPlugin =
@@ -95,11 +93,22 @@ async function sequentialFormattingAndTryMerging(
 
 function transformParser(
   parserName: SupportedParserNames,
-  defaultParser: Parser,
-  languageName?: string,
+  transformOptions:
+    | {
+        defaultParser: Parser;
+        externalPluginName?: string;
+      }
+    | {
+        defaultParser: null;
+        externalPluginName: string;
+      },
 ): Parser {
+  const { defaultParser, externalPluginName } = transformOptions;
+  let refinedParser = defaultParser;
+
+  // @ts-expect-error
   return {
-    ...defaultParser,
+    ...(refinedParser ?? {}),
     parse: async (text: string, options: ParserOptions): Promise<FormattedTextAST> => {
       const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
       const pluginIndex = plugins.findIndex(
@@ -119,18 +128,35 @@ function transformParser(
         );
       }
 
-      let languageImplementedPlugin: Plugin | undefined;
-      if (languageName) {
-        languageImplementedPlugin = plugins
-          .slice(0, pluginIndex)
-          .filter((plugin) => plugin.languages?.some((language) => language.name === languageName))
+      let externalPlugin: Plugin | undefined;
+      let externalParser: Parser | undefined;
+
+      if (externalPluginName) {
+        externalPlugin = plugins
+          .filter(
+            (plugin) =>
+              // @ts-expect-error: `name` is presumed to be injected internally by Prettier.
+              plugin.name === externalPluginName,
+          )
           .at(0);
 
-        if (!languageImplementedPlugin) {
-          throw new Error(
-            `There doesn't seem to be any plugin that supports ${languageName} formatting.`,
-          );
+        if (!externalPlugin) {
+          throw new Error('There is no plugin with the given name.');
         }
+
+        externalParser = externalPlugin.parsers?.[parserName];
+
+        if (refinedParser === null) {
+          if (!externalParser) {
+            throw new Error('The plugin does not contain a parser.');
+          }
+
+          refinedParser = externalParser;
+        }
+      }
+
+      if (refinedParser === null) {
+        throw new Error('Could not find a suitable parser.');
       }
 
       const parserImplementedPlugins = plugins
@@ -142,7 +168,7 @@ function transformParser(
           originalText: text,
         },
         parserImplementedPlugins,
-        languageImplementedPlugin,
+        externalPlugin,
       );
 
       return {
@@ -155,11 +181,27 @@ function transformParser(
 }
 
 export const parsers: { [parserName: string]: Parser } = {
-  babel: transformParser('babel', babelParsers.babel),
-  typescript: transformParser('typescript', typescriptParsers.typescript),
-  angular: transformParser('angular', htmlParsers.angular),
-  html: transformParser('html', htmlParsers.html),
-  vue: transformParser('vue', htmlParsers.vue),
-  astro: transformParser('astro', {} as Parser, 'astro'),
-  svelte: transformParser('svelte', {} as Parser, 'svelte'),
+  babel: transformParser('babel', {
+    defaultParser: babelParsers.babel,
+  }),
+  typescript: transformParser('typescript', {
+    defaultParser: typescriptParsers.typescript,
+  }),
+  angular: transformParser('angular', {
+    defaultParser: htmlParsers.angular,
+  }),
+  html: transformParser('html', {
+    defaultParser: htmlParsers.html,
+  }),
+  vue: transformParser('vue', {
+    defaultParser: htmlParsers.vue,
+  }),
+  astro: transformParser('astro', {
+    defaultParser: null,
+    externalPluginName: 'prettier-plugin-astro',
+  }),
+  svelte: transformParser('svelte', {
+    defaultParser: null,
+    externalPluginName: 'prettier-plugin-svelte',
+  }),
 };
