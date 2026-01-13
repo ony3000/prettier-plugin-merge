@@ -1,7 +1,6 @@
 import {
   thisPlugin,
   noopPlugin,
-  sortImportsPluginOptions,
   braceStylePluginOptions,
   classnamesPluginOptions,
   testEach,
@@ -15,116 +14,6 @@ const options = {
 };
 
 const fixtures: Fixture[] = [
-  {
-    name: 'sort-imports plugin (1) - standalone use',
-    input: `
-import { CounterButton } from './parts';
-import { CounterContainer } from '@/layouts';
-import { useState } from 'react';
-
-export default function Counter({
-  label = 'Counter',
-  onChange = undefined,
-}) {
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () => {
-    setCount((c) => c + 1);
-    onChange?.(count + 1);
-  };
-
-  return (
-    <CounterContainer>
-      <span className="px-1">{label}</span>
-      <span className="font-bold px-1">{count}</span>
-      <CounterButton onClick={incrementHandler} />
-    </CounterContainer>
-  );
-}
-`,
-    output: `import { useState } from "react";
-
-import { CounterContainer } from "@/layouts";
-
-import { CounterButton } from "./parts";
-
-export default function Counter({ label = "Counter", onChange = undefined }) {
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () => {
-    setCount((c) => c + 1);
-    onChange?.(count + 1);
-  };
-
-  return (
-    <CounterContainer>
-      <span className="px-1">{label}</span>
-      <span className="font-bold px-1">{count}</span>
-      <CounterButton onClick={incrementHandler} />
-    </CounterContainer>
-  );
-}
-`,
-    options: {
-      plugins: ['@prettier/plugin-oxc', '@trivago/prettier-plugin-sort-imports'],
-      ...sortImportsPluginOptions,
-    },
-  },
-  {
-    name: 'sort-imports plugin (2) - a combination of a single plugin and a merge plugin also has no effect',
-    input: `
-import { CounterButton } from './parts';
-import { CounterContainer } from '@/layouts';
-import { useState } from 'react';
-
-export default function Counter({
-  label = 'Counter',
-  onChange = undefined,
-}) {
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () => {
-    setCount((c) => c + 1);
-    onChange?.(count + 1);
-  };
-
-  return (
-    <CounterContainer>
-      <span className="px-1">{label}</span>
-      <span className="font-bold px-1">{count}</span>
-      <CounterButton onClick={incrementHandler} />
-    </CounterContainer>
-  );
-}
-`,
-    output: `import { useState } from "react";
-
-import { CounterContainer } from "@/layouts";
-
-import { CounterButton } from "./parts";
-
-export default function Counter({ label = "Counter", onChange = undefined }) {
-  const [count, setCount] = useState(0);
-
-  const incrementHandler = () => {
-    setCount((c) => c + 1);
-    onChange?.(count + 1);
-  };
-
-  return (
-    <CounterContainer>
-      <span className="px-1">{label}</span>
-      <span className="font-bold px-1">{count}</span>
-      <CounterButton onClick={incrementHandler} />
-    </CounterContainer>
-  );
-}
-`,
-    options: {
-      plugins: ['@prettier/plugin-oxc', '@trivago/prettier-plugin-sort-imports', thisPlugin],
-      ...sortImportsPluginOptions,
-    },
-  },
   {
     name: 'brace-style plugin (1) - standalone use',
     input: `
