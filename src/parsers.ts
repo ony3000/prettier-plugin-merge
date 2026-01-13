@@ -201,6 +201,10 @@ export const parsers: { [parserName: string]: Parser } = {
     defaultParser: oxcParsers.oxc,
     externalPluginName: '@prettier/plugin-oxc',
   }),
+  'oxc-ts': transformParser('oxc-ts', {
+    defaultParser: oxcParsers['oxc-ts'],
+    externalPluginName: '@prettier/plugin-oxc',
+  }),
   astro: transformParser('astro', {
     defaultParser: null,
     externalPluginName: 'prettier-plugin-astro',
