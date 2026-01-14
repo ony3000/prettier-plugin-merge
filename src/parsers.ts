@@ -40,14 +40,14 @@ async function sequentialFormattingAndTryMerging(
   plugins: Plugin[],
   externalPlugin?: Plugin,
 ): Promise<string> {
-  const maybeExternalPlugins = externalPlugin ? [externalPlugin] : [];
+  const externalPlugins = externalPlugin ? [externalPlugin] : [];
 
   const { originalText } = options;
   const sequentialFormattingOptions = {
     ...options,
     rangeEnd: Infinity,
     endOfLine: 'lf' as const,
-    plugins: maybeExternalPlugins,
+    plugins: externalPlugins,
   };
 
   const firstFormattedTextPromise =
@@ -67,12 +67,12 @@ async function sequentialFormattingAndTryMerging(
       const temporaryFormattedText =
         options.parentParser === 'markdown' || options.parentParser === 'mdx'
           ? await formatAsCodeblock(formattedPrevText, sequentialFormattingOptions, [
-              ...maybeExternalPlugins,
+              ...externalPlugins,
               plugin,
             ])
           : await format(formattedPrevText, {
               ...sequentialFormattingOptions,
-              plugins: [...maybeExternalPlugins, plugin],
+              plugins: [...externalPlugins, plugin],
             });
 
       const temporaryFormattedTextWithoutPlugin =
@@ -106,7 +106,7 @@ function transformParser(
 ): Parser {
   const { defaultParser, externalPluginName } = transformOptions;
 
-  // @ts-expect-error
+  // @ts-expect-error: Since the parser handles all the work and just passes the results to the printer, it's okay if `locStart` and `locEnd` are not present.
   return {
     ...(defaultParser ?? {}),
     parse: async (text: string, options: ParserOptions): Promise<FormattedTextAST> => {
@@ -140,7 +140,7 @@ function transformParser(
           .at(0);
 
         if (!externalPlugin) {
-          throw new Error('There is no plugin with the given name.');
+          throw new Error(`There is no plugin with the name '${externalPluginName}'.`);
         }
       }
 
