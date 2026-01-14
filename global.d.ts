@@ -26,6 +26,7 @@ declare global {
 
   type SupportedParserNames =
     | 'babel'
+    | 'babel-ts'
     | 'typescript'
     | 'angular'
     | 'html'
