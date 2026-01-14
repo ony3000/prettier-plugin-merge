@@ -1,6 +1,5 @@
 import {
   thisPlugin,
-  sortImportsPluginOptions,
   braceStylePluginOptions,
   classnamesPluginOptions,
   tailwindcssPluginOptions,
