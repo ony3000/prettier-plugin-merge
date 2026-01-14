@@ -1,3 +1,4 @@
+import { parsers as oxcParsers } from '@prettier/plugin-oxc';
 import type { Parser, ParserOptions, Plugin } from 'prettier';
 import { format } from 'prettier';
 import { parsers as babelParsers } from 'prettier/plugins/babel';
@@ -37,18 +38,16 @@ async function formatAsCodeblock(text: string, options: ParserOptions, plugins?:
 async function sequentialFormattingAndTryMerging(
   options: ParserOptions,
   plugins: Plugin[],
-  languageImplementedPlugin?: Plugin,
+  externalPlugin?: Plugin,
 ): Promise<string> {
-  const customLanguageSupportedPlugins = languageImplementedPlugin
-    ? [languageImplementedPlugin]
-    : [];
+  const externalPlugins = externalPlugin ? [externalPlugin] : [];
 
   const { originalText } = options;
   const sequentialFormattingOptions = {
     ...options,
     rangeEnd: Infinity,
     endOfLine: 'lf' as const,
-    plugins: customLanguageSupportedPlugins,
+    plugins: externalPlugins,
   };
 
   const firstFormattedTextPromise =
@@ -68,12 +67,12 @@ async function sequentialFormattingAndTryMerging(
       const temporaryFormattedText =
         options.parentParser === 'markdown' || options.parentParser === 'mdx'
           ? await formatAsCodeblock(formattedPrevText, sequentialFormattingOptions, [
-              ...customLanguageSupportedPlugins,
+              ...externalPlugins,
               plugin,
             ])
           : await format(formattedPrevText, {
               ...sequentialFormattingOptions,
-              plugins: [...customLanguageSupportedPlugins, plugin],
+              plugins: [...externalPlugins, plugin],
             });
 
       const temporaryFormattedTextWithoutPlugin =
@@ -95,11 +94,21 @@ async function sequentialFormattingAndTryMerging(
 
 function transformParser(
   parserName: SupportedParserNames,
-  defaultParser: Parser,
-  languageName?: string,
+  transformOptions:
+    | {
+        defaultParser: Parser;
+        externalPluginName?: string;
+      }
+    | {
+        defaultParser: null;
+        externalPluginName: string;
+      },
 ): Parser {
+  const { defaultParser, externalPluginName } = transformOptions;
+
+  // @ts-expect-error: Since the parser handles all the work and just passes the results to the printer, it's okay if `locStart` and `locEnd` are not present.
   return {
-    ...defaultParser,
+    ...(defaultParser ?? {}),
     parse: async (text: string, options: ParserOptions): Promise<FormattedTextAST> => {
       const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
       const pluginIndex = plugins.findIndex(
@@ -119,17 +128,19 @@ function transformParser(
         );
       }
 
-      let languageImplementedPlugin: Plugin | undefined;
-      if (languageName) {
-        languageImplementedPlugin = plugins
-          .slice(0, pluginIndex)
-          .filter((plugin) => plugin.languages?.some((language) => language.name === languageName))
+      let externalPlugin: Plugin | undefined;
+
+      if (externalPluginName) {
+        externalPlugin = plugins
+          .filter(
+            (plugin) =>
+              // @ts-expect-error: `name` is presumed to be injected internally by Prettier.
+              plugin.name === externalPluginName,
+          )
           .at(0);
 
-        if (!languageImplementedPlugin) {
-          throw new Error(
-            `There doesn't seem to be any plugin that supports ${languageName} formatting.`,
-          );
+        if (!externalPlugin) {
+          throw new Error(`There is no plugin with the name '${externalPluginName}'.`);
         }
       }
 
@@ -142,7 +153,7 @@ function transformParser(
           originalText: text,
         },
         parserImplementedPlugins,
-        languageImplementedPlugin,
+        externalPlugin,
       );
 
       return {
@@ -155,11 +166,35 @@ function transformParser(
 }
 
 export const parsers: { [parserName: string]: Parser } = {
-  babel: transformParser('babel', babelParsers.babel),
-  typescript: transformParser('typescript', typescriptParsers.typescript),
-  angular: transformParser('angular', htmlParsers.angular),
-  html: transformParser('html', htmlParsers.html),
-  vue: transformParser('vue', htmlParsers.vue),
-  astro: transformParser('astro', {} as Parser, 'astro'),
-  svelte: transformParser('svelte', {} as Parser, 'svelte'),
+  babel: transformParser('babel', {
+    defaultParser: babelParsers.babel,
+  }),
+  typescript: transformParser('typescript', {
+    defaultParser: typescriptParsers.typescript,
+  }),
+  angular: transformParser('angular', {
+    defaultParser: htmlParsers.angular,
+  }),
+  html: transformParser('html', {
+    defaultParser: htmlParsers.html,
+  }),
+  vue: transformParser('vue', {
+    defaultParser: htmlParsers.vue,
+  }),
+  oxc: transformParser('oxc', {
+    defaultParser: oxcParsers.oxc,
+    externalPluginName: '@prettier/plugin-oxc',
+  }),
+  'oxc-ts': transformParser('oxc-ts', {
+    defaultParser: oxcParsers['oxc-ts'],
+    externalPluginName: '@prettier/plugin-oxc',
+  }),
+  astro: transformParser('astro', {
+    defaultParser: null,
+    externalPluginName: 'prettier-plugin-astro',
+  }),
+  svelte: transformParser('svelte', {
+    defaultParser: null,
+    externalPluginName: 'prettier-plugin-svelte',
+  }),
 };
