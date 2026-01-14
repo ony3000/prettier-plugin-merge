@@ -105,11 +105,10 @@ function transformParser(
       },
 ): Parser {
   const { defaultParser, externalPluginName } = transformOptions;
-  let refinedParser = defaultParser;
 
   // @ts-expect-error
   return {
-    ...(refinedParser ?? {}),
+    ...(defaultParser ?? {}),
     parse: async (text: string, options: ParserOptions): Promise<FormattedTextAST> => {
       const plugins = options.plugins.filter((plugin) => typeof plugin !== 'string') as Plugin[];
       const pluginIndex = plugins.findIndex(
@@ -130,7 +129,6 @@ function transformParser(
       }
 
       let externalPlugin: Plugin | undefined;
-      let externalParser: Parser | undefined;
 
       if (externalPluginName) {
         externalPlugin = plugins
@@ -144,20 +142,6 @@ function transformParser(
         if (!externalPlugin) {
           throw new Error('There is no plugin with the given name.');
         }
-
-        externalParser = externalPlugin.parsers?.[parserName];
-
-        if (refinedParser === null) {
-          if (!externalParser) {
-            throw new Error('The plugin does not contain a parser.');
-          }
-
-          refinedParser = externalParser;
-        }
-      }
-
-      if (refinedParser === null) {
-        throw new Error('Could not find a suitable parser.');
       }
 
       const parserImplementedPlugins = plugins
