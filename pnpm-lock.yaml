@@ -23,7 +23,7 @@ importers:
         version: 0.0.5
       '@trivago/prettier-plugin-sort-imports':
         specifier: 4.2.1
-        version: 4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.3.3)
+        version: 4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.2.5)
       '@types/diff':
         specifier: 5.0.3
         version: 5.0.3
@@ -34,26 +34,26 @@ importers:
         specifier: 0.25.0
         version: 0.25.0
       prettier:
-        specifier: 3.3.3
-        version: 3.3.3
+        specifier: 3.2.5
+        version: 3.2.5
       prettier-plugin-astro:
         specifier: 0.11.0
         version: 0.11.0
       prettier-plugin-brace-style:
         specifier: 0.9.0
-        version: 0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3)
+        version: 0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19))(prettier@3.2.5)
       prettier-plugin-classnames:
         specifier: 0.9.0
-        version: 0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3)
+        version: 0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19))(prettier@3.2.5)
       prettier-plugin-space-before-function-paren:
         specifier: 0.0.7
-        version: 0.0.7(prettier@3.3.3)
+        version: 0.0.7(prettier@3.2.5)
       prettier-plugin-svelte:
         specifier: 3.0.0
-        version: 3.0.0(prettier@3.3.3)(svelte@4.2.19)
+        version: 3.0.0(prettier@3.2.5)(svelte@4.2.19)
       prettier-plugin-tailwindcss:
         specifier: 0.7.2
-        version: 0.7.2(@prettier/plugin-oxc@0.0.5)(@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.3.3))(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3)
+        version: 0.7.2(@prettier/plugin-oxc@0.0.5)(@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.2.5))(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19))(prettier@3.2.5)
       rimraf:
         specifier: 5.0.1
         version: 5.0.1
@@ -1186,8 +1186,8 @@ packages:
       prettier-plugin-svelte:
         optional: true
 
-  prettier@3.3.3:
-    resolution: {integrity: sha512-i2tDNA0O5IrMO757lfrdQZCc2jPNDVntV0m/+4whiDfWaTKfMNgR7Qz0NAeGz/nRqF4m5/6CLzbP4/liHt12Ew==}
+  prettier@3.2.5:
+    resolution: {integrity: sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -1852,7 +1852,7 @@ snapshots:
 
   '@sinclair/typebox@0.27.8': {}
 
-  '@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.3.3)':
+  '@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.2.5)':
     dependencies:
       '@babel/generator': 7.17.7
       '@babel/parser': 7.27.2
@@ -1860,7 +1860,7 @@ snapshots:
       '@babel/types': 7.17.0
       javascript-natural-sort: 0.7.1
       lodash: 4.17.21
-      prettier: 3.3.3
+      prettier: 3.2.5
     optionalDependencies:
       '@vue/compiler-sfc': 3.3.9
     transitivePeerDependencies:
@@ -2301,46 +2301,46 @@ snapshots:
   prettier-plugin-astro@0.11.0:
     dependencies:
       '@astrojs/compiler': 1.8.2
-      prettier: 3.3.3
+      prettier: 3.2.5
       sass-formatter: 0.7.9
 
-  prettier-plugin-brace-style@0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3):
+  prettier-plugin-brace-style@0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19))(prettier@3.2.5):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.2.5
       zod: 3.22.4
     optionalDependencies:
       '@prettier/plugin-oxc': 0.0.5
       prettier-plugin-astro: 0.11.0
-      prettier-plugin-svelte: 3.0.0(prettier@3.3.3)(svelte@4.2.19)
+      prettier-plugin-svelte: 3.0.0(prettier@3.2.5)(svelte@4.2.19)
 
-  prettier-plugin-classnames@0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3):
+  prettier-plugin-classnames@0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19))(prettier@3.2.5):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.2.5
       zod: 3.22.4
     optionalDependencies:
       '@prettier/plugin-oxc': 0.0.5
       prettier-plugin-astro: 0.11.0
-      prettier-plugin-svelte: 3.0.0(prettier@3.3.3)(svelte@4.2.19)
+      prettier-plugin-svelte: 3.0.0(prettier@3.2.5)(svelte@4.2.19)
 
-  prettier-plugin-space-before-function-paren@0.0.7(prettier@3.3.3):
+  prettier-plugin-space-before-function-paren@0.0.7(prettier@3.2.5):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.2.5
 
-  prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19):
+  prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.2.5
       svelte: 4.2.19
 
-  prettier-plugin-tailwindcss@0.7.2(@prettier/plugin-oxc@0.0.5)(@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.3.3))(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.3.3)(svelte@4.2.19))(prettier@3.3.3):
+  prettier-plugin-tailwindcss@0.7.2(@prettier/plugin-oxc@0.0.5)(@trivago/prettier-plugin-sort-imports@4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.2.5))(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.2.5)(svelte@4.2.19))(prettier@3.2.5):
     dependencies:
-      prettier: 3.3.3
+      prettier: 3.2.5
     optionalDependencies:
       '@prettier/plugin-oxc': 0.0.5
-      '@trivago/prettier-plugin-sort-imports': 4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.3.3)
+      '@trivago/prettier-plugin-sort-imports': 4.2.1(@vue/compiler-sfc@3.3.9)(prettier@3.2.5)
       prettier-plugin-astro: 0.11.0
-      prettier-plugin-svelte: 3.0.0(prettier@3.3.3)(svelte@4.2.19)
+      prettier-plugin-svelte: 3.0.0(prettier@3.2.5)(svelte@4.2.19)
 
-  prettier@3.3.3: {}
+  prettier@3.2.5: {}
 
   pretty-format@29.7.0:
     dependencies:
