@@ -110,3 +110,7 @@ Starting with `0.6.0`, when there is a minor release on one side, I plan to refl
 ## Compatibility with other Prettier plugins
 
 All other plugins used with this plugin must be compatible with your version of Prettier.
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/ony3000/prettier-plugin-merge.svg?variant=adaptive)](https://starchart.cc/ony3000/prettier-plugin-merge)
