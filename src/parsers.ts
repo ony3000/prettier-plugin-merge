@@ -2,6 +2,7 @@ import type { Parser, ParserOptions, Plugin } from 'prettier';
 import { format } from 'prettier';
 import { parsers as babelParsers } from 'prettier/plugins/babel';
 import { parsers as htmlParsers } from 'prettier/plugins/html';
+import { parsers as postcssParsers } from 'prettier/plugins/postcss';
 import { parsers as typescriptParsers } from 'prettier/plugins/typescript';
 
 import type { SubstitutePatch } from './core-parts';
@@ -9,6 +10,9 @@ import { makePatches, applyPatches } from './core-parts';
 
 const EOL = '\n';
 
+/**
+ * @deprecated This function is deprecated and will be removed in version 0.12.0. There are still no plans to support the `markdown` and `mdx` parsers. I just thought it would be better to guide users to override Prettier's configuration rather than branching inside this plugin.
+ */
 async function formatAsCodeblock(text: string, options: ParserOptions, plugins?: Plugin[]) {
   let codeblockStart = '```';
   const codeblockEnd = '```';
@@ -182,6 +186,15 @@ export const parsers: { [parserName: string]: Parser } = {
   }),
   vue: transformParser('vue', {
     defaultParser: htmlParsers.vue,
+  }),
+  css: transformParser('css', {
+    defaultParser: postcssParsers.css,
+  }),
+  scss: transformParser('scss', {
+    defaultParser: postcssParsers.scss,
+  }),
+  less: transformParser('less', {
+    defaultParser: postcssParsers.less,
   }),
   oxc: transformParser('oxc', {
     defaultParser: null,
