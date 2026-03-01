@@ -1,0 +1,17 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`'two plugins whose formatting regions …' > expectation 1`] = `
+".callout
+{
+  @apply rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50;
+}
+"
+`;
+
+exports[`'two plugins whose formatting regions …' > expectation 2`] = `
+".callout
+{
+  @apply rounded-xl border border-zinc-400/30 bg-gray-100/50 px-4 py-4 dark:border-neutral-500/30 dark:bg-neutral-900/50;
+}
+"
+`;

@@ -40,8 +40,8 @@ importers:
         specifier: 0.11.0
         version: 0.11.0
       prettier-plugin-brace-style:
-        specifier: 0.9.0
-        version: 0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.5.3)(svelte@4.2.19))(prettier@3.5.3)
+        specifier: 0.10.0
+        version: 0.10.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.5.3)(svelte@4.2.19))(prettier@3.5.3)
       prettier-plugin-classnames:
         specifier: 0.9.0
         version: 0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.5.3)(svelte@4.2.19))(prettier@3.5.3)
@@ -879,8 +879,8 @@ packages:
     resolution: {integrity: sha512-rl2hJ4Kty/aEfGjk3i4JS+bpng9MjgvwqLRNzeb9NqYhqKoWNwOR39cIJXFjU1vR3zYOPnwWNRMelKb0orunYA==}
     engines: {node: ^14.15.0 || >=16.0.0, pnpm: '>=7.14.0'}
 
-  prettier-plugin-brace-style@0.9.0:
-    resolution: {integrity: sha512-XyCVPbj1rXIei+q1NG7tlEG/1MgZgNlgbGPDc3i5phJJoq9Z1w43WlcUKFV9VumzHtR+JHWjGVzMsWSnVf7q7g==}
+  prettier-plugin-brace-style@0.10.0:
+    resolution: {integrity: sha512-+tHt3iE+z2T7FLr3c7xhCGkAQ9/+ij1h+foLRfixoxw9dIWl8iJy8HJtcGeU6W/4gKJ6aYbCqRiebMp1ogZVcg==}
     engines: {node: '>=18'}
     peerDependencies:
       '@prettier/plugin-oxc': '*'
@@ -1861,7 +1861,7 @@ snapshots:
       prettier: 3.5.3
       sass-formatter: 0.7.9
 
-  prettier-plugin-brace-style@0.9.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.5.3)(svelte@4.2.19))(prettier@3.5.3):
+  prettier-plugin-brace-style@0.10.0(@prettier/plugin-oxc@0.0.5)(prettier-plugin-astro@0.11.0)(prettier-plugin-svelte@3.0.0(prettier@3.5.3)(svelte@4.2.19))(prettier@3.5.3):
     dependencies:
       prettier: 3.5.3
       zod: 3.22.4
