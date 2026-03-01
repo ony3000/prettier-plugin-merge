@@ -32,6 +32,7 @@ declare global {
     | 'html'
     | 'vue'
     | 'css'
+    | 'scss'
     | 'oxc'
     | 'oxc-ts'
     | 'astro'
