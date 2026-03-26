@@ -10,6 +10,9 @@ import { makePatches, applyPatches } from './core-parts';
 
 const EOL = '\n';
 
+/**
+ * @deprecated This function is deprecated and will be removed in version 0.12.0. There are still no plans to support the `markdown` and `mdx` parsers. I just thought it would be better to guide users to override Prettier's configuration rather than branching inside this plugin.
+ */
 async function formatAsCodeblock(text: string, options: ParserOptions, plugins?: Plugin[]) {
   let codeblockStart = '```';
   const codeblockEnd = '```';
@@ -132,10 +135,9 @@ function transformParser(
 
       if (externalPluginName) {
         externalPlugin = plugins
-          .filter(
-            (plugin) =>
-              // @ts-expect-error: `name` is presumed to be injected internally by Prettier.
-              plugin.name === externalPluginName,
+          .filter((plugin) =>
+            // @ts-expect-error: `name` is presumed to be injected internally by Prettier.
+            plugin.name?.includes(externalPluginName),
           )
           .at(0);
 
