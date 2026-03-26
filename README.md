@@ -22,7 +22,6 @@ So, for example, if you configure it like this for JavaScript formatting, only `
 
 However, you can overcome this limitation by adding `prettier-plugin-merge` as the last plugin.
 
-<!-- prettier-ignore -->
 ```diff
  {
    "plugins": [
@@ -99,6 +98,35 @@ export default {
   importOrder: ['<THIRD_PARTY_MODULES>', '^@[^/]+/(.*)$', '^@/(.*)$', '^[./]'],
   importOrderSeparation: true,
 };
+```
+
+### Markdown/MDX Override
+
+This plugin does not support Markdown and MDX, but if this plugin supports a language inside code blocks (e.g. Vue), unintended formatting may occur inside the code blocks.
+
+To prevent unintended formatting, you can use configuration overrides for Markdown and MDX.
+
+JSON example:
+
+```json
+{
+  "plugins": [
+    "prettier-plugin-brace-style",
+    "@trivago/prettier-plugin-sort-imports",
+    "prettier-plugin-merge"
+  ],
+  "braceStyle": "stroustrup",
+  "importOrder": ["<THIRD_PARTY_MODULES>", "^@[^/]+/(.*)$", "^@/(.*)$", "^[./]"],
+  "importOrderSeparation": true,
+  "overrides": [
+    {
+      "files": ["*.md", "*.mdx"],
+      "options": {
+        "plugins": []
+      }
+    }
+  ]
+}
 ```
 
 ## Version correlation with sibling plugins
