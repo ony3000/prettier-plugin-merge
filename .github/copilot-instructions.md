@@ -39,12 +39,17 @@ This is a Prettier plugin that solves Prettier's limitation of only applying the
 2. **`src/core-parts/index.ts`** — Diff and merge logic:
    - `makePatches(oldStr, newStr)` — uses `diffLines()` to produce `SubstitutePatch[]` (`{ type: 'keep' | 'change', ... }`)
    - `applyPatches(text, patchesPerPlugin[])` — applies patches sequentially; uses `diffWords()` for conflict detection; skips a patch if the region has shifted, but applies it anyway if changes are only whitespace
+   - Two branches marked `// Note: A case study is needed.` handle the case where plugins make conflicting **non-whitespace** changes to the same region. No real-world example triggering these paths has been found yet — they are **not** intentional silent no-ops; a triggering case study is still needed.
 
 3. **`src/printers.ts`** — Minimal pass-through printer for the `merging-ast` format; returns `node.body` directly
 
 4. **`src/index.ts`** — Re-exports `parsers` and `printers`
 
 Supported parsers: `babel`, `babel-ts`, `typescript`, `angular`, `html`, `vue`, `css`, `scss`, `less`, `oxc`, `oxc-ts`, `astro`, `svelte`. Markdown/MDX are explicitly not supported — use Prettier `overrides` to exclude the plugin for those file types.
+
+**External plugin detection:** Parsers without a built-in Prettier default (`oxc`, `oxc-ts`, `astro`, `svelte`) are located at runtime via `plugin.name`. This property exists on Prettier plugin objects at runtime but is absent from Prettier's `Plugin` TypeScript type definition, hence the `@ts-expect-error` at that call site.
+
+**`formatAsCodeblock` (deprecated):** This function in `src/parsers.ts` is `@deprecated` and will be removed at v0.12.0. It is still actively called for the markdown/mdx `parentParser` paths and is kept solely for backward compatibility until then.
 
 ## Conventions
 
@@ -76,6 +81,8 @@ Tests are organized by parser under `tests/<parser>/` with consistent filenames:
 - `issue-<N>.test.ts` — regression tests for specific GitHub issues
 
 Pre-configured plugin option objects live in `tests/adaptor.ts`: `braceStylePluginOptions`, `classnamesPluginOptions`, `tailwindcssPluginOptions`, `sortImportsPluginOptions`.
+
+`noopPlugin` (also in `tests/adaptor.ts`) is a diagnostic fixture created to investigate `endOfLine: crlf` bugs by simulating "a plugin that returns Prettier's output as-is". It intentionally covers only the parsers relevant to those investigations (`babel`, `typescript`, `angular`, `html`, `vue`).
 
 ### Imports
 
