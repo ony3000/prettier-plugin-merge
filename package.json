@@ -51,8 +51,8 @@
     "rimraf": "6.1.2",
     "typescript": "5.8.3",
     "vite-tsconfig-paths": "4.2.3",
-    "vitest": "3.1.4",
-    "vue": "3.3.9"
+    "vitest": "4.1.0",
+    "vue": "3.5.42"
   },
   "peerDependencies": {
     "prettier": "^3"
