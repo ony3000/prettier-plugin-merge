@@ -1,6 +1,6 @@
 {
   "name": "prettier-plugin-merge",
-  "version": "0.10.0",
+  "version": "0.10.1",
   "description": "A Prettier plugin that sequentially merges the formatting results of other Prettier plugins.",
   "keywords": [
     "prettier",
@@ -43,16 +43,16 @@
     "esbuild": "0.25.0",
     "prettier": "3.0.3",
     "prettier-plugin-astro": "0.11.0",
-    "prettier-plugin-brace-style": "0.10.0",
-    "prettier-plugin-classnames": "0.9.0",
+    "prettier-plugin-brace-style": "0.10.4",
+    "prettier-plugin-classnames": "0.10.5",
     "prettier-plugin-space-before-function-paren": "0.0.7",
     "prettier-plugin-svelte": "3.0.0",
     "prettier-plugin-tailwindcss": "0.7.2",
     "rimraf": "6.1.2",
     "typescript": "5.8.3",
     "vite-tsconfig-paths": "4.2.3",
-    "vitest": "3.1.4",
-    "vue": "3.3.9"
+    "vitest": "4.1.0",
+    "vue": "3.5.42"
   },
   "peerDependencies": {
     "prettier": "^3"
