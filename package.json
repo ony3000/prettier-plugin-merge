@@ -41,7 +41,7 @@
     "@types/diff": "5.2.3",
     "@types/node": "20.17.46",
     "esbuild": "0.25.0",
-    "prettier": "3.8.1",
+    "prettier": "3.8.5",
     "prettier-plugin-astro": "0.11.0",
     "prettier-plugin-brace-style": "0.10.4",
     "prettier-plugin-classnames": "0.10.5",
